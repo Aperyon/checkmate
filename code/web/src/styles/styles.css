@@ -1,0 +1,71 @@
+.CheckListListView {
+  padding: 0 25%; }
+  .CheckListListView .CheckListList {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #333;
+    border-width: 1px 0 0 1px; }
+    .CheckListListView .CheckListList .CheckListListItem {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #333;
+      border-width: 0 1px 1px 0;
+      border-collapse: collapse;
+      padding: 20px 40px; }
+      .CheckListListView .CheckListList .CheckListListItem .CheckListTitle {
+        margin: 0; }
+      .CheckListListView .CheckListList .CheckListListItem .CheckListDescription {
+        margin: 0; }
+      .CheckListListView .CheckListList .CheckListListItem .CheckListDetails {
+        flex: 1; }
+      .CheckListListView .CheckListList .CheckListListItem .Actions {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center; }
+        .CheckListListView .CheckListList .CheckListListItem .Actions .Button {
+          margin-left: 20px; }
+
+.CheckListItemView {
+  padding: 0 25%;
+  padding-top: 15vh; }
+  .CheckListItemView .CheckListItems {
+    list-style: none; }
+  .CheckListItemView .CheckListItem {
+    font-size: 2em; }
+  .CheckListItemView .CheckListDescription {
+    font-size: 2em; }
+
+.CheckListDescription {
+  font-size: 1.25em; }
+
+.CheckListForm {
+  font-family: "IM Fell English";
+  color: #333; }
+  .CheckListForm input {
+    border: none; }
+    .CheckListForm input:active {
+      border: none; }
+  .CheckListForm .TitleInput {
+    font-size: 3em; }
+  .CheckListForm .DescriptionInput {
+    font-size: 1.25em; }
+
+.Button {
+  padding: 10px 20px; }
+  .Button .Icon {
+    margin-right: 10px; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "IM Fell English"; }
+
+* {
+  box-sizing: border-box;
+  color: #333; }
+
+.Title {
+  font-size: 3em; }
+
+/*# sourceMappingURL=styles.css.map */
