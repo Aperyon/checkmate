@@ -3,8 +3,9 @@ import { Link, useParams, Redirect } from 'react-router-dom';
 import { useForm, useFieldArray } from "react-hook-form";
 import _ from 'lodash';
 
+import Icon from '../common/components/Icon';
 import { Context as CheckListContext } from '../contexts/CheckListsContext';
-import { ActionButton, BackButton, Button } from '../CheckListList/Buttons';
+import { ActionButton, BackButton, Button, ButtonContainer } from '../CheckListList/Buttons';
 
 
 function handleItemsChange(values, append) {
@@ -152,19 +153,24 @@ function CheckListForm({ checklist }) {
             onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
           />
           <Button
+            className="Small"
             onClick={() => remove(index)}
             type="button"
           >
-            Delete
+            <Icon icon="times" />Delete
           </Button>
           {errors.description && errors.description.message}
         </div>
       ))}
 
-      <button type="button" onClick={() => append({ name: "item" })} >
-        Add
-        </button>
-      <ActionButton type="submit">I'm done!</ActionButton>
+      <ButtonContainer style={{ justifyContent: 'space-between' }}>
+        <Button type="button" onClick={() => append({ name: "item" })}>
+          <Icon icon="plus" />Add new item
+        </Button>
+        <ActionButton type="submit">
+          <Icon icon="check" /> I'm done!
+        </ActionButton>
+      </ButtonContainer>
     </form>
   )
 }

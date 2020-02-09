@@ -37,7 +37,9 @@
     .CheckListItemView .CheckListItems input {
       margin-right: 40px; }
   .CheckListItemView .CheckListItem {
-    font-size: 2em; }
+    font-size: 2em;
+    margin-bottom: 20px;
+    display: block; }
     .CheckListItemView .CheckListItem label {
       display: flex;
       align-items: center; }
@@ -77,10 +79,16 @@
   border: 1px solid #333;
   font-size: 16px !important;
   cursor: pointer; }
+  .Button.Small {
+    padding: 6.6666666667px 10px; }
   .Button .Icon {
     margin-right: 10px; }
   .Button.NoText .Icon {
     margin-right: 0; }
+  .Button.ActionButton {
+    border-color: #e64545;
+    background: #e64545;
+    color: white; }
 
 .BackButton {
   border: 1px solid #333;
@@ -88,6 +96,9 @@
   text-decoration: none;
   display: inline-block;
   margin-bottom: 40px; }
+
+.ButtonContainer {
+  display: flex; }
 
 html, body {
   margin: 0;
@@ -97,6 +108,9 @@ html, body {
   font-family: "IM Fell English" !important;
   box-sizing: border-box;
   color: #333; }
+
+a:hover {
+  color: #333 !important; }
 
 .Title {
   font-size: 40px; }

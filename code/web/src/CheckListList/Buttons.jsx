@@ -24,7 +24,7 @@ export function MiscButton() {
 }
 
 export function ActionButton(props) {
-  return <Button {...props}>{props.children}</Button>
+  return <Button className="ActionButton" {...props}>{props.children}</Button>
 }
 
 export function Button(props) {
@@ -43,4 +43,9 @@ export function Button(props) {
 
 export function BackButton(props) {
   return <Link to={props.to} className="BackButton">{props.children}</Link>
+}
+
+
+export function ButtonContainer(props) {
+  return <div className="ButtonContainer" style={{ ...props.style }}>{props.children}</div>
 }

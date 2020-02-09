@@ -6,6 +6,9 @@
   font-size: $font-size / 1.25 !important
   cursor: pointer
 
+  &.Small
+    padding: $small-padding-around
+
   .Icon
     margin-right: $small-padding
 
@@ -13,9 +16,17 @@
     .Icon
       margin-right: 0
 
+  &.ActionButton
+    border-color: $red
+    background: $red
+    color: white
+
 .BackButton
   border: 1px solid $black
   padding: $padding-around
   text-decoration: none
   display: inline-block
   margin-bottom: $large-padding
+
+.ButtonContainer
+  display: flex
