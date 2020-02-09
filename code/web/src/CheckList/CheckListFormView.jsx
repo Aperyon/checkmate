@@ -86,7 +86,8 @@ function CheckListForm({ checklist }) {
     if (checkListID) {
       const response = await updateChecklist(checkListID, values)
       if (response.error) {
-        if (!response.error.data) {
+        console.log(response)
+        if (!response.data) {
           alert('unknown error')
         } else {
           Object.keys(response.data).forEach(errorKey => {
@@ -101,7 +102,7 @@ function CheckListForm({ checklist }) {
       const response = await addChecklist(values)
 
       if (response.error) {
-        if (!response.error.data) {
+        if (!response.data) {
           alert('unknown error')
         } else {
           Object.keys(response.data).forEach(errorKey => {
@@ -119,7 +120,6 @@ function CheckListForm({ checklist }) {
     return <Redirect to="/checklists/" />
   }
 
-  console.log('Errors', errors.title)
   return (
     <form className="CheckListForm" onSubmit={handleSubmit(onSubmit)}>
       <div className="InputGroup">
