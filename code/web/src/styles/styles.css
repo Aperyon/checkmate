@@ -13,7 +13,8 @@
       border-collapse: collapse;
       padding: 20px 40px; }
       .CheckListListView .CheckListList .CheckListListItem .CheckListTitle {
-        margin: 0; }
+        margin: 0;
+        margin-bottom: 10px; }
       .CheckListListView .CheckListList .CheckListListItem .CheckListDescription {
         margin: 0; }
       .CheckListListView .CheckListList .CheckListListItem .CheckListDetails {
@@ -30,32 +31,59 @@
   padding: 0 25%;
   padding-top: 15vh; }
   .CheckListItemView .CheckListItems {
-    list-style: none; }
+    list-style: none;
+    padding: 0; }
+    .CheckListItemView .CheckListItems input {
+      margin-right: 40px; }
   .CheckListItemView .CheckListItem {
     font-size: 2em; }
+    .CheckListItemView .CheckListItem label {
+      display: flex;
+      align-items: center; }
   .CheckListItemView .CheckListDescription {
     font-size: 2em; }
 
+.CheckListTitle {
+  font-size: 40px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 0.25em; }
+  .CheckListTitle.Small {
+    font-size: 30px; }
+
 .CheckListDescription {
-  font-size: 1.25em; }
+  font-size: 30px;
+  margin: 0;
+  margin-bottom: 1em;
+  font-weight: normal;
+  width: 100%; }
+  .CheckListDescription.Small {
+    font-size: 20px; }
 
 .CheckListForm {
   font-family: "IM Fell English";
   color: #333; }
-  .CheckListForm input {
-    border: none; }
-    .CheckListForm input:active {
+  .CheckListForm input, .CheckListForm textarea {
+    border: none;
+    resize: none; }
+    .CheckListForm input:active, .CheckListForm textarea:active {
       border: none; }
-  .CheckListForm .TitleInput {
-    font-size: 3em; }
-  .CheckListForm .DescriptionInput {
-    font-size: 1.25em;
-    width: 100%; }
 
 .Button {
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  background-color: transparent;
+  box-shadow: none;
+  border: 1px solid #333;
+  font-size: 16px !important; }
   .Button .Icon {
     margin-right: 10px; }
+
+.BackButton {
+  border: 1px solid #333;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 40px; }
 
 html, body {
   margin: 0;
@@ -67,6 +95,6 @@ html, body {
   color: #333; }
 
 .Title {
-  font-size: 3em; }
+  font-size: 40px; }
 
 /*# sourceMappingURL=styles.css.map */

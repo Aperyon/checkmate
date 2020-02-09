@@ -15,8 +15,8 @@ export default function CheckListListItem(props) {
   return (
     <li className="CheckListListItem">
       <div className="CheckListDetails">
-        <CheckListTitle>{checkList.title}</CheckListTitle>
-        <CheckListDescription>{checkList.description}</CheckListDescription>
+        <CheckListTitle small={true}>{checkList.title}</CheckListTitle>
+        <CheckListDescription small={true}>{checkList.description}</CheckListDescription>
       </div>
       <div className="Actions">
         <Link to={`/checklists/${checkList.pk}/`}>

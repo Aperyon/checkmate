@@ -1,11 +1,12 @@
 import React from "react";
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
 
 import CheckListTitle from './CheckListTitle';
 import CheckListDescription from './CheckListDescription';
 import CheckListItems from './CheckListItems';
 import CheckListItem from './CheckListItem';
+import { BackButton } from '../CheckListList/Buttons';
 
 import { Context as ChecklistRunContext } from '../contexts/CheckListRunContext';
 
@@ -40,7 +41,7 @@ export default function CheckListRun() {
 
   return (
     <div className="View CheckListItemView">
-      <Link to="/checklists/">Back</Link>
+      <BackButton to="/checklists/">Go back</BackButton>
       <CheckListTitle>{checkListRun.title}</CheckListTitle>
       <CheckListDescription>{checkListRun.description}</CheckListDescription>
       <CheckListItems>

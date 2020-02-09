@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from 'react-router-dom';
+
 
 export function ViewButton() {
   return (
@@ -30,4 +32,9 @@ export function Button(props) {
       {props.children}
     </button >
   )
+}
+
+
+export function BackButton(props) {
+  return <Link to={props.to} className="BackButton">{props.children}</Link>
 }

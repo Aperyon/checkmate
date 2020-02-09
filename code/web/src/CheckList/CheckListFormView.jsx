@@ -4,7 +4,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import _ from 'lodash';
 
 import { Context as CheckListContext } from '../contexts/CheckListsContext';
-import { ActionButton } from '../CheckListList/Buttons';
+import { ActionButton, BackButton, Button } from '../CheckListList/Buttons';
 
 
 
@@ -38,7 +38,7 @@ export default function CheckListFormView() {
   if (!checkListID) {
     return (
       <div className="View CheckListItemView">
-        <Link to="/checklists/">Back</Link>
+        <BackButton to="/checklists/">Back</BackButton>
         <CheckListForm />
       </div >
     )
@@ -51,7 +51,7 @@ export default function CheckListFormView() {
   }
   return (
     <div className="View CheckListItemView">
-      <Link to="/checklists/">Back</Link>
+      <BackButton to="/checklists/">Go back</BackButton>
       <CheckListForm checklist={currentCheckList} />
     </div >
   )
@@ -124,7 +124,7 @@ function CheckListForm({ checklist }) {
     <form className="CheckListForm" onSubmit={handleSubmit(onSubmit)}>
       <div className="InputGroup">
         <input
-          className="TitleInput"
+          className="CheckListTitle"
           name="title"
           placeholder="Title"
           ref={register()}
@@ -133,8 +133,8 @@ function CheckListForm({ checklist }) {
       </div>
 
       <div className="InputGroup">
-        <input
-          className="DescriptionInput"
+        <textarea
+          className="CheckListDescription"
           name="description"
           placeholder="Description"
           ref={register()}
@@ -143,19 +143,19 @@ function CheckListForm({ checklist }) {
       </div>
 
       {fields.map((item, index) => (
-        <div className="InputGroup" key={item.id}>
+        <div className="InputGroup CheckListItem" key={item.id}>
           <input
             name={`items[${index}].text`}
             ref={register()}
             placeholder="item"
             onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
           />
-          <button
+          <Button
             onClick={() => remove(index)}
             type="button"
           >
             Delete
-          </button>
+          </Button>
           {errors.description && errors.description.message}
         </div>
       ))}

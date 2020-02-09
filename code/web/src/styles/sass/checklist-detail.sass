@@ -4,32 +4,47 @@
 
   .CheckListItems
     list-style: none
+    padding: 0
+
+    input
+      margin-right: $large-padding
 
   .CheckListItem
     font-size: 2em
 
+    label
+      display: flex
+      align-items: center
 
   .CheckListDescription
     font-size: 2em
 
 .CheckListTitle
+  font-size: $title-font-size
+  font-weight: normal
+  margin: 0
+  margin-bottom: .25em
+
+  &.Small
+    font-size: $subtitle-font-size
 
 .CheckListDescription
-  font-size: 1.25em
+  font-size: $subtitle-font-size
+  margin: 0
+  margin-bottom: 1em
+  font-weight: normal
+  width: 100%
+
+  &.Small
+    font-size: $font-size
 
 .CheckListForm
   font-family: "IM Fell English"
   color: $black
 
-  input
+  input, textarea
     border: none
+    resize: none
 
     &:active
       border: none
-
-  .TitleInput
-    font-size: 3em
-
-  .DescriptionInput
-    font-size: 1.25em
-    width: 100%
