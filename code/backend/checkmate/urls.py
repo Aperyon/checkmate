@@ -18,14 +18,24 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 import checklists.views
+import users.views
+from users import serializers as us
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 
 router = DefaultRouter()
 router.register('check-lists', checklists.views.CheckListViewSet)
 router.register('check-list-runs', checklists.views.CheckListRunViewSet)
 router.register('check-list-run-items', checklists.views.CheckListRunItemViewSet)
+router.register('users', users.views.UserViewSet, basename='user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/token/', TokenObtainPairView.as_view(serializer_class=us.TokenObtainSerializer), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

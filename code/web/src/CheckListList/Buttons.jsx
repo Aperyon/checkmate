@@ -24,7 +24,14 @@ export function MiscButton() {
 }
 
 export function ActionButton(props) {
-  return <Button className="ActionButton" {...props}>{props.children}</Button>
+  return (
+    <Button
+      {...props}
+      className={`ActionButton asd ${props.className || ''}`}
+    >
+      {props.children}
+    </Button>
+  )
 }
 
 export function Button(props) {

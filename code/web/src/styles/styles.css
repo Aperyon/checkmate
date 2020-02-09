@@ -89,6 +89,8 @@
     border-color: #e64545;
     background: #e64545;
     color: white; }
+  .Button.FullWidth {
+    width: 100%; }
 
 .BackButton {
   border: 1px solid #333;
@@ -99,6 +101,29 @@
 
 .ButtonContainer {
   display: flex; }
+
+.AuthForm {
+  width: 400px; }
+  .AuthForm label {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 20px; }
+  .AuthForm input {
+    margin-bottom: 40px;
+    width: 100%;
+    font-size: 30px;
+    padding: 10px;
+    border: 1px solid #333; }
+  .AuthForm .ActionButton {
+    font-size: 40px !important; }
+  .AuthForm .FormError {
+    color: #e64545;
+    font-size: 30px; }
+
+.AuthView {
+  display: flex;
+  justify-content: center;
+  padding-top: 15vh; }
 
 html, body {
   margin: 0;
