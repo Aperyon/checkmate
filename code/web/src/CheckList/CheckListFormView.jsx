@@ -7,9 +7,6 @@ import { Context as CheckListContext } from '../contexts/CheckListsContext';
 import { ActionButton, BackButton, Button } from '../CheckListList/Buttons';
 
 
-
-
-
 function handleItemsChange(values, append) {
   if (shouldAddExtraItem(values)) {
     append()
@@ -29,12 +26,15 @@ export default function CheckListFormView() {
   const {
     state: { currentCheckList },
     fetchCurrentChecklist,
+    unsetCurrentChecklist,
   } = React.useContext(CheckListContext)
   React.useEffect(() => {
     fetchCurrentChecklist(checkListID)
+    return () => {
+      unsetCurrentChecklist();
+    }
   }, [])
 
-  console.log('checklistID', checkListID)
   if (!checkListID) {
     return (
       <div className="View CheckListItemView">
@@ -49,6 +49,7 @@ export default function CheckListFormView() {
   } else if (shouldAddExtraItem(currentCheckList.items)) {
     currentCheckList.items.push({ text: "" })
   }
+
   return (
     <div className="View CheckListItemView">
       <BackButton to="/checklists/">Go back</BackButton>
