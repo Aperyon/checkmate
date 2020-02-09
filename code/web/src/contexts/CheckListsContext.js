@@ -62,6 +62,16 @@ const addChecklist = (dispatch) => async (values) => {
   }
 }
 
+
+const deleteChecklist = (dispatch) => async (url) => {
+  try {
+    const response = await axios.delete(url)
+    return response
+  } catch (err) {
+
+  }
+}
+
 const updateChecklist = (dispatch) => async (id, values) => {
   let response = {}
   try {
@@ -87,6 +97,7 @@ export const { Provider, Context } = createDataContext(
     fetchCurrentChecklist,
     addChecklist,
     updateChecklist,
+    deleteChecklist,
   },
   initialData,
 )

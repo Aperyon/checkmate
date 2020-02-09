@@ -2,6 +2,8 @@ import React from "react";
 
 import { Link } from 'react-router-dom';
 
+import Icon from '../common/components/Icon';
+
 
 export function ViewButton() {
   return (
@@ -17,7 +19,7 @@ export function RunButton({ onClick }) {
 
 export function MiscButton() {
   return (
-    <Button icon="hamburger-dots" />
+    <Button className="NoText" icon="ellipsis-v" />
   )
 }
 
@@ -27,8 +29,12 @@ export function ActionButton(props) {
 
 export function Button(props) {
   return (
-    <button className="Button" type={props.type || "button"} onClick={props.onClick || (() => { })}>
-      {props.icon && <i className={`Icon fa fa-${props.icon}`} />}
+    <button
+      className={`Button ${props.className ? props.className : ''}`}
+      type={props.type || "button"}
+      onClick={props.onClick || (() => { })}
+    >
+      {props.icon && <Icon icon={props.icon} />}
       {props.children}
     </button >
   )

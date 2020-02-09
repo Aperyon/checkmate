@@ -6,6 +6,7 @@ import { Context as CheckListsContext } from '../contexts/CheckListsContext';
 import CheckListDescription from "../CheckList/CheckListDescription";
 import CheckListTitle from "../CheckList/CheckListTitle";
 import { ViewButton, RunButton, MiscButton } from './Buttons';
+import CheckListItemMiscDropdown from './CheckListItemMiscDropdown'
 
 
 export default function CheckListListItem(props) {
@@ -23,7 +24,11 @@ export default function CheckListListItem(props) {
           <ViewButton />
         </Link>
         <RunButton onClick={() => props.onRunClick(checkList)} />
-        <MiscButton />
+        {/* <MiscButton /> */}
+        <CheckListItemMiscDropdown
+          checklist={checkList}
+          onDeleteClick={props.onDeleteClick}
+        />
       </div>
     </li>
   )

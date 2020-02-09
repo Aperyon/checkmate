@@ -1,5 +1,6 @@
 .CheckListListView {
-  padding: 0 25%; }
+  padding: 0 25%;
+  padding-top: 5vh; }
   .CheckListListView .CheckListList {
     list-style: none;
     padding: 0;
@@ -74,9 +75,12 @@
   background-color: transparent;
   box-shadow: none;
   border: 1px solid #333;
-  font-size: 16px !important; }
+  font-size: 16px !important;
+  cursor: pointer; }
   .Button .Icon {
     margin-right: 10px; }
+  .Button.NoText .Icon {
+    margin-right: 0; }
 
 .BackButton {
   border: 1px solid #333;
@@ -87,10 +91,10 @@
 
 html, body {
   margin: 0;
-  padding: 0;
-  font-family: "IM Fell English"; }
+  padding: 0; }
 
-* {
+*:not(i) {
+  font-family: "IM Fell English" !important;
   box-sizing: border-box;
   color: #333; }
 

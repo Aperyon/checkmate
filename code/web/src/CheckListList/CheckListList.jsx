@@ -10,7 +10,7 @@ import { Context as CheckListRunContext } from '../contexts/CheckListRunContext'
 
 export default function CheckListList(props) {
   const [redirectToRun, setRedirectToRun] = React.useState({ redirect: false, to: null })
-  const { state: { checkLists }, fetchCheckLists } = React.useContext(CheckListsContext)
+  const { state: { checkLists }, fetchCheckLists, deleteChecklist } = React.useContext(CheckListsContext)
   const { state: checklistRun, createChecklistRun } = React.useContext(CheckListRunContext)
 
   React.useEffect(() => {
@@ -40,6 +40,11 @@ export default function CheckListList(props) {
     setRedirectToRun({ redirect: true, to: `/checklist-runs/${runPk}/` })
   }
 
+  async function onDeleteClick(checklist) {
+    await deleteChecklist(checklist.url)
+    fetchCheckLists()
+  }
+
   if (redirectToRun.redirect) {
     return <Redirect to={redirectToRun.to} />
   }
@@ -60,6 +65,7 @@ export default function CheckListList(props) {
             key={checkList.pk}
             checkList={checkList}
             onRunClick={onRunClick}
+            onDeleteClick={onDeleteClick}
           />
         ))}
       </ul>
