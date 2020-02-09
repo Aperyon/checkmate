@@ -16,13 +16,21 @@ class ChecklistRunItemSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'is_checked', 'text')
         read_only_fields = ('url', 'text')
 
+    def update(self, instance, validated_data):
+        is_checked = validated_data.pop('is_checked', False)
+        other_items = instance.checklist_run.items.exclude(pk=instance.pk)
+        s.toggle_checklist_run_item(instance, is_checked, other_items, save=True)
+        return instance
+
 
 class CheckListSerializer(serializers.HyperlinkedModelSerializer):
     items = ChecklistItemSerializer(many=True)
 
     class Meta:
         model = m.CheckList
-        fields = ('url', 'pk', 'title', 'description', 'items')
+        fields = ('url', 'pk', 'title', 'description', 'items', 'is_latest_run_complete',
+                  'latest_run')
+        read_only_fields = ('is_latest_run_complete', 'latest_run')
 
     def create(self, validated_data):
         items = validated_data.pop('items', [])
@@ -72,11 +80,10 @@ class CheckListRunSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = m.CheckListRun
-        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items')
-        read_only_fields = ('title', 'description')
+        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items', 'is_complete')
+        read_only_fields = ('title', 'description', 'is_complete')
 
     def create(self, validated_data):
-        print(validated_data)
         checklist = validated_data.pop('checklist')
         run, run_items = s.prepare_run(checklist, checklist.items.all(), save=True)
         return run

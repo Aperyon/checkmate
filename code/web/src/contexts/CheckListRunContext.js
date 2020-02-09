@@ -49,12 +49,17 @@ const updateChecklistRunItem = dispatch => async (item, isChecked) => {
   }
 }
 
+const unsetCurrentChecklistRun = dispatch => async () => {
+  dispatch({ type: SET_CURRENT_RUN, payload: null })
+}
+
 export const { Provider, Context } = createDataContext(
   reducer,
   {
     createChecklistRun,
     updateChecklistRunItem,
     fetchCheckListRun,
+    unsetCurrentChecklistRun,
   },
   initialData,
 )

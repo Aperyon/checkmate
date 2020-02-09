@@ -14,13 +14,30 @@ export default function CheckListList(props) {
   const { state: checklistRun, createChecklistRun } = React.useContext(CheckListRunContext)
 
   React.useEffect(() => {
+    console.log('Useeffect runs')
     fetchCheckLists();
   }, [])
 
   async function onRunClick(checklist) {
-    console.log('run clicked')
-    const response = await createChecklistRun(checklist);
-    setRedirectToRun({ redirect: true, to: `/checklist-runs/${response.data.pk}/` })
+    const {
+      latest_run: latestRun,
+      is_latest_run_complete: isLatestRunComplete
+    } = checklist;
+
+    let runPk = null
+    if (latestRun && !isLatestRunComplete) {
+      console.log('yes latest run')
+      console.log(latestRun)
+      const parts = latestRun.split('/')
+      console.log(parts, parts[parts.length - 2])
+      runPk = parts[parts.length - 2]
+    } else {
+      console.log('no latest run')
+      const response = await createChecklistRun(checklist);
+      runPk = response.data.pk;
+    }
+    console.log('runPk', runPk)
+    setRedirectToRun({ redirect: true, to: `/checklist-runs/${runPk}/` })
   }
 
   if (redirectToRun.redirect) {

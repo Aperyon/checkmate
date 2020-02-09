@@ -10,9 +10,10 @@ export default function CheckListItem(props) {
         {props.runMode && (
           <label>
             <input
-              name="is_checked"
+              name={`items[${props.index}].is_checked`}
               type="checkbox"
               onChange={(e) => props.onCheckboxChange(e, item)}
+              ref={props.register()}
             />
             {item.text}
           </label>

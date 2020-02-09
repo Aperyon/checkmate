@@ -1,5 +1,6 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useForm, useFieldArray } from 'react-hook-form';
 
 import CheckListTitle from './CheckListTitle';
 import CheckListDescription from './CheckListDescription';
@@ -14,8 +15,10 @@ export default function CheckListRun() {
   const {
     state: checkListRun,
     fetchCheckListRun,
-    updateChecklistRunItem
+    updateChecklistRunItem,
+    unsetCurrentChecklistRun,
   } = React.useContext(ChecklistRunContext);
+
 
   async function onCheckboxChange(event, item) {
     const newValue = event.target.checked
@@ -24,6 +27,11 @@ export default function CheckListRun() {
 
   React.useEffect(() => {
     fetchCheckListRun(checkListRunID);
+
+    return () => {
+      console.log('Unsetting current checklist')
+      unsetCurrentChecklistRun()
+    }
   }, [])
 
   if (!checkListRun) {
@@ -32,18 +40,34 @@ export default function CheckListRun() {
 
   return (
     <div className="View CheckListItemView">
+      <Link to="/checklists/">Back</Link>
       <CheckListTitle>{checkListRun.title}</CheckListTitle>
       <CheckListDescription>{checkListRun.description}</CheckListDescription>
       <CheckListItems>
-        {checkListRun.items.map(item => (
-          <CheckListItem
-            key={item.url}
-            item={item}
-            runMode={true}
-            onCheckboxChange={onCheckboxChange}
-          />
-        ))}
+        <ChecklistRunForm
+          checklistRun={checkListRun}
+          onCheckboxChange={onCheckboxChange}
+        />
       </CheckListItems>
     </div>
   );
+}
+
+
+function ChecklistRunForm(props) {
+  const { register, control } = useForm({
+    defaultValues: { items: props.checklistRun.items }
+  });
+  const { fields } = useFieldArray({ control, name: "items" });
+
+  return fields.map((item, index) => (
+    <CheckListItem
+      key={item.url}
+      item={item}
+      index={index}
+      runMode={true}
+      onCheckboxChange={props.onCheckboxChange}
+      register={register}
+    />
+  ))
 }
