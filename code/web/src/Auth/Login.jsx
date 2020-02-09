@@ -39,6 +39,7 @@ export default function Login() {
   return (
     <div className="View AuthView">
       <form className="AuthForm LoginForm" onSubmit={handleSubmit(onSubmit)}>
+        <h1 className="AuthFormTitle">Login</h1>
         <div className="InputGroup">
           <label>Email</label>
           <input type="email" name="email" ref={register()} />

@@ -13,6 +13,8 @@ import CheckListRun from './CheckList/CheckListRun';
 import CheckListFormView from './CheckList/CheckListFormView';
 import Login from './Auth/Login';
 import Logout from './Auth/Logout';
+import Signup from './Auth/Signup';
+import Nav from './Nav/Nav';
 
 import { Provider as CheckListsProvider } from './contexts/CheckListsContext';
 import { Provider as CheckListRunProvider } from './contexts/CheckListRunContext';
@@ -40,9 +42,13 @@ function App() {
 
   return (
     <Router>
+      <Nav />
       <Switch>
         <Route path="/login/">
           <Login />
+        </Route>
+        <Route path="/signup/">
+          <Signup />
         </Route>
         <Route path="/logout/">
           <Logout />

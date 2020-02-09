@@ -1,0 +1,29 @@
+.Nav
+  display: flex
+  justify-content: space-around
+  align-items: center
+  height: $padding * 3
+  border-bottom: 1px solid $black
+  font-size: $subtitle-font-size
+
+  &>div
+    display: flex
+    align-items: center
+    padding: 0 $extra-large-padding
+    flex: 1 0 0
+    height: 100%
+
+  div:nth-child(1)
+  div:nth-child(2)
+    justify-content: center
+  div:nth-child(3)
+    justify-content: flex-end
+
+  ul
+    list-style: none
+    padding: none
+    display: flex
+
+    li
+      margin-left: $padding
+      font-size: $font-size
