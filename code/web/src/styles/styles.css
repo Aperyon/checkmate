@@ -49,7 +49,8 @@
   .CheckListForm .TitleInput {
     font-size: 3em; }
   .CheckListForm .DescriptionInput {
-    font-size: 1.25em; }
+    font-size: 1.25em;
+    width: 100%; }
 
 .Button {
   padding: 10px 20px; }
