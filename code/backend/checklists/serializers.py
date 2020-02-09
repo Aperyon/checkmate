@@ -85,5 +85,10 @@ class CheckListRunSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         checklist = validated_data.pop('checklist')
-        run, run_items = s.prepare_run(checklist, checklist.items.all(), save=True)
+        run, run_items = s.prepare_run(
+            checklist,
+            checklist.items.all(),
+            checklist.user,
+            save=True
+        )
         return run
