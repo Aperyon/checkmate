@@ -1,11 +1,12 @@
 from . import models as m
 
 
-def prepare_run(checklist, items, save=False):
+def prepare_run(checklist, items, user, save=False):
     checklist_run = m.CheckListRun(
         checklist=checklist,
         title=checklist.title,
         description=checklist.description,
+        user=checklist.user,
     )
     checklist.latest_run = checklist_run
     checklist.is_latest_run_complete = False

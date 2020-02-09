@@ -12,6 +12,7 @@ class CheckList(models.Model):
         related_name='latest_run_of',
     )
     is_latest_run_complete = models.BooleanField(default=False)
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
 
 class CheckListItem(models.Model):
@@ -28,6 +29,7 @@ class CheckListRun(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     is_complete = models.BooleanField(default=False)
+    user = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
 
 class CheckListRunItem(models.Model):
