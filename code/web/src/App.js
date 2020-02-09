@@ -3,13 +3,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 import './styles/styles.css';
 
 import CheckListList from './CheckListList/CheckListList';
-import CheckListView from './CheckList/CheckListView';
 import CheckListRun from './CheckList/CheckListRun';
 import CheckListFormView from './CheckList/CheckListFormView';
 
