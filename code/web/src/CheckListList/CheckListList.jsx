@@ -45,6 +45,10 @@ export default function CheckListList(props) {
     fetchCheckLists()
   }
 
+  if (checkLists === null) {
+    return <h1>Loading...</h1>
+  }
+
   if (redirectToRun.redirect) {
     return <Redirect to={redirectToRun.to} />
   }
@@ -55,20 +59,31 @@ export default function CheckListList(props) {
         <Title>
           Your checklists
         </Title>
-        <Link to="/checklists/new/">
-          <ActionButton>Add</ActionButton>
-        </Link>
+        {checkLists.length > 0 && (
+          <Link to="/checklists/new/">
+            <ActionButton>Add</ActionButton>
+          </Link>
+        )}
       </div>
-      <ul className="CheckListList">
-        {checkLists && checkLists.map(checkList => (
-          <CheckListListItem
-            key={checkList.pk}
-            checkList={checkList}
-            onRunClick={onRunClick}
-            onDeleteClick={onDeleteClick}
-          />
-        ))}
-      </ul>
+      {checkLists.length > 0 ? (
+        <ul className="CheckListList">
+          {checkLists && checkLists.map(checkList => (
+            <CheckListListItem
+              key={checkList.pk}
+              checkList={checkList}
+              onRunClick={onRunClick}
+              onDeleteClick={onDeleteClick}
+            />
+          ))}
+        </ul>
+      ) : (
+          <>
+            <h3>You have no checklists added yet. Add you first one now!</h3>
+            <Link to="/checklists/new/">
+              <ActionButton>Add</ActionButton>
+            </Link>
+          </>
+        )}
     </div >
   )
 }
