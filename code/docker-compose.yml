@@ -1,0 +1,10 @@
+version: '2'
+services:
+  jenkins:
+    image: "jenkins:latest"
+    container_name: "checkmate_jenkins"
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - "$PWD/jenkins:/var/jenkins_home"
