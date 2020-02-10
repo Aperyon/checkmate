@@ -4,8 +4,7 @@ node {
     }
 
     stage ('Build') {
-        sh "docker build -t checkmate/backend:version ./backend"
-        sh "docker build -t checkmate/web:version ./web"
+        sh "fab deployment.build:1"
     }
 
     stage ('Test') {
@@ -13,6 +12,6 @@ node {
     }
 
     stage ("Deploy") {
-
+        sh "fab deployment.deploy:1"
     }
 }
