@@ -85,7 +85,6 @@ function ChecklistRunForm(props) {
   });
   const { fields } = useFieldArray({ control, name: "items" });
 
-  console.log('Render')
   return fields.map((item, index) => (
     <CheckListItem
       key={item.url}
