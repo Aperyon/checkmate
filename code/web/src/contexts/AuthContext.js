@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from '../networking';
 
 import createDataContext from './createDataContext';
 
 
-const loginURL = 'http://localhost:8000/api/token/'
-const userListURL = 'http://localhost:8000/api/users/';
+const loginURL = '/api/token/'
+const userListURL = '/api/users/';
 const SET_AUTH_TOKENS = 'SET_AUTH_TOKENS'
 const UNSET_AUTH_TOKENS = 'UNSET_AUTH_TOKENS'
 

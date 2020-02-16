@@ -2,4 +2,4 @@ FROM node
 
 COPY . .
 RUN npm i
-RUN npm build
+RUN npm run-script build

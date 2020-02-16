@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from '../networking';
 
 import createDataContext from './createDataContext';
 
 
-const checklistRunListURL = 'http://localhost:8000/api/check-list-runs/';
+const checklistRunListURL = '/api/check-list-runs/';
 const SET_CURRENT_RUN = 'SET_CURRENT_RUN'
 
 const initialData = null

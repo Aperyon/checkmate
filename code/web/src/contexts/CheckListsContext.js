@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from '../networking';
 
 import createDataContext from './createDataContext';
 
 
-const checkListListURL = 'http://localhost:8000/api/check-lists/';
+const checkListListURL = '/api/check-lists/';
 const SET_CHECK_LISTS = 'SET_CHECK_LISTS';
 const SET_CURRENT_CHECK_LIST = 'SET_CURRENT_CHECK_LIST';
 const SET_CHECK_LIST_FORM_ERRORS = 'SET_CHECK_LIST_FORM_ERRORS';
