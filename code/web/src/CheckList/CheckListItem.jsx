@@ -3,7 +3,6 @@ import React from "react";
 
 export default function CheckListItem(props) {
   const { item } = props;
-  console.log(props.runMode)
   if (props.runMode) {
     return (
       <li className="CheckListItem">

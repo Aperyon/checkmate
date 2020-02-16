@@ -33,9 +33,7 @@ const localLoginUser = dispatch => () => {
   if (refresh) {
     dispatch({ type: SET_AUTH_TOKENS, payload: { access, refresh } })
     setAxiosAuthHeader(access)
-    console.log('User is logged in')
   } else {
-    console.log('User was not logged in')
   }
 }
 

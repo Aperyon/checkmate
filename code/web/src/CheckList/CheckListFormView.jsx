@@ -88,7 +88,6 @@ function CheckListForm({ checklist }) {
     if (checkListID) {
       const response = await updateChecklist(checkListID, values)
       if (response.error) {
-        console.log(response)
         if (!response.data) {
           alert('unknown error')
         } else {

@@ -33,8 +33,6 @@ export default function Signup() {
     return <Redirect to="/checklists/" />
   }
 
-  console.log('Errors', errors.email)
-
   return (
     <div className="View AuthView">
       <form className="AuthForm SignupForm" onSubmit={handleSubmit(onSubmit)}>

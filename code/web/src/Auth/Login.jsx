@@ -31,7 +31,6 @@ export default function Login() {
     }
   }
 
-  console.log(authState.isAuthenticated)
   if (authState.isAuthenticated) {
     return <Redirect to={from} />
   }

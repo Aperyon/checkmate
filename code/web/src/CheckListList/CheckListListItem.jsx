@@ -13,6 +13,7 @@ export default function CheckListListItem(props) {
   const { setCurrentCheckList } = React.useContext(CheckListsContext);
   const { checkList } = props;
 
+
   return (
     <li className="CheckListListItem">
       <div className="CheckListDetails">
@@ -23,7 +24,10 @@ export default function CheckListListItem(props) {
         <Link to={`/checklists/${checkList.pk}/`}>
           <ViewButton />
         </Link>
-        <RunButton onClick={() => props.onRunClick(checkList)} />
+        <RunButton
+          onClick={() => props.onRunClick(checkList)}
+          shouldStartNewRun={props.shouldStartNewRun}
+        />
         {/* <MiscButton /> */}
         <CheckListItemMiscDropdown
           checklist={checkList}

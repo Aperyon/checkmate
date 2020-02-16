@@ -11,9 +11,13 @@ export function ViewButton() {
   )
 }
 
-export function RunButton({ onClick }) {
+export function RunButton({ onClick, shouldStartNewRun }) {
+  let text = 'Run'
+  if (shouldStartNewRun) {
+    text = 'New Run'
+  }
   return (
-    <Button onClick={onClick} icon="play">Run</Button>
+    <Button onClick={onClick} icon="play">{text}</Button>
   )
 }
 

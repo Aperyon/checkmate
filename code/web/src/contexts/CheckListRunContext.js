@@ -28,10 +28,8 @@ const createChecklistRun = dispatch => async (checklist) => {
 }
 
 const fetchCheckListRun = dispatch => async (pk) => {
-  console.log('will fetch')
   try {
     const response = await axios.get(`${checklistRunListURL}${pk}/`)
-    console.log('did fetch', response.data)
     dispatch({ type: SET_CURRENT_RUN, payload: response.data })
     return response
   } catch (err) {

@@ -9,13 +9,23 @@ import { Context as CheckListsContext } from '../contexts/CheckListsContext';
 import { Context as CheckListRunContext } from '../contexts/CheckListRunContext';
 
 
+
+function shouldStartNewRun(checklist) {
+  const {
+    latest_run: latestRun,
+    is_latest_run_complete: isLatestRunComplete
+  } = checklist;
+
+  return !latestRun || (latestRun && isLatestRunComplete);
+}
+
+
 export default function CheckListList(props) {
   const [redirectToRun, setRedirectToRun] = React.useState({ redirect: false, to: null })
   const { state: { checkLists }, fetchCheckLists, deleteChecklist } = React.useContext(CheckListsContext)
   const { state: checklistRun, createChecklistRun } = React.useContext(CheckListRunContext)
 
   React.useEffect(() => {
-    console.log('Useeffect runs')
     fetchCheckLists();
   }, [])
 
@@ -26,18 +36,13 @@ export default function CheckListList(props) {
     } = checklist;
 
     let runPk = null
-    if (latestRun && !isLatestRunComplete) {
-      console.log('yes latest run')
-      console.log(latestRun)
-      const parts = latestRun.split('/')
-      console.log(parts, parts[parts.length - 2])
-      runPk = parts[parts.length - 2]
-    } else {
-      console.log('no latest run')
+    if (shouldStartNewRun(checklist)) {
       const response = await createChecklistRun(checklist);
       runPk = response.data.pk;
+    } else {
+      const parts = latestRun.split('/')
+      runPk = parts[parts.length - 2]
     }
-    console.log('runPk', runPk)
     setRedirectToRun({ redirect: true, to: `/checklist-runs/${runPk}/` })
   }
 
@@ -77,6 +82,7 @@ export default function CheckListList(props) {
               checkList={checkList}
               onRunClick={onRunClick}
               onDeleteClick={onDeleteClick}
+              shouldStartNewRun={shouldStartNewRun(checkList)}
             />
           ))}
         </ul>

@@ -44,16 +44,16 @@ function App() {
     <Router>
       <Nav />
       <Switch>
-        <Route path="/login/">
+        <Route exact path="/login/">
           <Login />
         </Route>
-        <Route path="/signup/">
+        <Route exact path="/signup/">
           <Signup />
         </Route>
-        <Route path="/logout/">
+        <Route exact path="/logout/">
           <Logout />
         </Route>
-        <PrivateRoute exact={true} path="/checklists/">
+        <PrivateRoute exact path="/checklists/">
           <CheckListList />
         </PrivateRoute>
         <PrivateRoute exact path="/checklists/new/">
@@ -62,9 +62,12 @@ function App() {
         <PrivateRoute exact path="/checklists/:id/">
           <CheckListFormView />
         </PrivateRoute>
-        <PrivateRoute path="/checklist-runs/:id/">
+        <PrivateRoute exact path="/checklist-runs/:id/">
           <CheckListRun runMode={true} />
         </PrivateRoute>
+        <Route exact path="/">
+          <Redirect to="/checklists/" />
+        </Route>
       </Switch>
     </Router>
   )
