@@ -7,7 +7,7 @@ import CheckListTitle from './CheckListTitle';
 import CheckListDescription from './CheckListDescription';
 import CheckListItems from './CheckListItems';
 import CheckListItem from './CheckListItem';
-import { BackButton } from '../CheckListList/Buttons';
+import { BackButton } from '../common/components/Buttons';
 
 import { Context as ChecklistRunContext } from '../contexts/CheckListRunContext';
 
@@ -65,7 +65,6 @@ export default function CheckListRun() {
 
   return (
     <div className="View CheckListItemView">
-      <BackButton to="/checklists/">Go back</BackButton>
       <CheckListTitle>{checkListRun.title}</CheckListTitle>
       <CheckListDescription>{checkListRun.description}</CheckListDescription>
       <CheckListItems>
@@ -74,6 +73,7 @@ export default function CheckListRun() {
           onCheckboxChange={onCheckboxChange}
         />
       </CheckListItems>
+      <BackButton to="/checklists/">Go back</BackButton>
     </div>
   );
 }

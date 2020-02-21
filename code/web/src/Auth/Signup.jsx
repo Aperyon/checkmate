@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import _ from 'lodash';
 
 import { Context as AuthContext } from '../contexts/AuthContext';
-import { ActionButton } from '../CheckListList/Buttons';
+import { ActionButton } from '../common/components/Buttons';
 import Icon from '../common/components/Icon';
 
 

@@ -27,11 +27,9 @@ instance.interceptors.response.use(function (response) {
       return Promise.reject(error);
     }
 
-    console.log('Refresh')
     try {
       const response = await axios.post('http://localhost:8000/api/token/refresh/', { refresh })
       if (!response.error) {
-        console.log('No error')
         localStorage.setItem('accessToken', response.data.access)
         window.location.reload()
       } else {

@@ -1,0 +1,45 @@
+.Form
+  .InputGroup
+    margin-bottom: $padding
+
+    label
+      &.Error
+        color: $red
+
+    input
+      border: 1px solid $black
+      box-shadow: none
+
+    input, textarea
+      width: 100%
+
+      &.Error
+        border-color: $red
+        color: $red
+
+    textarea
+      resize: none
+
+    ul
+      list-style: none
+
+      li
+
+    p.Error
+      color: $red
+
+  .FieldArrayInputGroup
+    .InputBlock
+      display: flex
+      justify-content: space-between
+
+    input, textarea
+      flex: 1
+      font-size: $large-font-size
+      border: none
+
+      &:active
+        border: none !important
+
+    .Button
+      margin-right: $padding

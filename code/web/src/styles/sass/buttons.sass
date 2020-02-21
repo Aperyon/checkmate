@@ -5,15 +5,19 @@
   border: 1px solid $black
   font-size: $font-size / 1.25 !important
   cursor: pointer
+  display: flex !important
 
   &.Small
     padding: $small-padding-around
 
-  .Icon
+  .Icon,.icon
     margin-right: $small-padding
 
+    &.NoMargin
+      margin-right: 0
+
   &.NoText
-    .Icon
+    .Icon,.icon
       margin-right: 0
 
   &.ActionButton
@@ -33,3 +37,17 @@
 
 .ButtonContainer
   display: flex
+
+
+  &>div
+    display: flex
+
+    &:first-child
+      justify-content: flex-start
+      .Button
+        margin-right: $small-padding
+
+    &:last-child
+      justify-content: flex-end
+      .Button
+        margin-left: $small-padding

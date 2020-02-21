@@ -2,22 +2,18 @@ import React from "react";
 
 import { Link } from 'react-router-dom';
 
-import Icon from '../common/components/Icon';
+import Icon from './Icon';
 
 
 export function ViewButton() {
   return (
-    <Button icon="eye">View</Button>
+    <Button icon="eye" className="NoText" />
   )
 }
 
 export function RunButton({ onClick, shouldStartNewRun }) {
-  let text = 'Run'
-  if (shouldStartNewRun) {
-    text = 'New Run'
-  }
   return (
-    <Button onClick={onClick} icon="play">{text}</Button>
+    <Button onClick={onClick} icon="play" className="NoText" />
   )
 }
 

@@ -1,20 +1,24 @@
 .CheckListListView
   padding: 0 25%
-  padding-top: 5vh
+  padding-top: 10vh
 
   .CheckListList
     list-style: none
     padding: 0
     border: 1px solid $black
-    border-width: 1px 0 0 1px
+    border-width: 0
 
     .CheckListListItem
       display: flex
       justify-content: space-between
       border: 1px solid $black
-      border-width: 0 1px 1px 0
+      border-width: 0
+      border-bottom-width: 1px
       border-collapse: collapse
-      padding: $padding $large-padding
+      padding: $padding $padding
+
+      &:last-child
+        border-width: 0
 
       .CheckListTitle
         margin: 0
@@ -22,6 +26,7 @@
 
       .CheckListDescription
         margin: 0
+        font-size: 18px
 
       .CheckListDetails
         flex: 1

@@ -9,7 +9,7 @@ export default function CheckListItemMiscDropdown(props) {
   return (
     <Dropdown
       icon='ellipsis vertical'
-      className='Button MiscButton'
+      className='Button MiscButton NoText'
     >
       <Dropdown.Menu>
         <Dropdown.Item

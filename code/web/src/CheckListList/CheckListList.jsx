@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 import CheckListListItem from './CheckListListItem';
 import Title from '../common/components/Title';
-import { ActionButton } from './Buttons'
+import { ActionButton } from '../common/components/Buttons'
 import Icon from '../common/components/Icon'
 import { Context as CheckListsContext } from '../contexts/CheckListsContext';
 import { Context as CheckListRunContext } from '../contexts/CheckListRunContext';

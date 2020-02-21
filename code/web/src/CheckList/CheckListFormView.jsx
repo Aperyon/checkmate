@@ -5,7 +5,8 @@ import _ from 'lodash';
 
 import Icon from '../common/components/Icon';
 import { Context as CheckListContext } from '../contexts/CheckListsContext';
-import { ActionButton, BackButton, Button, ButtonContainer } from '../CheckListList/Buttons';
+import { ActionButton, BackButton, Button, ButtonContainer } from '../common/components/Buttons';
+import { InputGroup, FieldArrayInputGroup } from "../common/components/formStuff";
 
 
 function handleItemsChange(values, append) {
@@ -39,7 +40,6 @@ export default function CheckListFormView() {
   if (!checkListID) {
     return (
       <div className="View CheckListItemView">
-        <BackButton to="/checklists/">Back</BackButton>
         <CheckListForm />
       </div >
     )
@@ -53,7 +53,6 @@ export default function CheckListFormView() {
 
   return (
     <div className="View CheckListItemView">
-      <BackButton to="/checklists/">Go back</BackButton>
       <CheckListForm checklist={currentCheckList} />
     </div >
   )
@@ -122,54 +121,65 @@ function CheckListForm({ checklist }) {
   }
 
   return (
-    <form className="CheckListForm" onSubmit={handleSubmit(onSubmit)}>
-      <div className="InputGroup">
-        <input
-          className="CheckListTitle"
-          name="title"
-          placeholder="Title"
-          ref={register()}
-        />
-        {errors.title && errors.title.message}
-      </div>
-
-      <div className="InputGroup">
-        <textarea
-          className="CheckListDescription"
-          name="description"
-          placeholder="Description"
-          ref={register()}
-        />
-        {errors.description && errors.description.message}
-      </div>
+    <form className="Form CheckListForm" onSubmit={handleSubmit(onSubmit)}>
+      <InputGroup
+        name="title"
+        placeholder="Start writing the title"
+        register={register}
+        error={errors.title?.message}
+        className="ChecklistTitle"
+      />
+      <InputGroup
+        name="description"
+        placeholder="This checklist is about..."
+        register={register}
+        error={errors.description?.message}
+        className="ChecklistDescription"
+      />
 
       {fields.map((item, index) => (
-        <div className="InputGroup CheckListItem" key={item.id}>
-          <input
+        <div key={item.id} >
+          <FieldArrayInputGroup
             name={`items[${index}].text`}
-            ref={register()}
+            register={register}
             placeholder="item"
             onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
+            error={errors.description?.message}
+            remove={() => remove(index)}
           />
-          <Button
-            className="Small"
-            onClick={() => remove(index)}
-            type="button"
-          >
-            <Icon icon="times" />Delete
-          </Button>
-          {errors.description && errors.description.message}
-        </div>
-      ))}
+          {/* <div className="InputGroup" key={item.id}>
+            <input
+              name={`items[${index}].text`}
+              ref={register()}
+              placeholder="item"
+              onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
+            />
+            <Button
+              className="Small"
+              onClick={() => remove(index)}
+              type="button"
+            >
+              <Icon icon="times" className="NoMargin" />
+            </Button> */}
+        </div >
+      ))
+      }
 
       <ButtonContainer style={{ justifyContent: 'space-between' }}>
-        <Button type="button" onClick={() => append({ name: "item" })}>
-          <Icon icon="plus" />Add new item
+        <div>
+          <Button type="button" onClick={() => append({ name: "item" })}>
+            <Icon icon="plus" />Add new item
         </Button>
-        <ActionButton type="submit">
-          <Icon icon="check" /> I'm done!
+        </div>
+        <div>
+          <Link to="/checklists/">
+            <Button>Back</Button>
+          </Link>
+          <ActionButton type="submit">
+            <Icon icon="check" /> I'm done!
         </ActionButton>
+        </div>
       </ButtonContainer>
-    </form>
+    </form >
   )
 }
