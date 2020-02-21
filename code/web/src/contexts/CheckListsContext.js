@@ -3,24 +3,24 @@ import axios from '../networking';
 import createDataContext from './createDataContext';
 
 
-const checkListListURL = '/api/check-lists/';
+const checklistListURL = '/api/check-lists/';
 const SET_CHECK_LISTS = 'SET_CHECK_LISTS';
 const SET_CURRENT_CHECK_LIST = 'SET_CURRENT_CHECK_LIST';
 const SET_CHECK_LIST_FORM_ERRORS = 'SET_CHECK_LIST_FORM_ERRORS';
 
 
 const initialData = {
-  checkLists: null,
-  currentCheckList: null,
+  checklists: null,
+  currentChecklist: null,
   checklistFormErrors: {}
 }
 
 const reducer = (state = null, action) => {
   switch (action.type) {
     case SET_CHECK_LISTS:
-      return { ...state, checkLists: action.payload }
+      return { ...state, checklists: action.payload }
     case SET_CURRENT_CHECK_LIST:
-      return { ...state, currentCheckList: action.payload }
+      return { ...state, currentChecklist: action.payload }
     case SET_CHECK_LIST_FORM_ERRORS:
       return { ...state, checklistFormErrors: action.payload }
     default:
@@ -28,9 +28,9 @@ const reducer = (state = null, action) => {
   }
 }
 
-const fetchCheckLists = dispatch => async () => {
+const fetchChecklists = dispatch => async () => {
   try {
-    const request = await axios.get(checkListListURL);
+    const request = await axios.get(checklistListURL);
     const temp = await dispatch({ type: SET_CHECK_LISTS, payload: request.data })
   } catch (err) {
   }
@@ -38,15 +38,15 @@ const fetchCheckLists = dispatch => async () => {
 
 const fetchCurrentChecklist = (dispatch) => async (id) => {
   try {
-    const request = await axios.get(`${checkListListURL}${id}/`)
+    const request = await axios.get(`${checklistListURL}${id}/`)
     dispatch({ type: SET_CURRENT_CHECK_LIST, payload: request.data })
   } catch (err) {
 
   }
 }
 
-const setCurrentCheckList = dispatch => (currentCheckList) => {
-  dispatch({ type: SET_CURRENT_CHECK_LIST, payload: currentCheckList })
+const setCurrentChecklist = dispatch => (currentChecklist) => {
+  dispatch({ type: SET_CURRENT_CHECK_LIST, payload: currentChecklist })
 }
 
 const unsetCurrentChecklist = dispatch => () => {
@@ -55,7 +55,7 @@ const unsetCurrentChecklist = dispatch => () => {
 
 const addChecklist = (dispatch) => async (values) => {
   try {
-    const response = await axios.post(checkListListURL, values)
+    const response = await axios.post(checklistListURL, values)
     return response
   } catch (err) {
     return { ...err.response, error: true }
@@ -75,7 +75,7 @@ const deleteChecklist = (dispatch) => async (url) => {
 const updateChecklist = (dispatch) => async (id, values) => {
   let response = {}
   try {
-    response = await axios.patch(`${checkListListURL}${id}/`, values)
+    response = await axios.patch(`${checklistListURL}${id}/`, values)
   } catch (err) {
     return { ...err.response, error: true }
   }
@@ -91,8 +91,8 @@ const setChecklistFormErrors = dispatch => (errors) => {
 export const { Provider, Context } = createDataContext(
   reducer,
   {
-    fetchCheckLists,
-    setCurrentCheckList,
+    fetchChecklists,
+    setCurrentChecklist,
     unsetCurrentChecklist,
     fetchCurrentChecklist,
     addChecklist,

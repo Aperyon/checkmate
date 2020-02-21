@@ -27,7 +27,7 @@ const createChecklistRun = dispatch => async (checklist) => {
   }
 }
 
-const fetchCheckListRun = dispatch => async (pk) => {
+const fetchChecklistRun = dispatch => async (pk) => {
   try {
     const response = await axios.get(`${checklistRunListURL}${pk}/`)
     dispatch({ type: SET_CURRENT_RUN, payload: response.data })
@@ -56,7 +56,7 @@ export const { Provider, Context } = createDataContext(
   {
     createChecklistRun,
     updateChecklistRunItem,
-    fetchCheckListRun,
+    fetchChecklistRun,
     unsetCurrentChecklistRun,
   },
   initialData,

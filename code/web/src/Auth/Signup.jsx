@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import _ from 'lodash';
 
@@ -49,6 +49,7 @@ export default function Signup() {
         </div>
         {errors.nonFieldError && <p className="FormError">{errors.nonFieldError.message}</p>}
         <ActionButton className="FullWidth" type="submit"><Icon icon="check" /></ActionButton>
+        <Link to="/login/" className="AuthLink"><p>I already have an account. Login!</p></Link>
       </form>
     </div>
   )

@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 
-import CheckListTitle from './CheckListTitle';
-import CheckListDescription from './CheckListDescription';
-import CheckListItems from './CheckListItems';
-import CheckListItem from './CheckListItem';
+import ChecklistTitle from './ChecklistTitle';
+import ChecklistDescription from './ChecklistDescription';
+import ChecklistItems from './ChecklistItems';
+import ChecklistItem from './ChecklistItem';
 import { BackButton } from '../common/components/Buttons';
 
-import { Context as ChecklistRunContext } from '../contexts/CheckListRunContext';
+import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext';
 
 
 function alertRunIsComplete() {
@@ -30,11 +30,11 @@ function getCheckFields(fieldsObj) {
 }
 
 
-export default function CheckListRun() {
-  const { id: checkListRunID } = useParams()
+export default function ChecklistRun() {
+  const { id: checklistRunID } = useParams()
   const {
-    state: checkListRun,
-    fetchCheckListRun,
+    state: checklistRun,
+    fetchChecklistRun,
     updateChecklistRunItem,
     unsetCurrentChecklistRun,
   } = React.useContext(ChecklistRunContext);
@@ -52,27 +52,27 @@ export default function CheckListRun() {
   }
 
   React.useEffect(() => {
-    fetchCheckListRun(checkListRunID);
+    fetchChecklistRun(checklistRunID);
 
     return () => {
       unsetCurrentChecklistRun()
     }
   }, [])
 
-  if (!checkListRun) {
+  if (!checklistRun) {
     return <h1>Loading</h1>
   }
 
   return (
-    <div className="View CheckListItemView">
-      <CheckListTitle>{checkListRun.title}</CheckListTitle>
-      <CheckListDescription>{checkListRun.description}</CheckListDescription>
-      <CheckListItems>
+    <div className="View ChecklistItemView">
+      <ChecklistTitle>{checklistRun.title}</ChecklistTitle>
+      <ChecklistDescription>{checklistRun.description}</ChecklistDescription>
+      <ChecklistItems>
         <ChecklistRunForm
-          checklistRun={checkListRun}
+          checklistRun={checklistRun}
           onCheckboxChange={onCheckboxChange}
         />
-      </CheckListItems>
+      </ChecklistItems>
       <BackButton to="/checklists/">Go back</BackButton>
     </div>
   );
@@ -86,7 +86,7 @@ function ChecklistRunForm(props) {
   const { fields } = useFieldArray({ control, name: "items" });
 
   return fields.map((item, index) => (
-    <CheckListItem
+    <ChecklistItem
       key={item.url}
       item={item}
       index={index}

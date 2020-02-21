@@ -1,35 +1,35 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-import { Context as CheckListsContext } from '../contexts/CheckListsContext';
+import { Context as ChecklistsContext } from '../contexts/ChecklistsContext';
 
-import CheckListDescription from "../CheckList/CheckListDescription";
-import CheckListTitle from "../CheckList/CheckListTitle";
+import ChecklistDescription from "../Checklist/ChecklistDescription";
+import ChecklistTitle from "../Checklist/ChecklistTitle";
 import { ViewButton, RunButton, MiscButton } from '../common/components/Buttons';
-import CheckListItemMiscDropdown from './CheckListItemMiscDropdown'
+import ChecklistItemMiscDropdown from './ChecklistItemMiscDropdown'
 
 
-export default function CheckListListItem(props) {
-  const { setCurrentCheckList } = React.useContext(CheckListsContext);
-  const { checkList } = props;
+export default function ChecklistListItem(props) {
+  const { setCurrentChecklist } = React.useContext(ChecklistsContext);
+  const { checklist } = props;
 
 
   return (
-    <li className="CheckListListItem">
-      <div className="CheckListDetails">
-        <Link to={`/checklists/${checkList.pk}/`}>
-          <CheckListTitle small={true}>{checkList.title}</CheckListTitle>
+    <li className="ChecklistListItem">
+      <div className="ChecklistDetails">
+        <Link to={`/checklists/${checklist.pk}/`}>
+          <ChecklistTitle small={true}>{checklist.title}</ChecklistTitle>
         </Link>
-        <CheckListDescription small={true}>{checkList.description}</CheckListDescription>
+        <ChecklistDescription small={true}>{checklist.description}</ChecklistDescription>
       </div>
       <div className="Actions">
         <RunButton
-          onClick={() => props.onRunClick(checkList)}
+          onClick={() => props.onRunClick(checklist)}
           shouldStartNewRun={props.shouldStartNewRun}
         />
         {/* <MiscButton /> */}
-        <CheckListItemMiscDropdown
-          checklist={checkList}
+        <ChecklistItemMiscDropdown
+          checklist={checklist}
           onDeleteClick={props.onDeleteClick}
         />
       </div>

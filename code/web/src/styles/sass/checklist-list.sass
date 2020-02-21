@@ -1,14 +1,23 @@
-.CheckListListView
+.ChecklistListView
   padding: 0 25%
   padding-top: 10vh
 
-  .CheckListList
+  .TitleContainer
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-bottom: 2em
+
+    .Title
+      margin: 0
+
+  .ChecklistList
     list-style: none
     padding: 0
     border: 1px solid $black
     border-width: 0
 
-    .CheckListListItem
+    .ChecklistListItem
       display: flex
       justify-content: space-between
       border: 1px solid $black
@@ -20,15 +29,15 @@
       &:last-child
         border-width: 0
 
-      .CheckListTitle
+      .ChecklistTitle
         margin: 0
         margin-bottom: $small-padding
 
-      .CheckListDescription
+      .ChecklistDescription
         margin: 0
         font-size: 18px
 
-      .CheckListDetails
+      .ChecklistDetails
         flex: 1
 
       .Actions
@@ -39,3 +48,31 @@
 
         .Button
           margin-left: $padding
+
+@media only screen and (max-width: 600px)
+  .ChecklistListView
+    padding: 0 $padding
+    padding-top: 10vh
+
+    .Title
+      font-size: $large-font-size * 1.2
+
+    .Button.ActionButton
+      .Icon
+        margin-right: 0 !important
+
+      span
+        display: none !important
+
+  .ChecklistListItem
+    flex-direction: column
+    padding: $padding 0 !important
+
+    .ChecklistDetails
+      margin-bottom: $small-padding
+
+    .Actions
+      justify-content: space-between !important
+
+      .Button
+        margin: 0 !important

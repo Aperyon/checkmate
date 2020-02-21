@@ -1,10 +1,11 @@
+
 import React from "react";
 import { Link, useParams, Redirect } from 'react-router-dom';
 import { useForm, useFieldArray } from "react-hook-form";
 import _ from 'lodash';
 
 import Icon from '../common/components/Icon';
-import { Context as CheckListContext } from '../contexts/CheckListsContext';
+import { Context as ChecklistContext } from '../contexts/ChecklistsContext';
 import { ActionButton, BackButton, Button, ButtonContainer } from '../common/components/Buttons';
 import { InputGroup, FieldArrayInputGroup } from "../common/components/formStuff";
 
@@ -23,49 +24,49 @@ function shouldAddExtraItem(values) {
 }
 
 
-export default function CheckListFormView() {
-  const { id: checkListID } = useParams();
+export default function ChecklistFormView() {
+  const { id: checklistID } = useParams();
   const {
-    state: { currentCheckList },
+    state: { currentChecklist },
     fetchCurrentChecklist,
     unsetCurrentChecklist,
-  } = React.useContext(CheckListContext)
+  } = React.useContext(ChecklistContext)
   React.useEffect(() => {
-    fetchCurrentChecklist(checkListID)
+    fetchCurrentChecklist(checklistID)
     return () => {
       unsetCurrentChecklist();
     }
   }, [])
 
-  if (!checkListID) {
+  if (!checklistID) {
     return (
-      <div className="View CheckListItemView">
-        <CheckListForm />
+      <div className="View ChecklistItemView">
+        <ChecklistForm />
       </div >
     )
   }
 
-  if (currentCheckList === null) {
+  if (currentChecklist === null) {
     return <h1>Loading</h1>
-  } else if (shouldAddExtraItem(currentCheckList.items)) {
-    currentCheckList.items.push({ text: "" })
+  } else if (shouldAddExtraItem(currentChecklist.items)) {
+    currentChecklist.items.push({ text: "" })
   }
 
   return (
-    <div className="View CheckListItemView">
-      <CheckListForm checklist={currentCheckList} />
+    <div className="View ChecklistItemView">
+      <ChecklistForm checklist={currentChecklist} />
     </div >
   )
 }
 
 
-function CheckListForm({ checklist }) {
-  const { id: checkListID } = useParams();
+function ChecklistForm({ checklist }) {
+  const { id: checklistID } = useParams();
   const {
     unsetCurrentChecklist,
     addChecklist,
     updateChecklist,
-  } = React.useContext(CheckListContext)
+  } = React.useContext(ChecklistContext)
   let defaultValues = {
     items: [
       { text: "" },
@@ -84,8 +85,8 @@ function CheckListForm({ checklist }) {
   async function onSubmit(values) {
     values.items = values.items.filter(item => item.text.trim() !== '')
 
-    if (checkListID) {
-      const response = await updateChecklist(checkListID, values)
+    if (checklistID) {
+      const response = await updateChecklist(checklistID, values)
       if (response.error) {
         if (!response.data) {
           alert('unknown error')
@@ -121,7 +122,7 @@ function CheckListForm({ checklist }) {
   }
 
   return (
-    <form className="Form CheckListForm" onSubmit={handleSubmit(onSubmit)}>
+    <form className="Form ChecklistForm" onSubmit={handleSubmit(onSubmit)}>
       <InputGroup
         name="title"
         placeholder="Start writing the title"

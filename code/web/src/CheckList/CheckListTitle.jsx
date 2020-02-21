@@ -2,11 +2,11 @@ import React from "react";
 
 
 
-export default function CheckListTitle(props) {
+export default function ChecklistTitle(props) {
   return (
     <h1
       className={
-        `CheckListTitle ${props.className ? props.className : ''} ${props.small ? 'Small' : ''}`}
+        `ChecklistTitle ${props.className ? props.className : ''} ${props.small ? 'Small' : ''}`}
     >
       {props.children}
     </h1>

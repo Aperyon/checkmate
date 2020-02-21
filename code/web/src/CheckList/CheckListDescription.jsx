@@ -1,8 +1,8 @@
 import React from "react";
 
 
-export default function CheckListDescription(props) {
+export default function ChecklistDescription(props) {
   return (
-    <h2 className={`CheckListDescription ${props.small ? 'Small' : ''}`}>{props.children}</h2>
+    <h2 className={`ChecklistDescription ${props.small ? 'Small' : ''}`}>{props.children}</h2>
   )
 }

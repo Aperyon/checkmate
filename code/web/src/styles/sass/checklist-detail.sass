@@ -1,9 +1,9 @@
-.CheckListItemView
+.ChecklistItemView
   padding: 0 25%
   padding-top: 10vh
   padding-bottom: 10vh
 
-  ul
+  ul.ChecklistList, ul.ChecklistItems
     list-style: none
     margin: 0
     padding: 0
@@ -11,7 +11,7 @@
     label
       display: flex
 
-    .CheckListItem
+    .ChecklistItem
       font-size: $large-font-size
       padding: $small-padding 0
       margin-bottom: $padding
@@ -20,7 +20,7 @@
         margin-right: $padding
 
 
-.CheckListTitle
+.ChecklistTitle
   font-size: $title-font-size
   font-weight: normal
   margin: 0
@@ -29,7 +29,7 @@
   &.Small
     font-size: $subtitle-font-size
 
-.CheckListDescription
+.ChecklistDescription
   font-size: $subtitle-font-size
   margin: 0
   margin-bottom: 60px
@@ -39,7 +39,7 @@
   &.Small
     font-size: 18px
 
-.CheckListForm
+.ChecklistForm
   input.ChecklistTitle
     font-size: 64px
     border: none !important
@@ -48,3 +48,14 @@
     font-size: 30px
     border: none !important
     margin-bottom: $large-padding
+
+@media only screen and (max-width: 600px)
+  .ChecklistItemView
+    padding: 0 $padding
+    padding-top: 10vh
+
+    .ChecklistTitle
+      font-size: $large-font-size !important
+
+    .ChecklistDescription
+      font-size: $font-size !important

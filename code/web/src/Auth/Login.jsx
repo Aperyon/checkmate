@@ -3,6 +3,7 @@ import {
   Redirect,
   useHistory,
   useLocation,
+  Link,
 } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
@@ -23,7 +24,7 @@ export default function Login() {
   async function onSubmit(values) {
     const response = await loginUser(values);
     if (response.hasError) {
-      if (response.data.detail) {
+      if (response.data?.detail) {
         setError('nonFieldError', null, response.data.detail)
       }
     } else {
@@ -51,6 +52,7 @@ export default function Login() {
         <ActionButton type="submit" className="FullWidth">
           <Icon icon="check" />
         </ActionButton>
+        <Link to="/signup/" className="AuthLink"><p>I don't have an account yet. Sign up!</p></Link>
       </form>
     </div>
   )

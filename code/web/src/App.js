@@ -8,27 +8,27 @@ import {
 
 import './styles/styles.css';
 
-import CheckListList from './CheckListList/CheckListList';
-import CheckListRun from './CheckList/CheckListRun';
-import CheckListFormView from './CheckList/CheckListFormView';
+import ChecklistList from './ChecklistList/ChecklistList';
+import ChecklistRun from './Checklist/ChecklistRun';
+import ChecklistFormView from './Checklist/ChecklistFormView';
 import Login from './Auth/Login';
 import Logout from './Auth/Logout';
 import Signup from './Auth/Signup';
 import Nav from './Nav/Nav';
 
-import { Provider as CheckListsProvider } from './contexts/CheckListsContext';
-import { Provider as CheckListRunProvider } from './contexts/CheckListRunContext';
+import { Provider as ChecklistsProvider } from './contexts/ChecklistsContext';
+import { Provider as ChecklistRunProvider } from './contexts/ChecklistRunContext';
 import { Provider as AuthProvider, Context as AuthContext } from './contexts/AuthContext';
 
 export default function EntryPoint() {
   return (
-    <CheckListsProvider>
-      <CheckListRunProvider>
+    <ChecklistsProvider>
+      <ChecklistRunProvider>
         <AuthProvider>
           <App />
         </AuthProvider>
-      </CheckListRunProvider>
-    </CheckListsProvider>
+      </ChecklistRunProvider>
+    </ChecklistsProvider>
   );
 }
 
@@ -54,16 +54,16 @@ function App() {
           <Logout />
         </Route>
         <PrivateRoute exact path="/checklists/">
-          <CheckListList />
+          <ChecklistList />
         </PrivateRoute>
         <PrivateRoute exact path="/checklists/new/">
-          <CheckListFormView />
+          <ChecklistFormView />
         </PrivateRoute>
         <PrivateRoute exact path="/checklists/:id/">
-          <CheckListFormView />
+          <ChecklistFormView />
         </PrivateRoute>
         <PrivateRoute exact path="/checklist-runs/:id/">
-          <CheckListRun runMode={true} />
+          <ChecklistRun runMode={true} />
         </PrivateRoute>
         <Route exact path="/">
           <Redirect to="/checklists/" />

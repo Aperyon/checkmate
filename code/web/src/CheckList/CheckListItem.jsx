@@ -1,11 +1,11 @@
 import React from "react";
 
 
-export default function CheckListItem(props) {
+export default function ChecklistItem(props) {
   const { item } = props;
   if (props.runMode) {
     return (
-      <li className="CheckListItem">
+      <li className="ChecklistItem">
         {props.runMode && (
           <label>
             <input
@@ -21,7 +21,7 @@ export default function CheckListItem(props) {
     )
   }
   return (
-    <li className="CheckListItem">
+    <li className="ChecklistItem">
       {item.text}
     </li>
   )

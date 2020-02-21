@@ -1,12 +1,19 @@
-.CheckListListView {
+.ChecklistListView {
   padding: 0 25%;
   padding-top: 10vh; }
-  .CheckListListView .CheckListList {
+  .ChecklistListView .TitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2em; }
+    .ChecklistListView .TitleContainer .Title {
+      margin: 0; }
+  .ChecklistListView .ChecklistList {
     list-style: none;
     padding: 0;
     border: 1px solid #333;
     border-width: 0; }
-    .CheckListListView .CheckListList .CheckListListItem {
+    .ChecklistListView .ChecklistList .ChecklistListItem {
       display: flex;
       justify-content: space-between;
       border: 1px solid #333;
@@ -14,66 +21,94 @@
       border-bottom-width: 1px;
       border-collapse: collapse;
       padding: 20px 20px; }
-      .CheckListListView .CheckListList .CheckListListItem:last-child {
+      .ChecklistListView .ChecklistList .ChecklistListItem:last-child {
         border-width: 0; }
-      .CheckListListView .CheckListList .CheckListListItem .CheckListTitle {
+      .ChecklistListView .ChecklistList .ChecklistListItem .ChecklistTitle {
         margin: 0;
         margin-bottom: 10px; }
-      .CheckListListView .CheckListList .CheckListListItem .CheckListDescription {
+      .ChecklistListView .ChecklistList .ChecklistListItem .ChecklistDescription {
         margin: 0;
         font-size: 18px; }
-      .CheckListListView .CheckListList .CheckListListItem .CheckListDetails {
+      .ChecklistListView .ChecklistList .ChecklistListItem .ChecklistDetails {
         flex: 1; }
-      .CheckListListView .CheckListList .CheckListListItem .Actions {
+      .ChecklistListView .ChecklistList .ChecklistListItem .Actions {
         flex: 1;
         display: flex;
         justify-content: flex-end;
         align-items: center; }
-        .CheckListListView .CheckListList .CheckListListItem .Actions .Button {
+        .ChecklistListView .ChecklistList .ChecklistListItem .Actions .Button {
           margin-left: 20px; }
 
-.CheckListItemView {
+@media only screen and (max-width: 600px) {
+  .ChecklistListView {
+    padding: 0 20px;
+    padding-top: 10vh; }
+    .ChecklistListView .Title {
+      font-size: 38.4px; }
+    .ChecklistListView .Button.ActionButton .Icon {
+      margin-right: 0 !important; }
+    .ChecklistListView .Button.ActionButton span {
+      display: none !important; }
+
+  .ChecklistListItem {
+    flex-direction: column;
+    padding: 20px 0 !important; }
+    .ChecklistListItem .ChecklistDetails {
+      margin-bottom: 10px; }
+    .ChecklistListItem .Actions {
+      justify-content: space-between !important; }
+      .ChecklistListItem .Actions .Button {
+        margin: 0 !important; } }
+.ChecklistItemView {
   padding: 0 25%;
   padding-top: 10vh;
   padding-bottom: 10vh; }
-  .CheckListItemView ul {
+  .ChecklistItemView ul.ChecklistList, .ChecklistItemView ul.ChecklistItems {
     list-style: none;
     margin: 0;
     padding: 0; }
-    .CheckListItemView ul label {
+    .ChecklistItemView ul.ChecklistList label, .ChecklistItemView ul.ChecklistItems label {
       display: flex; }
-    .CheckListItemView ul .CheckListItem {
+    .ChecklistItemView ul.ChecklistList .ChecklistItem, .ChecklistItemView ul.ChecklistItems .ChecklistItem {
       font-size: 32px;
       padding: 10px 0;
       margin-bottom: 20px; }
-      .CheckListItemView ul .CheckListItem input[type="checkbox"] {
+      .ChecklistItemView ul.ChecklistList .ChecklistItem input[type="checkbox"], .ChecklistItemView ul.ChecklistItems .ChecklistItem input[type="checkbox"] {
         margin-right: 20px; }
 
-.CheckListTitle {
+.ChecklistTitle {
   font-size: 64px;
   font-weight: normal;
   margin: 0;
   margin-bottom: 20px; }
-  .CheckListTitle.Small {
+  .ChecklistTitle.Small {
     font-size: 30px; }
 
-.CheckListDescription {
+.ChecklistDescription {
   font-size: 30px;
   margin: 0;
   margin-bottom: 60px;
   font-weight: normal;
   width: 100%; }
-  .CheckListDescription.Small {
+  .ChecklistDescription.Small {
     font-size: 18px; }
 
-.CheckListForm input.ChecklistTitle {
+.ChecklistForm input.ChecklistTitle {
   font-size: 64px;
   border: none !important; }
-.CheckListForm input.ChecklistDescription {
+.ChecklistForm input.ChecklistDescription {
   font-size: 30px;
   border: none !important;
   margin-bottom: 40px; }
 
+@media only screen and (max-width: 600px) {
+  .ChecklistItemView {
+    padding: 0 20px;
+    padding-top: 10vh; }
+    .ChecklistItemView .ChecklistTitle {
+      font-size: 32px !important; }
+    .ChecklistItemView .ChecklistDescription {
+      font-size: 20px !important; } }
 .Button {
   padding: 10px 20px;
   background-color: transparent;
@@ -94,8 +129,11 @@
     border-color: #e64545;
     background: #e64545;
     color: white; }
+    .Button.ActionButton span {
+      color: inherit; }
   .Button.FullWidth {
-    width: 100%; }
+    width: 100%;
+    justify-content: center; }
 
 .BackButton {
   border: 1px solid #333;
@@ -117,6 +155,16 @@
       .ButtonContainer > div:last-child .Button {
         margin-left: 10px; }
 
+@media only screen and (max-width: 600px) {
+  .ButtonContainer {
+    flex-direction: column; }
+    .ButtonContainer > div:first-child {
+      margin-bottom: 20px; }
+    .ButtonContainer > div:last-child {
+      justify-content: space-between;
+      flex-direction: row-reverse; }
+      .ButtonContainer > div:last-child .Button {
+        margin: 0; } }
 .AuthForm {
   width: 400px; }
   .AuthForm .InputGroup {
@@ -138,12 +186,22 @@
   .AuthForm .FieldError {
     color: #e64545;
     margin-top: 10px; }
+  .AuthForm .AuthLink {
+    font-size: 20px;
+    margin-top: 20px;
+    display: block; }
+    .AuthForm .AuthLink p {
+      text-align: center; }
 
 .AuthView {
   display: flex;
   justify-content: center;
   padding-top: 15vh; }
 
+@media only screen and (max-width: 600px) {
+  .AuthView {
+    padding: 0 20px;
+    padding-top: 15vh; } }
 .Nav {
   display: flex;
   justify-content: space-around;
@@ -153,6 +211,7 @@
   font-size: 30px;
   position: fixed;
   width: 100%;
+  max-width: 100%;
   background: white; }
   .Nav > div {
     display: flex;
@@ -172,6 +231,24 @@
       margin-left: 20px;
       font-size: 20px; }
 
+.NavModal {
+  min-height: 80%; }
+  .NavModal ul {
+    list-style: none;
+    padding: 80px 0; }
+    .NavModal ul li {
+      color: white !important;
+      font-size: 32px;
+      text-align: center;
+      padding: 40px 0; }
+
+@media only screen and (max-width: 600px) {
+  .Nav span.SmallMenu {
+    display: block; }
+  .Nav > div {
+    display: flex;
+    align-items: center;
+    padding: 0 20px; } }
 .Form .InputGroup {
   margin-bottom: 20px; }
   .Form .InputGroup label.Error {

@@ -7,6 +7,7 @@
   font-size: $subtitle-font-size
   position: fixed
   width: 100%
+  max-width: 100%
   background: $white
 
   &>div
@@ -30,3 +31,28 @@
     li
       margin-left: $padding
       font-size: $font-size
+
+
+.NavModal
+  min-height: 80%
+
+  ul
+    list-style: none
+    padding: $extra-large-padding 0
+
+    li
+      color: white !important
+      font-size: $large-font-size
+      text-align: center
+      padding: $large-padding 0
+
+
+@media only screen and (max-width: 600px)
+  .Nav
+    span.SmallMenu
+      display: block
+
+    &>div
+      display: flex
+      align-items: center
+      padding: 0 $padding

@@ -1,8 +1,8 @@
 import React from "react";
 
 
-export default function CheckListItems(props) {
+export default function ChecklistItems(props) {
   return (
-    <ul className="CheckListItems">{props.children}</ul>
+    <ul className="ChecklistItems">{props.children}</ul>
   )
 }

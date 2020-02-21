@@ -5,7 +5,7 @@ import { Dropdown } from 'semantic-ui-react';
 import Icon from '../common/components/Icon';
 
 
-export default function CheckListItemMiscDropdown(props) {
+export default function ChecklistItemMiscDropdown(props) {
   return (
     <Dropdown
       icon='ellipsis vertical'

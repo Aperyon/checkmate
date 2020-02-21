@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, Redirect } from 'react-router-dom';
 
-import CheckListListItem from './CheckListListItem';
+import ChecklistListItem from './ChecklistListItem';
 import Title from '../common/components/Title';
 import { ActionButton } from '../common/components/Buttons'
 import Icon from '../common/components/Icon'
-import { Context as CheckListsContext } from '../contexts/CheckListsContext';
-import { Context as CheckListRunContext } from '../contexts/CheckListRunContext';
+import { Context as ChecklistsContext } from '../contexts/ChecklistsContext';
+import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext';
 
 
 
@@ -20,13 +20,13 @@ function shouldStartNewRun(checklist) {
 }
 
 
-export default function CheckListList(props) {
+export default function ChecklistList(props) {
   const [redirectToRun, setRedirectToRun] = React.useState({ redirect: false, to: null })
-  const { state: { checkLists }, fetchCheckLists, deleteChecklist } = React.useContext(CheckListsContext)
-  const { state: checklistRun, createChecklistRun } = React.useContext(CheckListRunContext)
+  const { state: { checklists }, fetchChecklists, deleteChecklist } = React.useContext(ChecklistsContext)
+  const { state: checklistRun, createChecklistRun } = React.useContext(ChecklistRunContext)
 
   React.useEffect(() => {
-    fetchCheckLists();
+    fetchChecklists();
   }, [])
 
   async function onRunClick(checklist) {
@@ -48,10 +48,10 @@ export default function CheckListList(props) {
 
   async function onDeleteClick(checklist) {
     await deleteChecklist(checklist.url)
-    fetchCheckLists()
+    fetchChecklists()
   }
 
-  if (checkLists === null) {
+  if (checklists === null) {
     return <h1>Loading...</h1>
   }
 
@@ -60,29 +60,29 @@ export default function CheckListList(props) {
   }
 
   return (
-    <div className="View CheckListListView" >
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+    <div className="View ChecklistListView" >
+      <div className="TitleContainer">
         <Title>
           Your checklists
         </Title>
-        {checkLists.length > 0 && (
+        {checklists.length > 0 && (
           <Link to="/checklists/new/">
             <ActionButton>
               <Icon icon="plus" />
-              Add new checklist
+              <span>Add new checklist</span>
             </ActionButton>
           </Link>
         )}
       </div>
-      {checkLists.length > 0 ? (
-        <ul className="CheckListList">
-          {checkLists && checkLists.map(checkList => (
-            <CheckListListItem
-              key={checkList.pk}
-              checkList={checkList}
+      {checklists.length > 0 ? (
+        <ul className="ChecklistList">
+          {checklists && checklists.map(checklist => (
+            <ChecklistListItem
+              key={checklist.pk}
+              checklist={checklist}
               onRunClick={onRunClick}
               onDeleteClick={onDeleteClick}
-              shouldStartNewRun={shouldStartNewRun(checkList)}
+              shouldStartNewRun={shouldStartNewRun(checklist)}
             />
           ))}
         </ul>
