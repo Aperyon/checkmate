@@ -1,5 +1,6 @@
 import axios from '../networking';
 
+import * as storage from '../utils/storage';
 import createDataContext from './createDataContext';
 
 
@@ -53,8 +54,7 @@ const loginUser = dispatch => async (values) => {
 
 const logoutUser = dispatch => () => {
   dispatch({ type: UNSET_AUTH_TOKENS, payload: null })
-  localStorage.removeItem('accessToken')
-  localStorage.removeItem('refreshToken')
+  storage.removeTokensFromStorage()
 }
 
 
