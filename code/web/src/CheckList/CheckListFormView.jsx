@@ -145,7 +145,6 @@ function ChecklistForm({ checklist }) {
             register={register}
             placeholder="item"
             onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
-            error={errors.description?.message}
             remove={() => remove(index)}
           />
           {/* <div className="InputGroup" key={item.id}>
