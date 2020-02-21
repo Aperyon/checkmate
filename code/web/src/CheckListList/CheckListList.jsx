@@ -47,8 +47,11 @@ export default function ChecklistList(props) {
   }
 
   async function onDeleteClick(checklist) {
-    await deleteChecklist(checklist.url)
-    fetchChecklists()
+    const isConfirmed = window.confirm("Are you sure you want to delete this checklist?")
+    if (isConfirmed) {
+      await deleteChecklist(checklist.url)
+      fetchChecklists()
+    }
   }
 
   if (checklists === null) {
