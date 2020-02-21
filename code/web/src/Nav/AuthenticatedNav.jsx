@@ -11,7 +11,7 @@ export default function Nav() {
   return (
     <nav className="Nav">
       <div></div>
-      <div><Logo /> CheckMate</div>
+      <div><Link to="/checklists/"><Logo /></Link></div>
       <div>
         <span className="SmallMenu" onClick={() => setIsOpen(true)}><i className="fa fa-bars"></i></span>
         <NavModal open={isOpen} onClose={() => setIsOpen(false)}>

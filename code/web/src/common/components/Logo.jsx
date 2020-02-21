@@ -4,5 +4,10 @@ import Icon from './Icon';
 
 
 export default function Logo() {
-  return <Icon icon="check" />
+  // return (
+  //   <Icon icon="check" />
+  // )
+  return (
+    <>CheckMa.it</>
+  )
 }
