@@ -1,8 +1,14 @@
-from fabric.api import task, lcd, local, run, env, put
+from fabric.api import task, lcd, local, run, env, put, execute
 
 
 env.use_ssh_config = True
 env.hosts = ['checkmate-server']
+
+@task
+def build_and_deploy(version, build_backend=True, build_frontend=True):
+    execute(build, version, build_backend, build_frontend)
+    execute(deploy, version)
+
 
 @task
 def build(version, build_backend=True, build_frontend=True):
