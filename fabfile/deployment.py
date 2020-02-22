@@ -21,7 +21,7 @@ def build(version, build_backend=True, build_frontend=True):
 
 
 @task
-def deploy(version):
+def deploy(version, upload_collectstatic=False):
     put('code/config/production/vars.env', '~/checkmate/config/checkmate.env')
     image = f'649995796048.dkr.ecr.eu-west-3.amazonaws.com/checkmate-backend:{version}'
     run('$(aws ecr get-login --no-include-email --region eu-west-3)')
@@ -33,15 +33,11 @@ def deploy(version):
         print('There was no running docker container with name `checkmate`')
     run(f'docker run -d --name checkmate --env-file ~/checkmate/config/checkmate.env -p 80:80 -p 443:443 {image}')
     local(f'aws s3 sync code/web/build s3://app.checkma.it')
-    # local(f'docker run --name temp-cm-web checkmate-web:{version}')
-    # local('docker cp temp-cm-web:/build build')
-    # local('ls -ls build')
-    # local('docker rm temp-cm-web -f')
-    # Backend
-    # run('docker stop backend')
-    # run('docker run backend')
 
-    # Frontend
-    # local('aws s3 ')
-    # run('nginx -s reload')
+    if upload_collectstatic:
+        local(f'docker run --name checkmate {image} bash -c "cd /checkmate && ./manage.py collectstatic --no-input"')
+        local(f'docker cp checkmate:/static ./temp_django_static')
+        local(f'aws s3 sync temp_django_static s3://app.checkma.it')
+        local('docker rm -f checkmate')
+        local('rm -rf temp_django_static')
 

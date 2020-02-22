@@ -1,10 +1,33 @@
 version: '2'
 services:
-  jenkins:
-    image: "jenkins:latest"
-    container_name: "checkmate_jenkins"
+  # jenkins:
+  #   image: "jenkins:latest"
+  #   container_name: "checkmate_jenkins"
+  #   ports:
+  #     - "8080:8080"
+  #     - "50000:50000"
+  #   volumes:
+  #     - "$PWD/jenkins:/var/jenkins_home"
+  backend:
     ports:
-      - "8080:8080"
-      - "50000:50000"
+    - "8000:8000"
+    build:
+      context: ./backend
     volumes:
-      - "$PWD/jenkins:/var/jenkins_home"
+      - "./backend:/checkmate"
+    command: 'bash -c "cd /checkmate && ./manage.py runserver 0.0.0.0:8000"'
+  web:
+    ports:
+      - "3000:3000"
+    build:
+      context: ./web
+    volumes:
+      - "./web:/checkmate"
+    command: 'bash -c "cd /checkmate && npm start"'
+  web_styles:
+    build:
+      context: ./web
+    volumes:
+      - "./web/src/styles:/checkmate/src/styles"
+    working_dir: '/checkmate/src/styles'
+    command: 'sass --watch styles.sass:styles.css'

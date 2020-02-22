@@ -13,6 +13,7 @@ class CheckList(models.Model):
     )
     is_latest_run_complete = models.BooleanField(default=False)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class CheckListItem(models.Model):

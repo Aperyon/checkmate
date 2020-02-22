@@ -19,14 +19,14 @@ instance.interceptors.response.use(function (response) {
   // Do something with response data
   return response;
 }, async function (error) {
-  if (error?.response?.status === 401) {
+  if (error ?.response ?.status === 401) {
     const refresh = localStorage.getItem('refreshToken')
     if (!refresh) {
       return Promise.reject(error);
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/token/refresh/', { refresh })
+      const response = await axios.post(`${baseURL}/api/token/refresh/`, { refresh })
       if (!response.error) {
         localStorage.setItem('accessToken', response.data.access)
         window.location.reload()

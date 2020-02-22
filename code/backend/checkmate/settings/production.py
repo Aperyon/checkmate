@@ -19,8 +19,13 @@ DATABASES = {
     }
 }
 
+CSRF_TRUSTED_ORIGINS = [
+    'api.checkma.it',
+]
+
+STATIC_URL = 'https://s3.eu-west-3.amazonaws.com/api.checkma.it/'
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
-    "http://app.checkma.it",
     "https://app.checkma.it",
+    "https://api.checkma.it",
 ]

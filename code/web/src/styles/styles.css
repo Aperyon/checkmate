@@ -1,114 +1,150 @@
 .ChecklistListView {
   padding: 0 25%;
-  padding-top: 10vh; }
-  .ChecklistListView .TitleContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2em; }
-    .ChecklistListView .TitleContainer .Title {
-      margin: 0; }
-  .ChecklistListView .ChecklistList {
-    list-style: none;
-    padding: 0;
-    border: 1px solid #333;
-    border-width: 0; }
-    .ChecklistListView .ChecklistList .ChecklistListItem {
-      display: flex;
-      justify-content: space-between;
-      border: 1px solid #333;
-      border-width: 0;
-      border-bottom-width: 1px;
-      border-collapse: collapse;
-      padding: 20px 20px; }
-      .ChecklistListView .ChecklistList .ChecklistListItem:last-child {
-        border-width: 0; }
-      .ChecklistListView .ChecklistList .ChecklistListItem .ChecklistTitle {
-        margin: 0;
-        margin-bottom: 10px; }
-      .ChecklistListView .ChecklistList .ChecklistListItem .ChecklistDescription {
-        margin: 0;
-        font-size: 18px; }
-      .ChecklistListView .ChecklistList .ChecklistListItem .ChecklistDetails {
-        flex: 1; }
-      .ChecklistListView .ChecklistList .ChecklistListItem .Actions {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center; }
-        .ChecklistListView .ChecklistList .ChecklistListItem .Actions .Button {
-          margin-left: 20px; }
+  padding-top: 10vh;
+}
+.ChecklistListView .TitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+.ChecklistListView .TitleContainer .Title {
+  margin: 0;
+}
+.ChecklistListView .ChecklistList {
+  list-style: none;
+  padding: 0;
+  border: 1px solid #333;
+  border-width: 0;
+}
+.ChecklistListView .ChecklistList .ChecklistListItem {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #333;
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-collapse: collapse;
+  padding: 20px 20px;
+}
+.ChecklistListView .ChecklistList .ChecklistListItem:last-child {
+  border-width: 0;
+}
+.ChecklistListView .ChecklistList .ChecklistListItem .ChecklistTitle {
+  margin: 0;
+  margin-bottom: 10px;
+}
+.ChecklistListView .ChecklistList .ChecklistListItem .ChecklistDescription {
+  margin: 0;
+  font-size: 18px;
+}
+.ChecklistListView .ChecklistList .ChecklistListItem .ChecklistDetails {
+  flex: 1;
+}
+.ChecklistListView .ChecklistList .ChecklistListItem .Actions {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.ChecklistListView .ChecklistList .ChecklistListItem .Actions .Button {
+  margin-left: 20px;
+}
 
 @media only screen and (max-width: 600px) {
   .ChecklistListView {
     padding: 0 20px;
-    padding-top: 10vh; }
-    .ChecklistListView .Title {
-      font-size: 38.4px; }
-    .ChecklistListView .Button.ActionButton .Icon {
-      margin-right: 0 !important; }
-    .ChecklistListView .Button.ActionButton span {
-      display: none !important; }
+    padding-top: 10vh;
+  }
+  .ChecklistListView .Title {
+    font-size: 38.4px;
+  }
+  .ChecklistListView .Button.ActionButton .Icon {
+    margin-right: 0 !important;
+  }
+  .ChecklistListView .Button.ActionButton span {
+    display: none !important;
+  }
 
   .ChecklistListItem {
     flex-direction: column;
-    padding: 20px 0 !important; }
-    .ChecklistListItem .ChecklistDetails {
-      margin-bottom: 10px; }
-    .ChecklistListItem .Actions {
-      justify-content: space-between !important; }
-      .ChecklistListItem .Actions .Button {
-        margin: 0 !important; } }
+    padding: 20px 0 !important;
+  }
+  .ChecklistListItem .ChecklistDetails {
+    margin-bottom: 10px;
+  }
+  .ChecklistListItem .Actions {
+    justify-content: space-between !important;
+  }
+  .ChecklistListItem .Actions .Button {
+    margin: 0 !important;
+  }
+}
 .ChecklistItemView {
   padding: 0 25%;
   padding-top: 10vh;
-  padding-bottom: 10vh; }
-  .ChecklistItemView ul.ChecklistList, .ChecklistItemView ul.ChecklistItems {
-    list-style: none;
-    margin: 0;
-    padding: 0; }
-    .ChecklistItemView ul.ChecklistList label, .ChecklistItemView ul.ChecklistItems label {
-      display: flex; }
-    .ChecklistItemView ul.ChecklistList .ChecklistItem, .ChecklistItemView ul.ChecklistItems .ChecklistItem {
-      font-size: 32px;
-      padding: 10px 0;
-      margin-bottom: 20px; }
-      .ChecklistItemView ul.ChecklistList .ChecklistItem input[type="checkbox"], .ChecklistItemView ul.ChecklistItems .ChecklistItem input[type="checkbox"] {
-        margin-right: 20px; }
+  padding-bottom: 10vh;
+}
+.ChecklistItemView ul.ChecklistList, .ChecklistItemView ul.ChecklistItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ChecklistItemView ul.ChecklistList label, .ChecklistItemView ul.ChecklistItems label {
+  display: flex;
+  line-height: 1em;
+}
+.ChecklistItemView ul.ChecklistList .ChecklistItem, .ChecklistItemView ul.ChecklistItems .ChecklistItem {
+  font-size: 32px;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+.ChecklistItemView ul.ChecklistList .ChecklistItem input[type=checkbox], .ChecklistItemView ul.ChecklistItems .ChecklistItem input[type=checkbox] {
+  margin-right: 20px;
+}
 
 .ChecklistTitle {
   font-size: 64px;
   font-weight: normal;
   margin: 0;
-  margin-bottom: 20px; }
-  .ChecklistTitle.Small {
-    font-size: 30px; }
+  margin-bottom: 20px;
+}
+.ChecklistTitle.Small {
+  font-size: 30px;
+}
 
 .ChecklistDescription {
   font-size: 30px;
   margin: 0;
   margin-bottom: 60px;
   font-weight: normal;
-  width: 100%; }
-  .ChecklistDescription.Small {
-    font-size: 18px; }
+  width: 100%;
+}
+.ChecklistDescription.Small {
+  font-size: 18px;
+}
 
 .ChecklistForm input.ChecklistTitle {
   font-size: 64px;
-  border: none !important; }
+  border: none !important;
+}
 .ChecklistForm input.ChecklistDescription {
   font-size: 30px;
   border: none !important;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
 
 @media only screen and (max-width: 600px) {
   .ChecklistItemView {
     padding: 0 20px;
-    padding-top: 10vh; }
-    .ChecklistItemView .ChecklistTitle {
-      font-size: 32px !important; }
-    .ChecklistItemView .ChecklistDescription {
-      font-size: 20px !important; } }
+    padding-top: 10vh;
+  }
+  .ChecklistItemView .ChecklistTitle {
+    font-size: 32px !important;
+  }
+  .ChecklistItemView .ChecklistDescription {
+    font-size: 20px !important;
+  }
+}
 .Button {
   padding: 10px 20px;
   background-color: transparent;
@@ -116,92 +152,124 @@
   border: 1px solid #333;
   font-size: 16px !important;
   cursor: pointer;
-  display: flex !important; }
-  .Button.Small {
-    padding: 6.6666666667px 10px; }
-  .Button .Icon, .Button .icon {
-    margin-right: 10px; }
-    .Button .Icon.NoMargin, .Button .icon.NoMargin {
-      margin-right: 0; }
-  .Button.NoText .Icon, .Button.NoText .icon {
-    margin-right: 0; }
-  .Button.ActionButton {
-    border-color: #e64545;
-    background: #e64545;
-    color: white; }
-    .Button.ActionButton span {
-      color: inherit; }
-  .Button.FullWidth {
-    width: 100%;
-    justify-content: center; }
+  display: flex !important;
+}
+.Button.Small {
+  padding: 6.6666666667px 10px;
+}
+.Button .Icon, .Button .icon {
+  margin-right: 10px;
+}
+.Button .Icon.NoMargin, .Button .icon.NoMargin {
+  margin-right: 0;
+}
+.Button.NoText .Icon, .Button.NoText .icon {
+  margin-right: 0;
+}
+.Button.ActionButton {
+  border-color: #e64545;
+  background: #e64545;
+  color: white;
+}
+.Button.ActionButton span {
+  color: inherit;
+}
+.Button.FullWidth {
+  width: 100%;
+  justify-content: center;
+}
 
 .BackButton {
   border: 1px solid #333;
   padding: 10px 20px;
   text-decoration: none;
   display: inline-block;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
 
 .ButtonContainer {
-  display: flex; }
-  .ButtonContainer > div {
-    display: flex; }
-    .ButtonContainer > div:first-child {
-      justify-content: flex-start; }
-      .ButtonContainer > div:first-child .Button {
-        margin-right: 10px; }
-    .ButtonContainer > div:last-child {
-      justify-content: flex-end; }
-      .ButtonContainer > div:last-child .Button {
-        margin-left: 10px; }
+  display: flex;
+}
+.ButtonContainer > div {
+  display: flex;
+}
+.ButtonContainer > div:first-child {
+  justify-content: flex-start;
+}
+.ButtonContainer > div:first-child .Button {
+  margin-right: 10px;
+}
+.ButtonContainer > div:last-child {
+  justify-content: flex-end;
+}
+.ButtonContainer > div:last-child .Button {
+  margin-left: 10px;
+}
 
 @media only screen and (max-width: 600px) {
   .ButtonContainer {
-    flex-direction: column; }
-    .ButtonContainer > div:first-child {
-      margin-bottom: 20px; }
-    .ButtonContainer > div:last-child {
-      justify-content: space-between;
-      flex-direction: row-reverse; }
-      .ButtonContainer > div:last-child .Button {
-        margin: 0; } }
+    flex-direction: column;
+  }
+  .ButtonContainer > div:first-child {
+    margin-bottom: 20px;
+  }
+  .ButtonContainer > div:last-child {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+  .ButtonContainer > div:last-child .Button {
+    margin: 0;
+  }
+}
 .AuthForm {
-  width: 400px; }
-  .AuthForm .InputGroup {
-    margin-bottom: 40px; }
-  .AuthForm label {
-    display: block;
-    font-size: 30px;
-    margin-bottom: 20px; }
-  .AuthForm input {
-    width: 100%;
-    font-size: 30px;
-    padding: 10px;
-    border: 1px solid #333; }
-  .AuthForm .ActionButton {
-    font-size: 64px !important; }
-  .AuthForm .FormError {
-    color: #e64545;
-    font-size: 30px; }
-  .AuthForm .FieldError {
-    color: #e64545;
-    margin-top: 10px; }
-  .AuthForm .AuthLink {
-    font-size: 20px;
-    margin-top: 20px;
-    display: block; }
-    .AuthForm .AuthLink p {
-      text-align: center; }
+  width: 400px;
+}
+.AuthForm .InputGroup {
+  margin-bottom: 40px;
+}
+.AuthForm label {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.AuthForm input {
+  width: 100%;
+  font-size: 30px;
+  padding: 10px;
+  border: 1px solid #333;
+}
+.AuthForm .ActionButton {
+  font-size: 64px !important;
+}
+.AuthForm .FormError {
+  color: #e64545;
+  font-size: 30px;
+}
+.AuthForm .FieldError {
+  color: #e64545;
+  margin-top: 10px;
+}
+.AuthForm .AuthLink {
+  font-size: 20px;
+  margin-top: 20px;
+  display: block;
+}
+.AuthForm .AuthLink p {
+  text-align: center;
+}
 
 .AuthView {
   display: flex;
   justify-content: center;
-  padding-top: 15vh; }
+  padding-top: 15vh;
+}
 
 @media only screen and (max-width: 600px) {
   .AuthView {
     padding: 0 20px;
-    padding-top: 15vh; } }
+    padding-top: 15vh;
+  }
+}
 .Nav {
   display: flex;
   justify-content: space-around;
@@ -212,86 +280,114 @@
   position: fixed;
   width: 100%;
   max-width: 100%;
-  background: white; }
-  .Nav > div {
-    display: flex;
-    align-items: center;
-    padding: 0 80px;
-    flex: 1 0 0;
-    height: 100%; }
-  .Nav div:nth-child(2) {
-    justify-content: center; }
-  .Nav div:nth-child(3) {
-    justify-content: flex-end; }
-  .Nav ul {
-    list-style: none;
-    padding: none;
-    display: flex; }
-    .Nav ul li {
-      margin-left: 20px;
-      font-size: 20px; }
+  background: white;
+}
+.Nav > div {
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+  flex: 1 0 0;
+  height: 100%;
+}
+.Nav div:nth-child(2) {
+  justify-content: center;
+}
+.Nav div:nth-child(3) {
+  justify-content: flex-end;
+}
+.Nav ul {
+  list-style: none;
+  padding: none;
+  display: flex;
+}
+.Nav ul li {
+  margin-left: 20px;
+  font-size: 20px;
+}
 
 .NavModal {
-  min-height: 80%; }
-  .NavModal ul {
-    list-style: none;
-    padding: 80px 0; }
-    .NavModal ul li {
-      color: white !important;
-      font-size: 32px;
-      text-align: center;
-      padding: 40px 0; }
+  min-height: 80%;
+}
+.NavModal ul {
+  list-style: none;
+  padding: 80px 0;
+}
+.NavModal ul li {
+  color: white !important;
+  font-size: 32px;
+  text-align: center;
+  padding: 40px 0;
+}
 
 @media only screen and (max-width: 600px) {
   .Nav span.SmallMenu {
-    display: block; }
+    display: block;
+  }
   .Nav > div {
     display: flex;
     align-items: center;
-    padding: 0 20px; } }
+    padding: 0 20px;
+  }
+}
 .Form .InputGroup {
-  margin-bottom: 20px; }
-  .Form .InputGroup label.Error {
-    color: #e64545; }
-  .Form .InputGroup input {
-    border: 1px solid #333;
-    box-shadow: none; }
-  .Form .InputGroup input, .Form .InputGroup textarea {
-    width: 100%; }
-    .Form .InputGroup input.Error, .Form .InputGroup textarea.Error {
-      border-color: #e64545;
-      color: #e64545; }
-  .Form .InputGroup textarea {
-    resize: none; }
-  .Form .InputGroup ul {
-    list-style: none; }
-  .Form .InputGroup p.Error {
-    color: #e64545; }
+  margin-bottom: 20px;
+}
+.Form .InputGroup label.Error {
+  color: #e64545;
+}
+.Form .InputGroup input {
+  border: 1px solid #333;
+  box-shadow: none;
+}
+.Form .InputGroup input, .Form .InputGroup textarea {
+  width: 100%;
+}
+.Form .InputGroup input.Error, .Form .InputGroup textarea.Error {
+  border-color: #e64545;
+  color: #e64545;
+}
+.Form .InputGroup textarea {
+  resize: none;
+}
+.Form .InputGroup ul {
+  list-style: none;
+}
+.Form .InputGroup p.Error {
+  color: #e64545;
+}
 .Form .FieldArrayInputGroup .InputBlock {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+}
 .Form .FieldArrayInputGroup input, .Form .FieldArrayInputGroup textarea {
   flex: 1;
   font-size: 32px;
-  border: none; }
-  .Form .FieldArrayInputGroup input:active, .Form .FieldArrayInputGroup textarea:active {
-    border: none !important; }
+  border: none;
+}
+.Form .FieldArrayInputGroup input:active, .Form .FieldArrayInputGroup textarea:active {
+  border: none !important;
+}
 .Form .FieldArrayInputGroup .Button {
-  margin-right: 20px; }
+  margin-right: 20px;
+}
 
 html, body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 *:not(i) {
   font-family: "IM Fell English" !important;
   box-sizing: border-box;
-  color: #333; }
+  color: #333;
+}
 
 a:hover {
-  color: #333 !important; }
+  color: #333 !important;
+}
 
 .Title {
-  font-size: 64px; }
+  font-size: 64px;
+}
 
 /*# sourceMappingURL=styles.css.map */
