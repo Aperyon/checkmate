@@ -41,7 +41,10 @@ export default function ChecklistFormView() {
   if (!checklistID) {
     return (
       <div className="View ChecklistItemView">
-        <ChecklistForm />
+        <div>
+          <ChecklistForm />
+        </div>
+        <ChecklistTips />
       </div >
     )
   }
@@ -54,7 +57,10 @@ export default function ChecklistFormView() {
 
   return (
     <div className="View ChecklistItemView">
-      <ChecklistForm checklist={currentChecklist} />
+      <div>
+        <ChecklistForm checklist={currentChecklist} />
+      </div>
+      <ChecklistTips />
     </div >
   )
 }
@@ -167,5 +173,19 @@ function ChecklistForm({ checklist }) {
         </div>
       </ButtonContainer>
     </form >
+  )
+}
+
+
+function ChecklistTips() {
+  return (
+    <div className="ChecklistTips">
+      <h3 className="TipsTitle">Tips for making a good checlist</h3>
+      <ul>
+        <li>Each item is actionable</li>
+        <li>Add Pause Points as needed</li>
+        <li>Start each item with a verb (simple present tense)</li>
+      </ul>
+    </div>
   )
 }
