@@ -125,14 +125,14 @@ function ChecklistForm({ checklist }) {
     <form className="Form ChecklistForm" onSubmit={handleSubmit(onSubmit)}>
       <InputGroup
         name="title"
-        placeholder="Start writing the title"
+        placeholder="Title"
         register={register}
         error={errors.title ?.message}
         className="ChecklistTitle"
       />
       <InputGroup
         name="description"
-        placeholder="This checklist is about..."
+        placeholder="Description"
         register={register}
         error={errors.description ?.message}
         className="ChecklistDescription"
