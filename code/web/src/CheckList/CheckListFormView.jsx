@@ -180,7 +180,7 @@ function ChecklistForm({ checklist }) {
 function ChecklistTips() {
   return (
     <div className="ChecklistTips">
-      <h3 className="TipsTitle">Tips for making a good checlist</h3>
+      <h3 className="TipsTitle">Tips for making a good checklist</h3>
       <ul>
         <li>Each item is actionable</li>
         <li>Add Pause Points as needed</li>
