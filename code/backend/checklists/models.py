@@ -3,7 +3,7 @@ from django.db import models
 
 class CheckList(models.Model):
     title = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, default="", blank=True)
     latest_run = models.ForeignKey(
         'CheckListRun',
         blank=True,
