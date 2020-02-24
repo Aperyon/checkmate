@@ -127,14 +127,14 @@ function ChecklistForm({ checklist }) {
         name="title"
         placeholder="Start writing the title"
         register={register}
-        error={errors.title?.message}
+        error={errors.title ?.message}
         className="ChecklistTitle"
       />
       <InputGroup
         name="description"
         placeholder="This checklist is about..."
         register={register}
-        error={errors.description?.message}
+        error={errors.description ?.message}
         className="ChecklistDescription"
       />
 
@@ -147,20 +147,6 @@ function ChecklistForm({ checklist }) {
             onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
             remove={() => remove(index)}
           />
-          {/* <div className="InputGroup" key={item.id}>
-            <input
-              name={`items[${index}].text`}
-              ref={register()}
-              placeholder="item"
-              onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
-            />
-            <Button
-              className="Small"
-              onClick={() => remove(index)}
-              type="button"
-            >
-              <Icon icon="times" className="NoMargin" />
-            </Button> */}
         </div >
       ))
       }
