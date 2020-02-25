@@ -1,11 +1,31 @@
-.ChecklistItemView
-  padding: 0 20%
-  padding-top: 10vh
-  padding-bottom: 10vh
+.ChecklistFormView
   display: flex
 
   &>div
     flex: 2
+
+  .ChecklistTips
+    flex: 1
+
+    .TipsTitle
+      magin-bottom: $padding
+
+    ul
+      list-style-type: "✔️ "
+      margin: 0
+      padding: 0
+      padding-left: $large-padding
+
+      li
+        font-size: $font-size
+        margin-bottom: $padding
+
+.ChecklistItemView
+  padding: 0 20%
+  padding-top: 10vh
+  padding-bottom: 10vh
+
+  &>div
     padding: $padding
 
   ul.ChecklistList, ul.ChecklistItems
@@ -25,22 +45,6 @@
 
       input[type="checkbox"]
         margin-right: $padding
-
-  .ChecklistTips
-    flex: 1
-
-    .TipsTitle
-      magin-bottom: $padding
-
-    ul
-      list-style-type: "✔️ "
-      margin: 0
-      padding: 0
-      padding-left: $large-padding
-
-      li
-        font-size: $font-size
-        margin-bottom: $padding
 
 .ChecklistTitle
   font-size: $title-font-size

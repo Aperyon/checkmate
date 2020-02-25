@@ -80,14 +80,35 @@
     margin: 0 !important;
   }
 }
+.ChecklistFormView {
+  display: flex;
+}
+.ChecklistFormView > div {
+  flex: 2;
+}
+.ChecklistFormView .ChecklistTips {
+  flex: 1;
+}
+.ChecklistFormView .ChecklistTips .TipsTitle {
+  magin-bottom: 20px;
+}
+.ChecklistFormView .ChecklistTips ul {
+  list-style-type: "✔️ ";
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+}
+.ChecklistFormView .ChecklistTips ul li {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
 .ChecklistItemView {
   padding: 0 20%;
   padding-top: 10vh;
   padding-bottom: 10vh;
-  display: flex;
 }
 .ChecklistItemView > div {
-  flex: 2;
   padding: 20px;
 }
 .ChecklistItemView ul.ChecklistList, .ChecklistItemView ul.ChecklistItems {
@@ -107,22 +128,6 @@
 }
 .ChecklistItemView ul.ChecklistList .ChecklistItem input[type=checkbox], .ChecklistItemView ul.ChecklistItems .ChecklistItem input[type=checkbox] {
   margin-right: 20px;
-}
-.ChecklistItemView .ChecklistTips {
-  flex: 1;
-}
-.ChecklistItemView .ChecklistTips .TipsTitle {
-  magin-bottom: 20px;
-}
-.ChecklistItemView .ChecklistTips ul {
-  list-style-type: "✔️ ";
-  margin: 0;
-  padding: 0;
-  padding-left: 40px;
-}
-.ChecklistItemView .ChecklistTips ul li {
-  font-size: 20px;
-  margin-bottom: 20px;
 }
 
 .ChecklistTitle {

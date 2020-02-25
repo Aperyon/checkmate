@@ -40,7 +40,7 @@ export default function ChecklistFormView() {
 
   if (!checklistID) {
     return (
-      <div className="View ChecklistItemView">
+      <div className="View ChecklistItemView ChecklistFormView">
         <div>
           <ChecklistForm />
         </div>
@@ -56,7 +56,7 @@ export default function ChecklistFormView() {
   }
 
   return (
-    <div className="View ChecklistItemView">
+    <div className="View ChecklistItemView ChecklistFormView">
       <div>
         <ChecklistForm checklist={currentChecklist} />
       </div>
