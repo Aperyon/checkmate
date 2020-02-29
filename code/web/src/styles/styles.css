@@ -432,6 +432,69 @@
   margin-right: 20px;
 }
 
+.Onboarding {
+  padding-bottom: 80px;
+}
+.Onboarding .TitleContainer {
+  display: block !important;
+  padding-bottom: 40px;
+}
+.Onboarding .Subtitle {
+  font-size: 2em;
+}
+.Onboarding a.Step {
+  align-items: center;
+  display: flex;
+  margin-bottom: 80px;
+}
+.Onboarding a.Step:last-child {
+  margin-bottom: 0;
+}
+.Onboarding a.Step .OnboardingImage {
+  max-height: 150px;
+  margin-right: 80px;
+}
+.Onboarding a.Step .OnboardingDescriptionTitleText {
+  margin: 0;
+  font-size: 3em;
+}
+.Onboarding a.Step .OnboardingDescriptionSubtitleText {
+  margin: 0;
+  font-size: 1.5em;
+}
+.Onboarding .ButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+.Onboarding .ButtonContainer .Button {
+  font-size: 2em !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .Onboarding .Title {
+    font-size: 2em;
+  }
+  .Onboarding .Subtitle {
+    font-size: 1.25rem;
+  }
+
+  .Step {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .Step .OnboardingImage {
+    margin-right: 0 !important;
+  }
+  .Step .OnboardingDescriptionTitleText {
+    text-align: center;
+    font-size: 1.75em !important;
+    margin-bottom: 20px !important;
+  }
+  .Step .OnboardingDescriptionSubtitleText {
+    text-align: center;
+    font-size: 1.25rem !important;
+  }
+}
 html, body {
   margin: 0;
   padding: 0;

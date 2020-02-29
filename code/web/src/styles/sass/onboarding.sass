@@ -1,0 +1,63 @@
+.Onboarding
+  padding-bottom: $extra-large-padding
+
+  .TitleContainer
+    display: block !important
+    padding-bottom: $large-padding
+
+  .Title
+
+  .Subtitle
+    font-size: 2em
+
+  a.Step
+    align-items: center
+    display: flex
+    margin-bottom: $extra-large-padding
+
+    &:last-child
+      margin-bottom: 0
+
+    .OnboardingImage
+      max-height: 150px
+      margin-right: $extra-large-padding
+
+    .OnboardingDescriptionTitleText
+      margin: 0
+      font-size: 3em
+
+    .OnboardingDescriptionSubtitleText
+      margin: 0
+      font-size: 1.5em
+
+  .ButtonContainer
+    display: flex
+    justify-content: center
+
+    .Button
+      font-size: 2em !important
+
+@media only screen and (max-width: 600px)
+  .Onboarding
+
+    .Title
+      font-size: 2em
+
+    .Subtitle
+      font-size: 1.25rem
+
+  .Step
+    flex-direction: column
+    justify-content: center
+
+    .OnboardingImage
+      margin-right: 0 !important
+
+    .OnboardingDescriptionTitleText
+      text-align: center
+      font-size: 1.75em !important
+      margin-bottom: $padding !important
+
+    .OnboardingDescriptionSubtitleText
+      text-align: center
+      font-size: 1.25rem !important

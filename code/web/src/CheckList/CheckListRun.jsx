@@ -36,14 +36,13 @@ export default function ChecklistRun() {
   let history = useHistory();
   const { id: checklistRunID } = useParams()
   const {
-    state: checklistRun,
+    state: { currentChecklistRun: checklistRun, checklistRuns },
     fetchChecklistRun,
     updateChecklistRunItem,
     unsetCurrentChecklistRun,
     updateChecklistRun,
     fetchChecklistRuns,
   } = React.useContext(ChecklistRunContext);
-
 
   async function onCheckboxChange(event, item, fields) {
     const newValue = event.target.checked
@@ -56,10 +55,10 @@ export default function ChecklistRun() {
     updateChecklistRunItem(item, newValue)
   }
 
-  async function onArchiveClick() {
+  async function onCloseClick() {
     const response = await updateChecklistRun(checklistRun, { is_closed: true })
     if (!response.error) {
-      alert('This run is archived!\nClick Play to start a new run.')
+      alert('This run is closed!\nClick Play to start a new run.')
       history.push('/checklists/')
     }
   }
@@ -67,7 +66,6 @@ export default function ChecklistRun() {
   React.useEffect(() => {
     (async () => {
       const response = await fetchChecklistRun(checklistRunID);
-      console.log(response.data.checklist)
       if (!response.error) {
         fetchChecklistRuns({ filters: { checklist: response.data.checklist } })
       }
@@ -90,10 +88,10 @@ export default function ChecklistRun() {
             <ChecklistTitle>{checklistRun.title}</ChecklistTitle>
           </div>
           <div>
-            <ActionButton onClick={onArchiveClick}>
+            <ActionButton onClick={onCloseClick}>
               <Icon icon="archive" />
-              Archive
-        </ActionButton>
+              Close
+            </ActionButton>
           </div>
         </div>
         <ChecklistDescription>{checklistRun.description}</ChecklistDescription>

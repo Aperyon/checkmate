@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 
 
 export default function ChecklistRunList({ checklistRuns }) {
+  return <div className="ChecklistRunList" />;
+
+  if (checklistRuns === null) {
+    return (
+      <div className="ChecklistRunList">
+        Loading...
+      </div>
+    )
+  }
   return (
     <div className="ChecklistRunList">
       <h3>Runs</h3>

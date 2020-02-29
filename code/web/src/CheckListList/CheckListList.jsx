@@ -63,36 +63,28 @@ export default function ChecklistList(props) {
     return <Redirect to={redirectToRun.to} />
   }
 
+  if (checklists.length === 0) {
+    return <Onboarding />
+  }
+
   return (
     <div className="View ChecklistListView" >
       <div className="TitleContainer">
         <Title>
           Your checklists
         </Title>
-        {checklists.length > 0 && (
-          <Link to="/checklists/new/">
-            <ActionButton>
-              <Icon icon="plus" />
-              <span>Add new checklist</span>
-            </ActionButton>
-          </Link>
-        )}
       </div>
-      {checklists.length > 0 ? (
-        <ul className="ChecklistList">
-          {checklists && checklists.map(checklist => (
-            <ChecklistListItem
-              key={checklist.pk}
-              checklist={checklist}
-              onRunClick={onRunClick}
-              onDeleteClick={onDeleteClick}
-              shouldStartNewRun={shouldStartNewRun(checklist)}
-            />
-          ))}
-        </ul>
-      ) : (
-          <Onboarding />
-        )}
+      <ul className="ChecklistList">
+        {checklists && checklists.map(checklist => (
+          <ChecklistListItem
+            key={checklist.pk}
+            checklist={checklist}
+            onRunClick={onRunClick}
+            onDeleteClick={onDeleteClick}
+            shouldStartNewRun={shouldStartNewRun(checklist)}
+          />
+        ))}
+      </ul>
     </div >
   )
 }
