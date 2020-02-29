@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Redirect } from 'react-router-dom';
 
 import ChecklistListItem from './ChecklistListItem';
+import Onboarding from './Onboarding';
 import Title from '../common/components/Title';
 import { ActionButton } from '../common/components/Buttons'
 import Icon from '../common/components/Icon'
@@ -90,12 +91,7 @@ export default function ChecklistList(props) {
           ))}
         </ul>
       ) : (
-          <>
-            <h3>You have no checklists added yet. Add you first one now!</h3>
-            <Link to="/checklists/new/">
-              <ActionButton>Add</ActionButton>
-            </Link>
-          </>
+          <Onboarding />
         )}
     </div >
   )
