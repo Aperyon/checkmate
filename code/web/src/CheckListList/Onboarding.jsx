@@ -43,7 +43,7 @@ export default function Onboarding() {
               Run it <strong>multiple times</strong>
             </p>
             <p className="OnboardingDescriptionSubtitleText">
-              Checklists are meant to help you to follow the same steps over and over again.
+              Checklists are meant to help you follow the same steps over and over again
             </p>
           </div>
         </Link>
