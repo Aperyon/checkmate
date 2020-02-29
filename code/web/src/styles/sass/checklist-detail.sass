@@ -24,9 +24,14 @@
   padding: 0 20%
   padding-top: 10vh
   padding-bottom: 10vh
+  display: flex
 
   &>div
+    flex: 2
     padding: $padding
+
+  .ChecklistRunList
+    flex: 1
 
   ul.ChecklistList, ul.ChecklistItems
     list-style: none
@@ -45,6 +50,12 @@
 
       input[type="checkbox"]
         margin-right: $padding
+
+.ChecklistTitleContainer
+  display: flex
+  padding: 0 !important
+  justify-content: space-between
+  align-items: center
 
 .ChecklistTitle
   font-size: $title-font-size

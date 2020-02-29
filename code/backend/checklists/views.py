@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from . import models as m
 from . import serializers as s
 
+
 class CheckListViewSet(viewsets.ModelViewSet):
     queryset = m.CheckList.objects.all()
     serializer_class = s.CheckListSerializer
@@ -23,6 +24,7 @@ class CheckListRunViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
 
 class CheckListRunItemViewSet(viewsets.ModelViewSet):
     queryset = m.CheckListRunItem.objects.all()

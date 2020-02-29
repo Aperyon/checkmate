@@ -44,12 +44,12 @@ def test_toggle_checklist_run_item():
 
     s.toggle_checklist_run_item(item1, True, [item2])
     assert checklist.is_latest_run_complete is False
-    assert run.is_complete is False
+    assert run.is_closed is False
 
     s.toggle_checklist_run_item(item2, True, [item1])
     assert checklist.is_latest_run_complete is True
-    assert run.is_complete is True
+    assert run.is_closed is True
 
     s.toggle_checklist_run_item(item2, False, [item1])
     assert checklist.is_latest_run_complete is False
-    assert run.is_complete is False
+    assert run.is_closed is False

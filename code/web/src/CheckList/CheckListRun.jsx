@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 
@@ -7,9 +7,11 @@ import ChecklistTitle from './ChecklistTitle';
 import ChecklistDescription from './ChecklistDescription';
 import ChecklistItems from './ChecklistItems';
 import ChecklistItem from './ChecklistItem';
-import { BackButton } from '../common/components/Buttons';
+import { ActionButton, BackButton } from '../common/components/Buttons';
+import Icon from '../common/components/Icon';
 
 import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext';
+import ChecklistRunList from "./ChecklistRunList";
 
 
 function alertRunIsComplete() {
@@ -31,12 +33,15 @@ function getCheckFields(fieldsObj) {
 
 
 export default function ChecklistRun() {
+  let history = useHistory();
   const { id: checklistRunID } = useParams()
   const {
     state: checklistRun,
     fetchChecklistRun,
     updateChecklistRunItem,
     unsetCurrentChecklistRun,
+    updateChecklistRun,
+    fetchChecklistRuns,
   } = React.useContext(ChecklistRunContext);
 
 
@@ -51,8 +56,22 @@ export default function ChecklistRun() {
     updateChecklistRunItem(item, newValue)
   }
 
+  async function onArchiveClick() {
+    const response = await updateChecklistRun(checklistRun, { is_closed: true })
+    if (!response.error) {
+      alert('This run is archived!\nClick Play to start a new run.')
+      history.push('/checklists/')
+    }
+  }
+
   React.useEffect(() => {
-    fetchChecklistRun(checklistRunID);
+    (async () => {
+      const response = await fetchChecklistRun(checklistRunID);
+      console.log(response.data.checklist)
+      if (!response.error) {
+        fetchChecklistRuns({ filters: { checklist: response.data.checklist } })
+      }
+    })()
 
     return () => {
       unsetCurrentChecklistRun()
@@ -65,15 +84,28 @@ export default function ChecklistRun() {
 
   return (
     <div className="View ChecklistItemView">
-      <ChecklistTitle>{checklistRun.title}</ChecklistTitle>
-      <ChecklistDescription>{checklistRun.description}</ChecklistDescription>
-      <ChecklistItems>
-        <ChecklistRunForm
-          checklistRun={checklistRun}
-          onCheckboxChange={onCheckboxChange}
-        />
-      </ChecklistItems>
-      <BackButton to="/checklists/">Go back</BackButton>
+      <div>
+        <div className="ChecklistTitleContainer">
+          <div>
+            <ChecklistTitle>{checklistRun.title}</ChecklistTitle>
+          </div>
+          <div>
+            <ActionButton onClick={onArchiveClick}>
+              <Icon icon="archive" />
+              Archive
+        </ActionButton>
+          </div>
+        </div>
+        <ChecklistDescription>{checklistRun.description}</ChecklistDescription>
+        <ChecklistItems>
+          <ChecklistRunForm
+            checklistRun={checklistRun}
+            onCheckboxChange={onCheckboxChange}
+          />
+        </ChecklistItems>
+        <BackButton to="/checklists/">Go back</BackButton>
+      </div>
+      <ChecklistRunList checklistRuns={checklistRuns} />
     </div>
   );
 }

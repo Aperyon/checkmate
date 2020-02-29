@@ -80,8 +80,8 @@ class CheckListRunSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = m.CheckListRun
-        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items', 'is_complete')
-        read_only_fields = ('title', 'description', 'is_complete')
+        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items', 'is_closed')
+        read_only_fields = ('title', 'description')
 
     def create(self, validated_data):
         checklist = validated_data.pop('checklist')
@@ -92,3 +92,9 @@ class CheckListRunSerializer(serializers.HyperlinkedModelSerializer):
             save=True
         )
         return run
+
+    def update(self, instance, validated_data):
+        is_closed = validated_data.pop('is_closed', None)
+        s.toggle_checklist_run_is_closed(instance, is_closed, save=True)
+        updated_instance = super().update(instance, validated_data)
+        return updated_instance

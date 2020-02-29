@@ -29,7 +29,7 @@ class CheckListRun(models.Model):
     checklist = models.ForeignKey('CheckList', on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    is_complete = models.BooleanField(default=False)
+    is_closed = models.BooleanField(default=False)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
 
 

@@ -18,7 +18,9 @@ export default function ChecklistListItem(props) {
     <li className="ChecklistListItem">
       <div className="ChecklistDetails">
         <Link to={`/checklists/${checklist.pk}/`}>
-          <ChecklistTitle small={true}>{checklist.title}</ChecklistTitle>
+          <ChecklistTitle small={true}>
+            {checklist.title}
+          </ChecklistTitle>
         </Link>
         <ChecklistDescription small={true}>{checklist.description}</ChecklistDescription>
       </div>
@@ -27,7 +29,6 @@ export default function ChecklistListItem(props) {
           onClick={() => props.onRunClick(checklist)}
           shouldStartNewRun={props.shouldStartNewRun}
         />
-        {/* <MiscButton /> */}
         <ChecklistItemMiscDropdown
           checklist={checklist}
           onDeleteClick={props.onDeleteClick}
