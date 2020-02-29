@@ -8,6 +8,8 @@ import Icon from '../common/components/Icon';
 export default function ChecklistItemMiscDropdown(props) {
   return (
     <Dropdown
+      floating
+      direction="left"
       icon='ellipsis vertical'
       className='Button MiscButton NoText'
     >
