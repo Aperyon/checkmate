@@ -14,6 +14,7 @@ import ChecklistFormView from './Checklist/ChecklistFormView';
 import Login from './Auth/Login';
 import Logout from './Auth/Logout';
 import Signup from './Auth/Signup';
+import SignupSuccess from './Auth/SignupSuccess';
 import Nav from './Nav/Nav';
 
 import { Provider as ChecklistsProvider } from './contexts/ChecklistsContext';
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route exact path="/signup/">
           <Signup />
+        </Route>
+        <Route exact path="/signup-success/">
+          <SignupSuccess />
         </Route>
         <Route exact path="/logout/">
           <Logout />

@@ -24,8 +24,7 @@ export default function Signup() {
         setError(errorField, null, response.data[errorKey])
       })
     } else {
-      alert('Success!\nYou will be redirected to the login page.')
-      history.push('/login/')
+      history.push('/signup-success/')
     }
 
   }

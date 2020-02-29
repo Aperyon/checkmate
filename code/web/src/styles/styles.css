@@ -293,6 +293,20 @@
   text-align: center;
 }
 
+.AuthFeedback {
+  text-align: center;
+}
+.AuthFeedback h1 {
+  font-size: 3em;
+}
+.AuthFeedback h3 {
+  font-size: 20px;
+  margin-bottom: 3em;
+}
+.AuthFeedback p {
+  font-size: 20px;
+}
+
 .AuthView {
   display: flex;
   justify-content: center;
