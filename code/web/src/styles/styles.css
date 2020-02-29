@@ -255,6 +255,10 @@
 .AuthForm {
   width: 400px;
 }
+.AuthForm .AuthFormTitle {
+  font-size: 3em;
+  margin-bottom: 2em;
+}
 .AuthForm .InputGroup {
   margin-bottom: 40px;
 }
