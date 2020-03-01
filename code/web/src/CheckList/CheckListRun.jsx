@@ -123,6 +123,7 @@ function ChecklistRunForm(props) {
       runMode={true}
       onCheckboxChange={(event, item) => props.onCheckboxChange(event, item, getValues())}
       register={register}
+      isChecked={getValues()[`items[${index}].is_checked`]}
     />
   ))
 }
