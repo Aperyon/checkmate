@@ -4,17 +4,7 @@ import { Button } from '../components/Buttons';
 import Icon from '../components/Icon'
 
 function renderField(name, register, placeholder, onChange, className, type, error) {
-  if (type === undefined || type === 'input') {
-    return (
-      <input
-        placeholder={placeholder}
-        name={name}
-        ref={register()}
-        onChange={onChange}
-        className={`${error ? 'Error' : ''} ${className ? className : ''}`}
-      />
-    )
-  } else if (type === 'textarea') {
+  if (type === 'textarea') {
     return (
       <textarea
         placeholder={placeholder}
@@ -25,6 +15,16 @@ function renderField(name, register, placeholder, onChange, className, type, err
       />
     )
   }
+  return (
+    <input
+      placeholder={placeholder}
+      name={name}
+      ref={register()}
+      onChange={onChange}
+      type={type || 'input'}
+      className={`${error ? 'Error' : ''} ${className ? className : ''}`}
+    />
+  )
 }
 
 

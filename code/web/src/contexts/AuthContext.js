@@ -6,6 +6,9 @@ import createDataContext from './createDataContext';
 
 const loginURL = '/api/token/'
 const userListURL = '/api/users/';
+const forgotPasswordURL = '/api/users/forgot-password/';
+const resetPasswordURL = '/api/users/reset-password/';
+
 const SET_AUTH_TOKENS = 'SET_AUTH_TOKENS'
 const UNSET_AUTH_TOKENS = 'UNSET_AUTH_TOKENS'
 
@@ -67,6 +70,28 @@ const createUser = dispatch => async (values) => {
   }
 }
 
+
+const sendForgotPassword = dispatch => async (values) => {
+  try {
+    const response = await axios.post(forgotPasswordURL, values);
+    return response
+  } catch (err) {
+    return { ...err.response, hasError: true }
+  }
+}
+
+
+const sendResetPassword = dispatch => async (uid, token, values) => {
+  const url = `${resetPasswordURL}${uid}/${token}/`
+  try {
+    const response = await axios.post(url, values);
+    return response
+  } catch (err) {
+    return { ...err.response, hasError: true }
+  }
+}
+
+
 function setAxiosAuthHeader(access) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${access}`;
 }
@@ -79,6 +104,8 @@ export const { Provider, Context } = createDataContext(
     logoutUser,
     localLoginUser,
     createUser,
+    sendForgotPassword,
+    sendResetPassword,
   },
   initialData,
 )

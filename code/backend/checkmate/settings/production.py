@@ -29,3 +29,11 @@ CORS_ORIGIN_WHITELIST = [
     "https://app.checkma.it",
     "https://api.checkma.it",
 ]
+
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS-ACCESS-KEY-ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS-SECRET-ACCESS-KEY')
+
+AWS_SES_REGION_NAME = 'us-east-1'
+AWS_SES_REGION_ENDPOINT = 'email.us-east-1.amazonaws.com'

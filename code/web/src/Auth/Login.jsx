@@ -24,7 +24,7 @@ export default function Login() {
   async function onSubmit(values) {
     const response = await loginUser(values);
     if (response.hasError) {
-      if (response.data?.detail) {
+      if (response.data ?.detail) {
         setError('nonFieldError', null, response.data.detail)
       }
     } else {
@@ -53,6 +53,7 @@ export default function Login() {
           <Icon icon="check" />
         </ActionButton>
         <Link to="/signup/" className="AuthLink"><p>I don't have an account yet. Sign up!</p></Link>
+        <Link to="/forgot-password/" className="AuthLink"><p>Forgot my password, help!</p></Link>
       </form>
     </div>
   )

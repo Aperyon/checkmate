@@ -416,9 +416,6 @@
 .Form .InputGroup ul {
   list-style: none;
 }
-.Form .InputGroup p.Error {
-  color: #e64545;
-}
 .Form .FieldArrayInputGroup .InputBlock {
   display: flex;
   justify-content: space-between;
@@ -433,6 +430,9 @@
 }
 .Form .FieldArrayInputGroup .Button {
   margin-right: 20px;
+}
+.Form p.Error {
+  color: #e64545;
 }
 
 .Onboarding {
