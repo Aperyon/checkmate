@@ -68,11 +68,17 @@ export default function ChecklistList(props) {
   }
 
   return (
-    <div className="View ChecklistListView" >
+    <div className="View ChecklistListView">
       <div className="TitleContainer">
         <Title>
           Your checklists
         </Title>
+        <Link to="/checklists/new/">
+          <ActionButton>
+            <Icon icon="plus" />
+            <span>Add new checklist</span>
+          </ActionButton>
+        </Link>
       </div>
       <ul className="ChecklistList">
         {checklists && checklists.map(checklist => (

@@ -6,8 +6,7 @@ import checklistPNG from '../assets/checklist.png'
 import checklistRunsPNG from '../assets/checklist-runs.png'
 import Title from '../common/components/Title';
 import Subtitle from '../common/components/Subtitle';
-// import { ReactComponent as ChecklistRunsSVG } from '../assets/Group 18.png'
-
+import Icon from '../common/components/Icon';
 
 export default function Onboarding() {
   return (
@@ -49,7 +48,10 @@ export default function Onboarding() {
         </Link>
         <div className="ButtonContainer">
           <Link to="/checklists/new/">
-            <ActionButton>Create my first checklist</ActionButton>
+            <ActionButton>
+              <Icon icon="plus" />
+              <span className="AlwaysShow">Create my first checklist</span>
+            </ActionButton>
           </Link>
         </div>
       </div>

@@ -59,9 +59,12 @@
 
     .Button.ActionButton
       .Icon
-        margin-right: 0 !important
+        margin-right: 0px !important
 
-      span
+        &+span.AlwaysShow
+          margin-left: 10px
+
+      span:not(.AlwaysShow)
         display: none !important
 
   .ChecklistListItem
