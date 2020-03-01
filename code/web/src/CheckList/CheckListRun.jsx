@@ -110,10 +110,16 @@ export default function ChecklistRun() {
 
 
 function ChecklistRunForm(props) {
+  const [rerenderer, setRerenderer] = React.useState(false);
   const { register, control, getValues } = useForm({
     defaultValues: { items: props.checklistRun.items }
   });
   const { fields } = useFieldArray({ control, name: "items" });
+
+  function onCheckboxChange(event, item) {
+    setRerenderer(!rerenderer)
+    props.onCheckboxChange(event, item, getValues())
+  }
 
   return fields.map((item, index) => (
     <ChecklistItem
@@ -121,7 +127,7 @@ function ChecklistRunForm(props) {
       item={item}
       index={index}
       runMode={true}
-      onCheckboxChange={(event, item) => props.onCheckboxChange(event, item, getValues())}
+      onCheckboxChange={(event, item) => onCheckboxChange(event, item)}
       register={register}
       isChecked={getValues()[`items[${index}].is_checked`]}
     />

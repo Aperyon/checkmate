@@ -1,9 +1,10 @@
 import React from "react";
 
+import { Checkbox } from '../common/components/formStuff';
+
 
 export default function ChecklistItem(props) {
   const { item } = props;
-  console.log('Ischecked', props.isChecked)
   if (props.runMode) {
     return (
       <li className="ChecklistItem">
@@ -14,7 +15,9 @@ export default function ChecklistItem(props) {
               type="checkbox"
               onChange={(e) => props.onCheckboxChange(e, item)}
               ref={props.register()}
+              style={{ display: 'none' }}
             />
+            <Checkbox isChecked={props.isChecked} />
             {item.text}
           </label>
         )}
