@@ -12,8 +12,12 @@ def build_and_deploy(version, build_backend=True, build_frontend=True):
 
 @task
 def build(version, build_backend=True, build_frontend=True):
-    local(f'git tag {version}')
-    local('git push')
+    try:
+        local(f'git tag {version}')
+        local('git push')
+    except:
+        pass
+
     with lcd('code'):
         if build_backend:
             local(f'docker build -t checkmate-backend:{version} .')
@@ -48,4 +52,6 @@ def deploy(version, upload_collectstatic=False):
         local(f'aws s3 sync temp_django_static s3://app.checkma.it')
         local('docker rm -f checkmate')
         local('rm -rf temp_django_static')
+
+    run('docker rmi $(docker images -aq)')
 
