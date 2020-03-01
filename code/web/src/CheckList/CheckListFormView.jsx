@@ -32,7 +32,10 @@ export default function ChecklistFormView() {
     unsetCurrentChecklist,
   } = React.useContext(ChecklistContext)
   React.useEffect(() => {
-    fetchCurrentChecklist(checklistID)
+    if (checklistID) {
+      fetchCurrentChecklist(checklistID)
+    }
+
     return () => {
       unsetCurrentChecklist();
     }
