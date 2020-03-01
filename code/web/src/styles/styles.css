@@ -190,6 +190,9 @@
   .ChecklistItemView .ChecklistDescription {
     font-size: 20px !important;
   }
+  .ChecklistItemView .ChecklistRunList {
+    display: none;
+  }
 }
 .Button {
   padding: 10px 20px;
