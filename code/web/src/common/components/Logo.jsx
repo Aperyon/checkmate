@@ -1,13 +1,12 @@
 import React from 'react';
 
-import Icon from './Icon';
-
+import { ReactComponent as LogoSVG } from '../../assets/logo.svg';
 
 export default function Logo() {
   // return (
   //   <Icon icon="check" />
   // )
   return (
-    <>CheckMa.it</>
+    <LogoSVG className="LogoSVG" />
   )
 }

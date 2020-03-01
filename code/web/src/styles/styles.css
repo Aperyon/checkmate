@@ -352,6 +352,10 @@
   max-width: 100%;
   background: white;
 }
+.Nav .LogoSVG {
+  max-height: 1em;
+  width: auto;
+}
 .Nav > div {
   display: flex;
   align-items: center;
