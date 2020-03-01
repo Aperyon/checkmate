@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Button } from '../components/Buttons';
 import Icon from '../components/Icon'
+import { ReactComponent as CheckedCheckboxSVG } from '../../assets/Checked-Checkbox.svg';
+import { ReactComponent as UncheckedCheckboxSVG } from '../../assets/Checkbox.svg';
 
 function renderField(name, register, placeholder, onChange, className, type, error) {
   if (type === 'textarea') {
@@ -51,4 +53,19 @@ export function FieldArrayInputGroup({ label, name, register, placeholder, onCha
       {error && <p className="Error">{error}</p>}
     </div>
   )
+}
+
+export function Checkbox({ isChecked }) {
+  console.log('Render')
+  return isChecked ? (
+    <CheckedCheckboxSVG style={{
+      "max-height": '50px',
+      "max-width": '50px'
+    }} />
+  ) : (
+      <UncheckedCheckboxSVG style={{
+        "max-height": '50px',
+        "max-width": '50px'
+      }} />
+    )
 }
