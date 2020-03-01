@@ -12,6 +12,8 @@ def build_and_deploy(version, build_backend=True, build_frontend=True):
 
 @task
 def build(version, build_backend=True, build_frontend=True):
+    local(f'git tag {version}')
+    local('git push')
     with lcd('code'):
         if build_backend:
             local(f'docker build -t checkmate-backend:{version} .')
