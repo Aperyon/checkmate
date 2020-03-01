@@ -37,6 +37,7 @@
     list-style: none
     margin: 0
     padding: 0
+    margin-bottom: $padding
 
     label
       display: flex
@@ -45,11 +46,13 @@
 
     .ChecklistItem
       font-size: $large-font-size
-      padding: $small-padding 0
-      margin-bottom: $padding
 
       input[type="checkbox"]
         margin-right: $padding
+      svg
+        margin-left: -$small-padding
+        margin-right: $padding
+
 
 .ChecklistTitleContainer
   display: flex

@@ -123,6 +123,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-bottom: 20px;
 }
 .ChecklistItemView ul.ChecklistList label, .ChecklistItemView ul.ChecklistItems label {
   display: flex;
@@ -131,10 +132,12 @@
 }
 .ChecklistItemView ul.ChecklistList .ChecklistItem, .ChecklistItemView ul.ChecklistItems .ChecklistItem {
   font-size: 32px;
-  padding: 10px 0;
-  margin-bottom: 20px;
 }
 .ChecklistItemView ul.ChecklistList .ChecklistItem input[type=checkbox], .ChecklistItemView ul.ChecklistItems .ChecklistItem input[type=checkbox] {
+  margin-right: 20px;
+}
+.ChecklistItemView ul.ChecklistList .ChecklistItem svg, .ChecklistItemView ul.ChecklistItems .ChecklistItem svg {
+  margin-left: -10px;
   margin-right: 20px;
 }
 
