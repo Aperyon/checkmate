@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Button } from '../components/Buttons';
 import Icon from '../components/Icon'
-import { ReactComponent as CheckedCheckboxSVG } from '../../assets/Checked-Checkbox.svg';
-import { ReactComponent as UncheckedCheckboxSVG } from '../../assets/Checkbox.svg';
+import { ReactComponent as CheckedCheckboxSVG } from '../../assets/Checked-Checkbox-Frame-Transparent.svg';
+import { ReactComponent as UncheckedCheckboxSVG } from '../../assets/Unchecked-Checkbox-Frame-Transparent.svg';
 
 function renderField(name, register, placeholder, onChange, className, type, error) {
   if (type === 'textarea') {

@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ActionButton } from '../common/components/Buttons';
-import checklistPNG from '../assets/checklist.png'
-import checklistRunsPNG from '../assets/checklist-runs.png'
+import ChecklistTemplatePNG from '../assets/Checklist-Template.png'
+import ChecklistRunsPNG from '../assets/Checklist-Runs.png'
 import Title from '../common/components/Title';
 import Subtitle from '../common/components/Subtitle';
 import Icon from '../common/components/Icon';
@@ -22,7 +22,7 @@ export default function Onboarding() {
       <div>
         <Link to="/checklists/new/" className="Step">
           <div>
-            <img src={checklistPNG} className="OnboardingImage" />
+            <img src={ChecklistTemplatePNG} className="OnboardingImage" />
           </div>
           <div>
             <p className="OnboardingDescriptionTitleText">
@@ -35,7 +35,7 @@ export default function Onboarding() {
         </Link>
         <Link to="/checklists/new/" className="Step">
           <div>
-            <img src={checklistRunsPNG} className="OnboardingImage" />
+            <img src={ChecklistRunsPNG} className="OnboardingImage" />
           </div>
           <div>
             <p className="OnboardingDescriptionTitleText">
