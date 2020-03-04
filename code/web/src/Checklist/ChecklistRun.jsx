@@ -49,7 +49,9 @@ export default function ChecklistRun() {
 
     const checkFields = getCheckFields(fields)
     if (isAllChecked(checkFields)) {
-      alertRunIsComplete()
+      setTimeout(() => {
+        alertRunIsComplete()
+      })
     }
 
     updateChecklistRunItem(item, newValue)
