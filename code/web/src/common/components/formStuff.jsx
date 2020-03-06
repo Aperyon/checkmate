@@ -44,7 +44,12 @@ export function FieldArrayInputGroup({ label, name, register, placeholder, onCha
   return (
     <div className="InputGroup FieldArrayInputGroup">
       <div className="InputBlock">
-        <Button className="Small NoBorder" onClick={remove} type="button">
+        <Button
+          className="Small NoBorder"
+          onClick={remove}
+          type="button"
+          tabIndex="-1"
+        >
           <Icon icon="times" className="NoMargin" />
         </Button>
         {label && (<label className={`${error ? 'Error' : ''}`}>{label}</label>)}

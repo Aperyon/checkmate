@@ -37,6 +37,7 @@ export function ActionButton(props) {
 export function Button(props) {
   return (
     <button
+      {...props}
       className={`Button ${props.className ? props.className : ''}`}
       type={props.type || "button"}
       onClick={props.onClick || (() => { })}
