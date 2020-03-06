@@ -209,6 +209,9 @@
 .Button.Small {
   padding: 6.6666666667px 10px;
 }
+.Button.NoBorder {
+  border-color: transparent;
+}
 .Button .Icon, .Button .icon {
   margin-right: 10px;
 }
