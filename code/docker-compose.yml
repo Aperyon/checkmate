@@ -17,6 +17,8 @@ services:
       - "./backend:/checkmate"
     environment:
       - PYTHONUNBUFFERED=1
+    env_file:
+      - config/local/vars.env
     command: 'bash -c "cd /checkmate && ./manage.py runserver 0.0.0.0:8000"'
   web:
     ports:
