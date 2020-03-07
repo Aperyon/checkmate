@@ -76,12 +76,13 @@ class CheckListSerializer(serializers.HyperlinkedModelSerializer):
 
 class CheckListRunSerializer(serializers.HyperlinkedModelSerializer):
     checklist = serializers.HyperlinkedRelatedField(view_name='checklist-detail', queryset=m.CheckList.objects.all())
+    checklist_pk = serializers.IntegerField(source='checklist.pk', read_only=True)
     items = ChecklistRunItemSerializer(many=True, read_only=True)
 
     class Meta:
         model = m.CheckListRun
-        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items', 'is_closed')
-        read_only_fields = ('title', 'description')
+        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items', 'is_closed', 'checklist_pk', 'name')
+        read_only_fields = ('title', 'description', 'checklist')
 
     def create(self, validated_data):
         checklist = validated_data.pop('checklist')

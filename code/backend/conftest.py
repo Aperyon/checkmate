@@ -12,3 +12,15 @@ def api_client():
 @pytest.fixture
 def user():
     return um.User.objects.create_user('test@email.com', 'Complexpassword123')
+
+
+@pytest.fixture
+def user2():
+    return um.User.objects.create_user('test2@email.com', 'Complexpassword123')
+
+
+@pytest.fixture
+def api_user_client(user):
+    client = APIClient()
+    client.force_authenticate(user=user)
+    return client

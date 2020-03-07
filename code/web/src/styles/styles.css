@@ -119,6 +119,17 @@
 .ChecklistItemView .ChecklistRunList {
   flex: 1;
 }
+.ChecklistItemView .ChecklistRunList ul {
+  list-style: none;
+  padding: 0;
+}
+.ChecklistItemView .ChecklistRunList ul li {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.ChecklistItemView .ChecklistRunList ul li.Active {
+  font-weight: bold;
+}
 .ChecklistItemView ul.ChecklistList, .ChecklistItemView ul.ChecklistItems {
   list-style: none;
   margin: 0;
@@ -149,7 +160,7 @@
 }
 
 .ChecklistTitle {
-  font-size: 64px;
+  font-size: 64px !important;
   font-weight: normal;
   margin: 0;
   margin-bottom: 10px;
@@ -159,7 +170,7 @@
 }
 
 .ChecklistDescription {
-  font-size: 30px;
+  font-size: 30px !important;
   margin: 0;
   margin-bottom: 60px;
   font-weight: normal;
@@ -354,6 +365,8 @@
   width: 100%;
   max-width: 100%;
   background: white;
+  top: 0;
+  left: 0;
 }
 .Nav .LogoSVG {
   max-height: 1em;
@@ -409,6 +422,9 @@
 .Form .InputGroup {
   margin-bottom: 20px;
 }
+.Form .InputGroup label {
+  font-size: 32px;
+}
 .Form .InputGroup label.Error {
   color: #e64545;
 }
@@ -418,6 +434,8 @@
 }
 .Form .InputGroup input, .Form .InputGroup textarea {
   width: 100%;
+  font-size: 20px;
+  padding: 10px;
 }
 .Form .InputGroup input.Error, .Form .InputGroup textarea.Error {
   border-color: #e64545;

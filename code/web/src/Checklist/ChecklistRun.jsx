@@ -9,6 +9,7 @@ import ChecklistItems from './ChecklistItems';
 import ChecklistItem from './ChecklistItem';
 import { ActionButton, BackButton } from '../common/components/Buttons';
 import Icon from '../common/components/Icon';
+import { InputGroup } from '../common/components/formStuff';
 
 import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext';
 import ChecklistRunList from "./ChecklistRunList";
@@ -33,6 +34,7 @@ function getCheckFields(fieldsObj) {
 
 
 export default function ChecklistRun() {
+  console.log('Rendering')
   let history = useHistory();
   const { id: checklistRunID } = useParams()
   const {
@@ -65,18 +67,22 @@ export default function ChecklistRun() {
     }
   }
 
+  async function fetchFilteredChecklistRuns(checklist_pk) {
+    await fetchChecklistRuns({ filters: { checklist: checklist_pk } })
+  }
+
   React.useEffect(() => {
     (async () => {
       const response = await fetchChecklistRun(checklistRunID);
       if (!response.error) {
-        fetchChecklistRuns({ filters: { checklist: response.data.checklist } })
+        fetchFilteredChecklistRuns(response.data.checklist_pk)
       }
     })()
 
     return () => {
       unsetCurrentChecklistRun()
     }
-  }, [])
+  }, [checklistRunID])
 
   if (!checklistRun) {
     return <h1>Loading</h1>
@@ -101,11 +107,16 @@ export default function ChecklistRun() {
           <ChecklistRunForm
             checklistRun={checklistRun}
             onCheckboxChange={onCheckboxChange}
+            updateChecklistRun={updateChecklistRun}
+            fetchFilteredChecklistRuns={fetchFilteredChecklistRuns}
           />
         </ChecklistItems>
         <BackButton to="/checklists/">Go back</BackButton>
       </div>
-      <ChecklistRunList checklistRuns={checklistRuns} />
+      <ChecklistRunList
+        checklistRuns={checklistRuns}
+        activeChecklistRunId={checklistRunID}
+      />
     </div>
   );
 }
@@ -113,8 +124,11 @@ export default function ChecklistRun() {
 
 function ChecklistRunForm(props) {
   const [rerenderer, setRerenderer] = React.useState(false);
-  const { register, control, getValues } = useForm({
-    defaultValues: { items: props.checklistRun.items }
+  const { register, control, getValues, handleSubmit } = useForm({
+    defaultValues: {
+      items: props.checklistRun.items,
+      name: props.checklistRun.name,
+    }
   });
   const { fields } = useFieldArray({ control, name: "items" });
 
@@ -123,15 +137,31 @@ function ChecklistRunForm(props) {
     props.onCheckboxChange(event, item, getValues())
   }
 
-  return fields.map((item, index) => (
-    <ChecklistItem
-      key={item.url}
-      item={item}
-      index={index}
-      runMode={true}
-      onCheckboxChange={(event, item) => onCheckboxChange(event, item)}
-      register={register}
-      isChecked={getValues()[`items[${index}].is_checked`]}
-    />
-  ))
+  async function onSubmit(values) {
+    await props.updateChecklistRun(props.checklistRun, values);
+    await props.fetchFilteredChecklistRuns(props.checklistRun.checklist_pk)
+    setTimeout(() => { alert('Run name updated!') }, 0)
+  }
+
+  return (
+    <form className="Form" onSubmit={handleSubmit(onSubmit)}>
+      <InputGroup
+        type="text"
+        register={register}
+        name="name"
+        label="Run name"
+      />
+      {fields.map((item, index) => (
+        <ChecklistItem
+          key={item.url}
+          item={item}
+          index={index}
+          runMode={true}
+          onCheckboxChange={(event, item) => onCheckboxChange(event, item)}
+          register={register}
+          isChecked={getValues()[`items[${index}].is_checked`]}
+        />
+      ))}
+    </form>
+  )
 }

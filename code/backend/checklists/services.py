@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from . import models as m
 
 
@@ -7,6 +9,7 @@ def prepare_run(checklist, items, user, save=False):
         title=checklist.title,
         description=checklist.description,
         user=checklist.user,
+        name=timezone.now().strftime('%Y-%m-%d')
     )
     checklist.latest_run = checklist_run
     checklist.is_latest_run_complete = False
