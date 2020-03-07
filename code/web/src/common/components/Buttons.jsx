@@ -57,3 +57,15 @@ export function BackButton(props) {
 export function ButtonContainer(props) {
   return <div className="ButtonContainer" style={{ ...props.style }}>{props.children}</div>
 }
+
+
+export function NewChecklistButton(props) {
+  return (
+    <Link to="/checklists/new/">
+      <ActionButton>
+        <Icon icon="plus" />
+        <span>New checklist</span>
+      </ActionButton>
+    </Link>
+  )
+}

@@ -12,10 +12,9 @@ export default function ChecklistRunList({ checklistRuns, activeChecklistRunId }
       </div>
     )
   }
-  console.log(activeChecklistRunId, checklistRuns.map(cr => cr.pk))
   return (
     <div className="ChecklistRunList">
-      <h3>Runs</h3>
+      <h3 className="Title">Runs</h3>
       <ul>
         {checklistRuns.map(checklistRun => (
           <ChecklistRunItem

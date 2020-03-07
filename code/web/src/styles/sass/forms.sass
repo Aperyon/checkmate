@@ -10,11 +10,12 @@
     input
       border: 1px solid $black
       box-shadow: none
+      outline: none
+      padding: 0 !important
 
     input, textarea
       width: 100%
       font-size: $font-size
-      padding: $small-padding
 
       &.Error
         border-color: $red
@@ -29,6 +30,10 @@
       li
 
   .FieldArrayInputGroup
+
+    &.InputGroup
+      margin-bottom: 0
+
     .InputBlock
       display: flex
       justify-content: space-between
@@ -37,13 +42,19 @@
       flex: 1
       font-size: $large-font-size
       border: none
+      padding: 0
 
-
-      &:active
-        border: none !important
+      &:active,&:focus
+        border-color: transparent !important
 
     .Button
       margin-right: $padding
+
+      &:disabled
+        cursor: default
+
+        .Icon
+          color: transparent
 
   p.Error
       color: $red

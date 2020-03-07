@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 .ChecklistListView {
   padding: 0 20%;
   padding-top: 10vh;
@@ -21,11 +22,11 @@
 .ChecklistListView .ChecklistList .ChecklistListItem {
   display: flex;
   justify-content: space-between;
-  border: 1px solid #333;
+  border: 1px solid #cecece;
   border-width: 0;
   border-bottom-width: 1px;
   border-collapse: collapse;
-  padding: 20px 20px;
+  padding: 20px 0;
 }
 .ChecklistListView .ChecklistList .ChecklistListItem:last-child {
   border-width: 0;
@@ -114,7 +115,7 @@
 }
 .ChecklistItemView > div {
   flex: 2;
-  padding: 20px;
+  padding-right: 20px;
 }
 .ChecklistItemView .ChecklistRunList {
   flex: 1;
@@ -160,10 +161,8 @@
 }
 
 .ChecklistTitle {
-  font-size: 64px !important;
   font-weight: normal;
   margin: 0;
-  margin-bottom: 10px;
 }
 .ChecklistTitle.Small {
   font-size: 30px;
@@ -431,11 +430,12 @@
 .Form .InputGroup input {
   border: 1px solid #333;
   box-shadow: none;
+  outline: none;
+  padding: 0 !important;
 }
 .Form .InputGroup input, .Form .InputGroup textarea {
   width: 100%;
   font-size: 20px;
-  padding: 10px;
 }
 .Form .InputGroup input.Error, .Form .InputGroup textarea.Error {
   border-color: #e64545;
@@ -447,6 +447,9 @@
 .Form .InputGroup ul {
   list-style: none;
 }
+.Form .FieldArrayInputGroup.InputGroup {
+  margin-bottom: 0;
+}
 .Form .FieldArrayInputGroup .InputBlock {
   display: flex;
   justify-content: space-between;
@@ -455,12 +458,19 @@
   flex: 1;
   font-size: 32px;
   border: none;
+  padding: 0;
 }
-.Form .FieldArrayInputGroup input:active, .Form .FieldArrayInputGroup textarea:active {
-  border: none !important;
+.Form .FieldArrayInputGroup input:active, .Form .FieldArrayInputGroup input:focus, .Form .FieldArrayInputGroup textarea:active, .Form .FieldArrayInputGroup textarea:focus {
+  border-color: transparent !important;
 }
 .Form .FieldArrayInputGroup .Button {
   margin-right: 20px;
+}
+.Form .FieldArrayInputGroup .Button:disabled {
+  cursor: default;
+}
+.Form .FieldArrayInputGroup .Button:disabled .Icon {
+  color: transparent;
 }
 .Form p.Error {
   color: #e64545;
@@ -533,23 +543,47 @@
     font-size: 1.25rem !important;
   }
 }
+.HeroTitle {
+  font-size: 50px !important;
+  font-family: "IM Fell English";
+  font-weight: normal;
+}
+
+.HeroSubTitle {
+  font-size: 20px !important;
+  font-family: "Nunito";
+  font-weight: normal;
+}
+
+.Title {
+  font-size: 22px !important;
+  font-family: "IM Fell English";
+  font-weight: normal;
+}
+
+p {
+  font-size: 18px !important;
+  font-family: "Nunito";
+  font-weight: normal;
+}
+
+.TitleFont {
+  font-family: "IM Fell English";
+  font-weight: normal;
+}
+
 html, body {
   margin: 0;
   padding: 0;
 }
 
 *:not(i) {
-  font-family: "IM Fell English" !important;
   box-sizing: border-box;
   color: #333;
 }
 
 a:hover {
   color: #333 !important;
-}
-
-.Title {
-  font-size: 64px;
 }
 
 /*# sourceMappingURL=styles.css.map */

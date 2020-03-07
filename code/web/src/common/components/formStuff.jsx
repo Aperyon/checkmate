@@ -40,7 +40,8 @@ export function InputGroup({ label, name, register, placeholder, onChange, error
   )
 }
 
-export function FieldArrayInputGroup({ label, name, register, placeholder, onChange, error, className, type, remove }) {
+export function FieldArrayInputGroup({ label, name, register, placeholder, onChange, error, className, type, remove, isRemoveButtonDisabled }) {
+  className += ' TitleFont'
   return (
     <div className="InputGroup FieldArrayInputGroup">
       <div className="InputBlock">
@@ -49,6 +50,7 @@ export function FieldArrayInputGroup({ label, name, register, placeholder, onCha
           onClick={remove}
           type="button"
           tabIndex="-1"
+          disabled={isRemoveButtonDisabled}
         >
           <Icon icon="times" className="NoMargin" />
         </Button>

@@ -3,13 +3,13 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 
-import ChecklistTitle from './ChecklistTitle';
 import ChecklistDescription from './ChecklistDescription';
 import ChecklistItems from './ChecklistItems';
 import ChecklistItem from './ChecklistItem';
 import { ActionButton, BackButton } from '../common/components/Buttons';
 import Icon from '../common/components/Icon';
 import { InputGroup } from '../common/components/formStuff';
+import { HeroTitle } from '../common/components/Title';
 
 import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext';
 import ChecklistRunList from "./ChecklistRunList";
@@ -93,7 +93,7 @@ export default function ChecklistRun() {
       <div>
         <div className="ChecklistTitleContainer">
           <div>
-            <ChecklistTitle>{checklistRun.title}</ChecklistTitle>
+            <HeroTitle>{checklistRun.title}</HeroTitle>
           </div>
           <div>
             <ActionButton onClick={onCloseClick}>

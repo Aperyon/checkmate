@@ -8,7 +8,7 @@ import {
 
 import './styles/styles.css';
 
-import ChecklistList from './ChecklistList/ChecklistList';
+import ChecklistListView from './ChecklistList/ChecklistListView';
 import ChecklistRun from './Checklist/ChecklistRun';
 import ChecklistFormView from './Checklist/ChecklistFormView';
 import Login from './Auth/Login';
@@ -66,7 +66,7 @@ function App() {
           <Logout />
         </Route>
         <PrivateRoute exact path="/checklists/">
-          <ChecklistList />
+          <ChecklistListView />
         </PrivateRoute>
         <PrivateRoute exact path="/checklists/new/">
           <ChecklistFormView />

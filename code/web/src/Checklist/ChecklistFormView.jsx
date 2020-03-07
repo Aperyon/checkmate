@@ -79,7 +79,6 @@ function ChecklistForm({ checklist }) {
   let defaultValues = {
     items: [
       { text: "" },
-      { text: "" },
     ]
   }
   if (checklist) {
@@ -136,15 +135,15 @@ function ChecklistForm({ checklist }) {
         name="title"
         placeholder="Title"
         register={register}
-        error={errors.title ?.message}
-        className="ChecklistTitle"
+        error={errors.title?.message}
+        className="ChecklistTitle HeroTitle"
       />
       <InputGroup
         name="description"
         placeholder="Description"
         register={register}
-        error={errors.description ?.message}
-        className="ChecklistDescription"
+        error={errors.description?.message}
+        className="ChecklistDescription HeroSubTitle"
       />
 
       {fields.map((item, index) => (
@@ -155,17 +154,14 @@ function ChecklistForm({ checklist }) {
             placeholder="item"
             onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
             remove={() => remove(index)}
+            isRemoveButtonDisabled={!item.text}
           />
         </div >
       ))
       }
 
       <ButtonContainer style={{ justifyContent: 'space-between' }}>
-        <div>
-          <Button type="button" onClick={() => append({ name: "item" })}>
-            <Icon icon="plus" />Add new item
-        </Button>
-        </div>
+        <div />
         <div>
           <Link to="/checklists/">
             <Button>Back</Button>
@@ -183,11 +179,17 @@ function ChecklistForm({ checklist }) {
 function ChecklistTips() {
   return (
     <div className="ChecklistTips">
-      <h3 className="TipsTitle">Tips for making a good checklist</h3>
+      <h3 className="Title">Tips for making a good checklist</h3>
       <ul>
-        <li>Each item is actionable</li>
-        <li>Add Pause Points as needed</li>
-        <li>Start each item with a verb (simple present tense)</li>
+        <li><p>
+          Each item is actionable
+        </p></li>
+        <li><p>
+          Add Pause Points as needed
+        </p></li>
+        <li><p>
+          Start each item with a verb (simple present tense)
+        </p></li>
       </ul>
     </div>
   )

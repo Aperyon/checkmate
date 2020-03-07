@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ActionButton } from '../common/components/Buttons';
 import ChecklistTemplatePNG from '../assets/Checklist-Template.png'
 import ChecklistRunsPNG from '../assets/Checklist-Runs.png'
-import Title from '../common/components/Title';
+import { HeroTitle } from '../common/components/Title';
 import Subtitle from '../common/components/Subtitle';
 import Icon from '../common/components/Icon';
 
@@ -12,9 +12,9 @@ export default function Onboarding() {
   return (
     <div className="View ChecklistListView Onboarding" >
       <div className="TitleContainer">
-        <Title>
+        <HeroTitle>
           Welcome, you productivity god!
-        </Title>
+        </HeroTitle>
         <Subtitle>
           Our brain is fantastic at generating ideas, but terrible at storing them.
         </Subtitle>
