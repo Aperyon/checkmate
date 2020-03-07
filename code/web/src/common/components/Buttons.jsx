@@ -64,7 +64,7 @@ export function NewChecklistButton(props) {
     <Link to="/checklists/new/">
       <ActionButton>
         <Icon icon="plus" />
-        <span>New checklist</span>
+        <span>Checklist</span>
       </ActionButton>
     </Link>
   )
