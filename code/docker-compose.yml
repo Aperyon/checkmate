@@ -35,3 +35,10 @@ services:
       - "./web/src/styles:/checkmate/src/styles"
     working_dir: '/checkmate/src/styles'
     command: 'sass --watch styles.sass:styles.css'
+  landing_styles:
+    build:
+      context: ./web
+    volumes:
+      - "./landing/static/css/:/landing/static/css"
+    working_dir: '/landing/static/css'
+    command: 'sass --watch styles.sass:styles.css'

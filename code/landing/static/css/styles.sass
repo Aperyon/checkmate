@@ -1,0 +1,89 @@
+$yellow: #F1D332
+$red: #E64545
+$white: white
+
+html, body
+  margin: 0
+  padding: 0
+
+*
+  font-family: "Lato"
+  box-sizing: border-box
+  margin: 0
+
+nav.Nav
+  position: absolute
+  top: 0
+  left: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 20px
+  width: 100%
+
+  img.Logo
+    max-height: 30px
+
+section
+  padding: 100px 40px
+
+  &#HeroSection
+    background-color: $yellow
+    padding-bottom: 100px
+
+    .HeroTitle
+      margin-top: 100px
+
+    p.HeroSubtitle
+      margin-top: 40px
+
+  &#Examples
+    h3
+      margin-bottom: 20px
+      margin-top: 50px
+
+  &.DarkBG
+    background-color: #333
+    color: $white
+
+.HeroTitle
+  font-family: "IM Fell English"
+  font-size: 50px
+
+.HeroSubtitle
+  font-size: 22px
+
+.Title
+  font-family: "IM Fell English"
+  font-size: 24px
+  margin-bottom: 20px
+
+  &:not(:first-child)
+    margin-top: 40px
+
+.SubTitle
+  font-size: 20px
+
+p
+  font-size: 18px
+
+.TextCenter
+  text-align: center
+
+.ButtonWrapper
+  display: flex
+  justify-content: center
+  margin-top: 100px
+
+a
+  text-decoration: none
+
+  &.Button
+    display: inline-block
+    padding: 20px 50px
+    font-size: 22px
+    font-weight: bold
+
+  &.CTA
+    color: $white
+    background-color: $red

@@ -45,6 +45,7 @@ def deploy(version, upload_collectstatic=False):
         print('There was no running docker container with name `checkmate`')
     run(f'docker run -d --name checkmate --env-file ~/checkmate/config/checkmate.env -p 80:80 -p 443:443 {image}')
     local(f'aws s3 sync code/web/build s3://app.checkma.it')
+    local(f'aws s3 sync code/landing s3://checkma.it')
 
     if upload_collectstatic:
         local(f'docker run --name checkmate {image} bash -c "cd /checkmate && ./manage.py collectstatic --no-input"')
