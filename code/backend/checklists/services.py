@@ -39,7 +39,6 @@ def toggle_checklist_run_item(run_item, new_value, other_items, save=False):
     checklist = run_item.checklist_run.checklist
     run_item.is_checked = new_value
     if new_value:
-
         if all([i.is_checked for i in other_items]):
             checklist_run.is_closed = True
             checklist.is_latest_run_complete = True

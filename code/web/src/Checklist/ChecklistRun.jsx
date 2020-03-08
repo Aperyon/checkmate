@@ -17,8 +17,8 @@ import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext'
 import ChecklistRunList from "./ChecklistRunList";
 
 
-function alertRunIsComplete() {
-  alert('Your checklist run is complete.\nThe next time you click Run it will start a new one.')
+function alertRunIsArchived() {
+  alert('This run is archived.\nThe next time you click Run it will start a new one.')
 }
 
 
@@ -52,11 +52,12 @@ export default function ChecklistRunView() {
 
   async function onCheckboxChange(event, item, fields) {
     const newValue = event.target.checked
-
     const checkFields = getCheckFields(fields)
     if (isAllChecked(checkFields)) {
-      setTimeout(() => {
-        alertRunIsComplete()
+      setTimeout(async () => {
+        await updateChecklistRun(checklistRun, { is_archived: true })
+        await fetchFilteredChecklistRuns(checklistRun.checklist_pk)
+        alertRunIsArchived()
       })
     }
 
@@ -64,25 +65,25 @@ export default function ChecklistRunView() {
     await fetchChecklistRun(checklistRunId)
   }
 
-  async function onCloseClick() {
-    const confirmation = window.confirm('Are you sure you want to to mark this Run as completed?')
-    if (!confirmation) {
-      return;
-    }
+  // async function onCloseClick() {
+  //   const confirmation = window.confirm('Are you sure you want to to mark this Run as completed?')
+  //   if (!confirmation) {
+  //     return;
+  //   }
 
-    const response = await updateChecklistRun(checklistRun, { is_closed: true })
-    if (!response.error) {
-      alert('This run is closed!\nClick Play to start a new run.')
-      history.push('/checklists/')
-    }
-  }
+  //   const response = await updateChecklistRun(checklistRun, { is_closed: true })
+  //   if (!response.error) {
+  //     alert('This run is closed!\nClick Play to start a new run.')
+  //     history.push('/checklists/')
+  //   }
+  // }
 
   async function fetchFilteredChecklistRuns(checklist_pk) {
     const filters = { checklist: checklist_pk }
     if (!showArchiveds) {
       filters.is_archived = false
     }
-    await fetchChecklistRuns({ filters })
+    return await fetchChecklistRuns({ filters })
   }
 
   React.useEffect(() => {
@@ -104,7 +105,14 @@ export default function ChecklistRunView() {
     const confirmation = window.confirm('Are you sure you want to delete this Run?')
     if (confirmation) {
       await deleteChecklistRun(checklistRun)
-      history.push('/checklists/')
+      const response = await fetchFilteredChecklistRuns(checklistRun.checklist_pk)
+      const newRuns = response.data
+      const latestRun = newRuns[0]
+      if (latestRun) {
+        history.push(`/checklist-runs/${latestRun.pk}`)
+      } else {
+        history.push(`/checklists/`)
+      }
     }
   }
 
@@ -112,7 +120,7 @@ export default function ChecklistRunView() {
     const confirmation = window.confirm('Are you sure you want to archive this Run?')
     if (confirmation) {
       await updateChecklistRun(checklistRun, { is_archived: true })
-      history.push('/checklists/')
+      await fetchFilteredChecklistRuns(checklistRun.checklist_pk)
     }
   }
 
@@ -131,7 +139,6 @@ export default function ChecklistRunView() {
       checklistRuns={checklistRuns}
       checklistRunId={checklistRunId}
       onCheckboxChange={onCheckboxChange}
-      onCloseClick={onCloseClick}
       updateChecklistRun={updateChecklistRun}
       fetchFilteredChecklistRuns={fetchFilteredChecklistRuns}
       onDeleteRunClick={onDeleteRunClick}
@@ -271,6 +278,30 @@ function ChecklistRunForm(props) {
   });
   const { fields } = useFieldArray({ control, name: "items" });
 
+  function _handleKeyDown(event) {
+    switch (event.keyCode) {
+      case 69:  // e or E
+        if (!props.editMode) {
+          props.setEditMode(true)
+        }
+        return
+      case 88:  // x or X
+        props.onDeleteRunClick(props.checklistRun);
+        return
+      case 65:  // a or A
+        props.onArchiveClick(props.checklistRun);
+        return
+    }
+  }
+
+  React.useEffect(() => {
+    document.addEventListener("keydown", _handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", _handleKeyDown);
+    }
+  }, [])
+
   function onCheckboxChange(event, item) {
     setRerenderer(!rerenderer)
     props.onCheckboxChange(event, item, getValues())
@@ -289,11 +320,6 @@ function ChecklistRunForm(props) {
           >
             <Dropdown.Menu>
               <Dropdown.Item
-                onClick={() => props.onCloseClick(props.checklistRun)}
-              >
-                <Icon icon="check" /> Complete
-                </Dropdown.Item>
-              <Dropdown.Item
                 onClick={props.onNewRunClick}
               >
                 <Icon icon="plus" /> New Run
@@ -302,7 +328,7 @@ function ChecklistRunForm(props) {
                 onClick={() => props.onArchiveClick(props.checklistRun)}
               >
                 <Icon icon="archive" /> Archive
-                </Dropdown.Item>
+              </Dropdown.Item>
               <Dropdown.Item
                 onClick={() => props.onDeleteRunClick(props.checklistRun)}
               >
