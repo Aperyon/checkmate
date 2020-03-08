@@ -3,15 +3,15 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useForm, useFieldArray } from 'react-hook-form';
 import _ from 'lodash';
 
-import ChecklistDescription from './ChecklistDescription';
-import ChecklistItems from './ChecklistItems';
-import ChecklistItem from './ChecklistItem';
+import { ChecklistItemRunMode, ChecklistItemEditMode } from './ChecklistItem';
 import { View, TitleContainer } from '../common/components/View';
-import { BackButton, ChecklistCloseButton, ButtonContainer } from '../common/components/Buttons';
+import { Button, BackButton, ButtonContainer, ActionButton } from '../common/components/Buttons';
 import { InputGroup } from '../common/components/formStuff';
-import { HeroTitle } from '../common/components/Title';
+import { HeroTitle, HeroSubTitle } from '../common/components/Title';
 import { Dropdown } from 'semantic-ui-react';
 import Icon from '../common/components/Icon';
+import * as u from './utils';
+import RunEditToggle from './RunEditToggle';
 
 import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext';
 import ChecklistRunList from "./ChecklistRunList";
@@ -36,8 +36,8 @@ function getCheckFields(fieldsObj) {
 
 
 export default function ChecklistRunView() {
-  console.log('Rendering')
   let history = useHistory();
+  const [showArchiveds, setShowArchiveds] = React.useState(false);
   const { id: checklistRunId } = useParams()
   const {
     state: { currentChecklistRun: checklistRun, checklistRuns },
@@ -45,7 +45,9 @@ export default function ChecklistRunView() {
     updateChecklistRunItem,
     unsetCurrentChecklistRun,
     updateChecklistRun,
+    deleteChecklistRun,
     fetchChecklistRuns,
+    createChecklistRun,
   } = React.useContext(ChecklistRunContext);
 
   async function onCheckboxChange(event, item, fields) {
@@ -58,10 +60,16 @@ export default function ChecklistRunView() {
       })
     }
 
-    updateChecklistRunItem(item, newValue)
+    await updateChecklistRunItem(item, newValue)
+    await fetchChecklistRun(checklistRunId)
   }
 
   async function onCloseClick() {
+    const confirmation = window.confirm('Are you sure you want to to mark this Run as completed?')
+    if (!confirmation) {
+      return;
+    }
+
     const response = await updateChecklistRun(checklistRun, { is_closed: true })
     if (!response.error) {
       alert('This run is closed!\nClick Play to start a new run.')
@@ -70,11 +78,16 @@ export default function ChecklistRunView() {
   }
 
   async function fetchFilteredChecklistRuns(checklist_pk) {
-    await fetchChecklistRuns({ filters: { checklist: checklist_pk } })
+    const filters = { checklist: checklist_pk }
+    if (!showArchiveds) {
+      filters.is_archived = false
+    }
+    await fetchChecklistRuns({ filters })
   }
 
   React.useEffect(() => {
     (async () => {
+      console.log('Fetching runs')
       const response = await fetchChecklistRun(checklistRunId);
       if (!response.error) {
         fetchFilteredChecklistRuns(response.data.checklist_pk)
@@ -84,9 +97,31 @@ export default function ChecklistRunView() {
     return () => {
       unsetCurrentChecklistRun()
     }
-  }, [checklistRunId])
+  }, [checklistRunId, showArchiveds])
 
-  if (!checklistRun) {
+
+  async function onDeleteRunClick(checklistRun) {
+    const confirmation = window.confirm('Are you sure you want to delete this Run?')
+    if (confirmation) {
+      await deleteChecklistRun(checklistRun)
+      history.push('/checklists/')
+    }
+  }
+
+  async function onArchiveClick(checklistRun) {
+    const confirmation = window.confirm('Are you sure you want to archive this Run?')
+    if (confirmation) {
+      await updateChecklistRun(checklistRun, { is_archived: true })
+      history.push('/checklists/')
+    }
+  }
+
+  async function onNewRunClick() {
+    const response = await createChecklistRun(checklistRun.checklist);
+    history.push(`/checklist-runs/${response.data.pk}/`)
+  }
+
+  if (!checklistRun || !checklistRuns) {
     return <h1>Loading</h1>
   }
 
@@ -99,6 +134,11 @@ export default function ChecklistRunView() {
       onCloseClick={onCloseClick}
       updateChecklistRun={updateChecklistRun}
       fetchFilteredChecklistRuns={fetchFilteredChecklistRuns}
+      onDeleteRunClick={onDeleteRunClick}
+      onNewRunClick={onNewRunClick}
+      onArchiveClick={onArchiveClick}
+      showArchiveds={showArchiveds}
+      setShowArchiveds={setShowArchiveds}
     />
   )
 }
@@ -112,62 +152,74 @@ function BaseChecklistRunView(props) {
         updateChecklistRun={props.updateChecklistRun}
         onCloseClick={props.onCloseClick}
         fetchFilteredChecklistRuns={props.fetchFilteredChecklistRuns}
+        onDeleteRunClick={props.onDeleteRunClick}
+        onNewRunClick={props.onNewRunClick}
+        onArchiveClick={props.onArchiveClick}
       />
       <ChecklistRunList
         checklistRuns={props.checklistRuns}
         activeChecklistRunId={props.checklistRunId}
+        showArchiveds={props.showArchiveds}
+        setShowArchiveds={props.setShowArchiveds}
       />
     </View>
   )
 }
 
 function ChecklistRunDetails(props) {
+  const [editMode, setEditMode] = React.useState(false);
   return (
     <div className="ChecklistRunDetails">
-      {/* <TitleContainer>
-        <HeroTitle>{props.checklistRun.title} - {props.checklistRun.name}</HeroTitle>
-      </TitleContainer>
-      <ChecklistDescription>{props.checklistRun.description}</ChecklistDescription> */}
+      <RunEditToggle editMode={editMode} setEditMode={setEditMode} />
 
-
-      <ChecklistItems>
-        <ChecklistRunForm
+      {editMode ? (
+        <ChecklistRunEditForm
           checklistRun={props.checklistRun}
           onCheckboxChange={props.onCheckboxChange}
           updateChecklistRun={props.updateChecklistRun}
           fetchFilteredChecklistRuns={props.fetchFilteredChecklistRuns}
+          editMode={true}
+          setEditMode={setEditMode}
         />
-      </ChecklistItems>
-
-      <ButtonContainer style={{ justifyContent: "space-between" }}>
-        <BackButton to="/checklists/" />
-        {/* <ChecklistCloseButton onCloseClick={props.onCloseClick} /> */}
-      </ButtonContainer>
+      ) : (
+          <ChecklistRunForm
+            checklistRun={props.checklistRun}
+            onCheckboxChange={props.onCheckboxChange}
+            updateChecklistRun={props.updateChecklistRun}
+            fetchFilteredChecklistRuns={props.fetchFilteredChecklistRuns}
+            editMode={false}
+            setEditMode={setEditMode}
+            onDeleteRunClick={props.onDeleteRunClick}
+            onNewRunClick={props.onNewRunClick}
+            onCloseClick={props.onCloseClick}
+            onArchiveClick={props.onArchiveClick}
+          />
+        )
+      }
     </div>
   );
 }
 
 
-function ChecklistRunForm(props) {
-  const [rerenderer, setRerenderer] = React.useState(false);
+function ChecklistRunEditForm(props) {
   const { register, control, getValues, handleSubmit, errors } = useForm({
     defaultValues: {
-      items: props.checklistRun.items,
+      items: [...props.checklistRun.items, { text: '' }],
       name: props.checklistRun.name,
       title: props.checklistRun.title,
       description: props.checklistRun.description,
     }
   });
-  const { fields } = useFieldArray({ control, name: "items" });
-
-  function onCheckboxChange(event, item) {
-    setRerenderer(!rerenderer)
-    props.onCheckboxChange(event, item, getValues())
-  }
+  const { fields, remove, append } = useFieldArray({ control, name: "items" });
 
   async function onSubmit(values) {
+    values.items = values.items.filter(i => !!i.text)
+    values.items = values.items.map((item, index) => {
+      return { ...item, order: index }
+    });
     await props.updateChecklistRun(props.checklistRun, values);
     await props.fetchFilteredChecklistRuns(props.checklistRun.checklist_pk)
+    props.setEditMode(false)
   }
 
   return (
@@ -180,24 +232,6 @@ function ChecklistRunForm(props) {
         className="ChecklistTitle HeroTitle"
         label="Title"
       />
-      <ButtonContainer>
-
-        <Dropdown
-          floating
-          direction="left"
-          icon='ellipsis vertical'
-          className='Button MiscButton NoText'
-        >
-          <Dropdown.Menu>
-            <Dropdown.Item><Icon icon="check" /> Complete</Dropdown.Item>
-            <Dropdown.Item><Icon icon="plus" /> New Run</Dropdown.Item>
-            <Dropdown.Item><Icon icon="tag" /> Rename</Dropdown.Item>
-            <Dropdown.Item><Icon icon="bars" /> Run list</Dropdown.Item>
-            <Dropdown.Item><Icon icon="archive" /> Archive</Dropdown.Item>
-            <Dropdown.Item><Icon icon="trash" /> Delete</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </ButtonContainer>
       <InputGroup
         name="description"
         placeholder="Description"
@@ -206,18 +240,95 @@ function ChecklistRunForm(props) {
         className="ChecklistDescription HeroSubTitle"
         label="Description"
       />
-      {fields.map((item, index) => (
-        <ChecklistItem
-          key={item.url}
-          item={item}
-          index={index}
-          runMode={true}
-          onCheckboxChange={(event, item) => onCheckboxChange(event, item)}
-          register={register}
-          isChecked={getValues()[`items[${index}].is_checked`]}
-        />
-      ))}
-      <button type="submit">Save</button>
+      <ul className="ChecklistRunItems">
+        {fields.map((item, index) => (
+          <ChecklistItemEditMode
+            key={item.id}
+            item={item}
+            index={index}
+            register={register}
+            remove={() => remove(index)}
+            onChange={_.debounce(() => { u.handleItemsChange(getValues({ next: true }), append) }, 1)}
+            isRemoveButtonDisabled={!item.text}
+          />
+        ))}
+      </ul>
+      <ButtonContainer style={{ justifyContent: "space-between" }}>
+        <ActionButton type="submit"><Icon icon="check" /> Save</ActionButton>
+        <Button onClick={() => props.setEditMode(false)}>Cancel</Button>
+      </ButtonContainer>
+    </form>
+  )
+}
+
+
+function ChecklistRunForm(props) {
+  const [rerenderer, setRerenderer] = React.useState(false);
+  const { register, unregister, control, getValues } = useForm({
+    defaultValues: {
+      items: props.checklistRun.items,
+    }
+  });
+  const { fields } = useFieldArray({ control, name: "items" });
+
+  function onCheckboxChange(event, item) {
+    setRerenderer(!rerenderer)
+    props.onCheckboxChange(event, item, getValues())
+  }
+
+  return (
+    <form className="Form">
+      <TitleContainer>
+        <HeroTitle>{props.checklistRun.title}</HeroTitle>
+        <ButtonContainer>
+          <Dropdown
+            floating
+            direction="left"
+            icon='ellipsis vertical'
+            className='Button MiscButton NoText'
+          >
+            <Dropdown.Menu>
+              <Dropdown.Item
+                onClick={() => props.onCloseClick(props.checklistRun)}
+              >
+                <Icon icon="check" /> Complete
+                </Dropdown.Item>
+              <Dropdown.Item
+                onClick={props.onNewRunClick}
+              >
+                <Icon icon="plus" /> New Run
+                </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => props.onArchiveClick(props.checklistRun)}
+              >
+                <Icon icon="archive" /> Archive
+                </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => props.onDeleteRunClick(props.checklistRun)}
+              >
+                <Icon icon="trash" /> Delete
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </ButtonContainer>
+      </TitleContainer>
+      <HeroSubTitle>{props.checklistRun.description}</HeroSubTitle>
+
+      <ul className="ChecklistRunItems">
+        {fields.map((item, index) => (
+          <ChecklistItemRunMode
+            key={item.id}
+            item={item}
+            index={index}
+            onCheckboxChange={(event, item) => onCheckboxChange(event, item)}
+            register={register}
+            isChecked={getValues({ nest: true }).items[index].is_checked}
+          />
+        ))}
+      </ul>
+      <ButtonContainer>
+        <BackButton to="/checklists/" />
+      </ButtonContainer>
     </form>
   )
 }

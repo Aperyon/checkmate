@@ -92,3 +92,109 @@ class TestChecklistRunFilters:
         rv = api_user_client.get(f'{run_url}?checklist={cl1.pk}')
         assert rv.status_code == status.HTTP_200_OK
         assert len(rv.data) == 2
+
+
+class TestChecklistRunCreate:
+    def test_create_without_items(self, api_user_client, user):
+        cl = m.CheckList.objects.create(user=user, title='Title', description='Example')
+        m.CheckListItem.objects.create(order=1, text='Item 1', checklist=cl)
+        m.CheckListItem.objects.create(order=2, text='Item 2', checklist=cl)
+
+        rv = api_user_client.post(
+            reverse('checklistrun-list'),
+            {
+                'checklist': reverse('checklist-detail', kwargs={'pk': cl.pk})
+            }
+        )
+        assert rv.status_code == status.HTTP_201_CREATED
+        assert m.CheckListRun.objects.exists()
+
+        run = m.CheckListRun.objects.first()
+        assert run.user == user
+        assert run.checklist == cl
+        assert run.title == 'Title'
+        assert run.description == 'Example'
+        assert run.items.count() == 2
+        assert run.items.first().text == 'Item 1'
+        assert run.items.first().order == 1
+        assert run.items.last().text == 'Item 2'
+        assert run.items.last().order == 2
+
+
+class TestChecklistRunUpdate:
+    def test_remove_field(self, api_user_client, user):
+        cl = m.CheckList.objects.create(user=user)
+        run = m.CheckListRun.objects.create(user=user, checklist=cl)
+        item1 = m.CheckListRunItem.objects.create(checklist_run=run, order=1, text='Yolo')
+        item2 = m.CheckListRunItem.objects.create(checklist_run=run, order=2, text='Yolo')
+        item3 = m.CheckListRunItem.objects.create(checklist_run=run, order=3, text='Yolo')
+        item4 = m.CheckListRunItem.objects.create(checklist_run=run, order=4, text='Yolo')
+
+        rv = api_user_client.patch(
+            reverse('checklistrun-detail', kwargs={'pk': run.pk}),
+            {
+                'title': 'Hello',
+                'items': [
+                    {
+                        'order': item1.order,
+                        'text': item1.text,
+                    },
+                    {
+                        'order': item2.order,
+                        'text': item2.text,
+                    },
+                ]
+            },
+            format='json'
+        )
+        assert rv.status_code == status.HTTP_200_OK, rv.data
+        assert run.items.count() == 2
+
+        assert run.items.first().order == 1
+        assert run.items.last().order == 2
+
+    def test_remove_field(self, api_user_client, user):
+        cl = m.CheckList.objects.create(user=user)
+        run = m.CheckListRun.objects.create(user=user, checklist=cl)
+        item1 = m.CheckListRunItem.objects.create(checklist_run=run, order=1, text='Yolo')
+        item2 = m.CheckListRunItem.objects.create(checklist_run=run, order=2, text='Yolo')
+
+        rv = api_user_client.patch(
+            reverse('checklistrun-detail', kwargs={'pk': run.pk}),
+            {
+                'title': 'Hello',
+                'items': [
+                    {
+                        'order': item1.order,
+                        'text': item1.text,
+                    },
+                    {
+                        'order': item2.order,
+                        'text': item2.text,
+                    },
+                    {
+                        'order': 3,
+                        'text': "new Item",
+                    },
+                ]
+            },
+            format='json'
+        )
+        assert rv.status_code == status.HTTP_200_OK, rv.data
+        assert run.items.count() == 3
+
+        assert run.items.all()[0].order == 1
+        assert run.items.all()[1].order == 2
+        assert run.items.all()[2].order == 3
+        assert run.items.all()[2].text == 'new Item'
+
+    def test_update_is_closed(self, api_user_client, checklist_run):
+        assert checklist_run.is_closed is False
+
+        rv = api_user_client.patch(
+            reverse('checklistrun-detail', kwargs={'pk': checklist_run.pk}),
+            {'is_closed': True}
+        )
+        assert rv.status_code == status.HTTP_200_OK
+        checklist_run.refresh_from_db()
+        assert checklist_run.is_closed is True

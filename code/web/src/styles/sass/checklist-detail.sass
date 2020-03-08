@@ -64,6 +64,7 @@
 
     .ChecklistItem
       font-size: $large-font-size
+      display: flex
 
       input[type="checkbox"]
         margin-right: $padding
@@ -88,7 +89,6 @@
 .ChecklistDescription
   font-size: $subtitle-font-size !important
   margin: 0
-  margin-bottom: 60px
   font-weight: normal
   width: 100%
 
@@ -104,6 +104,38 @@
     font-size: 30px
     border: none !important
     margin-bottom: $large-padding
+
+
+.RunEditToggle
+  margin-bottom: $large-padding
+
+
+ul.ChecklistRunItems
+  list-style: none
+  margin-top: 24px
+  padding: 0
+
+  li
+    display: flex
+    align-items: center
+    height: 60px
+
+    input
+      flex: 1
+
+    .Button
+      width: 50px
+      margin-right: $padding
+      display: flex !important
+      justify-content: center
+
+    label
+      display: flex
+      align-items: center
+
+      .Checkbox
+        margin-right: $padding
+
 
 @media only screen and (max-width: 600px)
   .ChecklistItemView

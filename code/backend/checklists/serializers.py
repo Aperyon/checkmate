@@ -10,11 +10,23 @@ class ChecklistItemSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('text', )
 
 
+class ChecklistRunItemSerializerForRun(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = m.CheckListRunItem
+        fields = ('url', 'pk', 'is_checked', 'text', 'order')
+        read_only_fields = ('url', )
+        extra_kwargs = {
+            'pk': {
+                'read_only': False
+            }
+        }
+
+
 class ChecklistRunItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = m.CheckListRunItem
-        fields = ('url', 'is_checked', 'text')
-        read_only_fields = ('url',)
+        fields = ('url', 'pk', 'is_checked', 'text')
+        read_only_fields = ('url', 'pk',)
 
     # def update(self, instance, validated_data):
     #     is_checked = validated_data.pop('is_checked', False)
@@ -77,12 +89,13 @@ class CheckListSerializer(serializers.HyperlinkedModelSerializer):
 class CheckListRunSerializer(serializers.HyperlinkedModelSerializer):
     checklist = serializers.HyperlinkedRelatedField(view_name='checklist-detail', queryset=m.CheckList.objects.all())
     checklist_pk = serializers.IntegerField(source='checklist.pk', read_only=True)
-    items = ChecklistRunItemSerializer(many=True, read_only=True)
+    items = ChecklistRunItemSerializerForRun(many=True, required=False)
 
     class Meta:
+        depth = 1
         model = m.CheckListRun
-        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items', 'is_closed', 'checklist_pk', 'name')
-        read_only_fields = ('checklist', )
+        fields = ('url', 'pk', 'title', 'description', 'checklist', 'items', 'is_closed', 'checklist_pk', 'is_archived')
+        read_only_fields = ('checklist', 'url', 'pk')
         extra_kwargs = {
             'title': {
                 'required': False,
@@ -103,7 +116,14 @@ class CheckListRunSerializer(serializers.HyperlinkedModelSerializer):
         return run
 
     def update(self, instance, validated_data):
+        items = validated_data.pop('items', None)
+        if items is not None:
+            s.setup_checklist_run_items(instance, items)
+
         is_closed = validated_data.pop('is_closed', None)
+        is_archived = validated_data.get('is_archived', None)
+        if is_archived:
+            is_closed = True
         s.toggle_checklist_run_is_closed(instance, is_closed, save=True)
         updated_instance = super().update(instance, validated_data)
         return updated_instance

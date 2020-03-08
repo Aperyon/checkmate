@@ -8,20 +8,7 @@ import Icon from '../common/components/Icon';
 import { Context as ChecklistContext } from '../contexts/ChecklistsContext';
 import { ActionButton, BackButton, Button, ButtonContainer } from '../common/components/Buttons';
 import { InputGroup, FieldArrayInputGroup } from "../common/components/formStuff";
-
-
-function handleItemsChange(values, append) {
-  if (shouldAddExtraItem(values)) {
-    append()
-  }
-}
-
-
-function shouldAddExtraItem(values) {
-  const itemFieldKeys = Object.keys(values).filter(fieldName => fieldName.indexOf('items[') === 0)
-  const itemFieldValues = itemFieldKeys.map(key => values[key])
-  return _.every(itemFieldValues.map(val => val.trim() !== ""))
-}
+import * as u from './utils';
 
 
 export default function ChecklistFormView() {
@@ -54,7 +41,7 @@ export default function ChecklistFormView() {
 
   if (currentChecklist === null) {
     return <h1>Loading</h1>
-  } else if (shouldAddExtraItem(currentChecklist.items)) {
+  } else if (u.shouldAddExtraItem(currentChecklist.items)) {
     currentChecklist.items.push({ text: "" })
   }
 
@@ -150,7 +137,7 @@ function ChecklistForm({ checklist }) {
             name={`items[${index}].text`}
             register={register}
             placeholder="item"
-            onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
+            onChange={_.debounce(() => { u.handleItemsChange(getValues(), append) }, 1)}
             remove={() => remove(index)}
             isRemoveButtonDisabled={!item.text}
           />

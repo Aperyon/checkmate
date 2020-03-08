@@ -1,9 +1,21 @@
 .Form
   width: 100%
 
+  input
+    border: none
+
+  .Button:disabled
+    cursor: default
+
+    .Icon
+      color: transparent
+
   .InputGroup
-    margin-bottom: $padding
+    margin-bottom: 14px
     position: relative
+
+    .HeroTitle
+      margin-bottom: 0
 
     label.FloatingLabel
       color: transparent
@@ -94,14 +106,11 @@
     .Button
       margin-right: $padding
 
-      &:disabled
-        cursor: default
-
-        .Icon
-          color: transparent
-
   p.Error
       color: $red
+
+label
+  display: block
 
 @media only screen and (max-width: 600px)
   .Form

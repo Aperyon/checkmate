@@ -27,7 +27,7 @@ export default function ChecklistListView(props) {
 
     let runPk = null
     if (u.shouldStartNewRun(checklist)) {
-      const response = await createChecklistRun(checklist);
+      const response = await createChecklistRun(checklist.url);
       runPk = response.data.pk;
     } else {
       const parts = latestRun.split('/')

@@ -82,14 +82,20 @@ export function FieldArrayInputGroup({ label, name, register, placeholder, onCha
 
 export function Checkbox({ isChecked }) {
   return isChecked ? (
-    <CheckedCheckboxSVG style={{
-      maxHeight: '50px',
-      maxWidth: '50px'
-    }} />
+    <CheckedCheckboxSVG
+      className="Checkbox Checked"
+      style={{
+        maxHeight: '51px',
+        maxWidth: '51px'
+      }}
+    />
   ) : (
-      <UncheckedCheckboxSVG style={{
-        maxHeight: '50px',
-        maxWidth: '50px'
-      }} />
+      <UncheckedCheckboxSVG
+        className="Checkbox"
+        style={{
+          maxHeight: '51px',
+          maxWidth: '51px'
+        }}
+      />
     )
 }

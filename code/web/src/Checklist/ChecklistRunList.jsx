@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TitleContainer } from '../common/components/View';
+import { Title } from '../common/components/Title';
+import ArchiveRunsToggle from './ArchiveRunsToggle';
 
 
-export default function ChecklistRunList({ checklistRuns, activeChecklistRunId }) {
-  return null
+export default function ChecklistRunList({ checklistRuns, activeChecklistRunId, ...props }) {
+  // return null
   // return <div className="ChecklistRunList" />;
 
   if (checklistRuns === null) {
@@ -15,7 +18,13 @@ export default function ChecklistRunList({ checklistRuns, activeChecklistRunId }
   }
   return (
     <div className="ChecklistRunList">
-      <h3 className="Title">Runs</h3>
+      <TitleContainer>
+        <Title>Runs</Title>
+        <ArchiveRunsToggle
+          showArchiveds={props.showArchiveds}
+          setShowArchiveds={props.setShowArchiveds}
+        />
+      </TitleContainer>
       <ul>
         {checklistRuns.map(checklistRun => (
           <ChecklistRunItem

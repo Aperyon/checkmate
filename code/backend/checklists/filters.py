@@ -6,4 +6,4 @@ from . import models as m
 class CheckListRunFilter(filters.FilterSet):
     class Meta:
         model = m.CheckListRun
-        fields = ['checklist', ]
+        fields = ['checklist', 'is_archived']

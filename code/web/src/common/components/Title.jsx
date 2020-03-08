@@ -13,3 +13,10 @@ export function HeroTitle(props) {
     <h1 className="HeroTitle">{props.children}</h1>
   )
 }
+
+
+export function HeroSubTitle(props) {
+  return (
+    <p className="HeroSubTitle">{props.children}</p>
+  )
+}

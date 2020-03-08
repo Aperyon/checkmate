@@ -31,8 +31,8 @@ class CheckListRun(models.Model):
     description = models.CharField(max_length=255, blank=True)
     is_closed = models.BooleanField(default=False)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    name = models.CharField(max_length=255, default="", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_archived = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-created_at', )

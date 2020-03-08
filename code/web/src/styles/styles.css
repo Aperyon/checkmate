@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 14px;
 }
 .TitleContainer .Title, .TitleContainer .HeroTitle {
   margin: 0;
@@ -150,6 +151,7 @@
 }
 .ChecklistItemView ul.ChecklistList .ChecklistItem, .ChecklistItemView ul.ChecklistItems .ChecklistItem {
   font-size: 32px;
+  display: flex;
 }
 .ChecklistItemView ul.ChecklistList .ChecklistItem input[type=checkbox], .ChecklistItemView ul.ChecklistItems .ChecklistItem input[type=checkbox] {
   margin-right: 20px;
@@ -177,7 +179,6 @@
 .ChecklistDescription {
   font-size: 30px !important;
   margin: 0;
-  margin-bottom: 60px;
   font-weight: normal;
   width: 100%;
 }
@@ -193,6 +194,37 @@
   font-size: 30px;
   border: none !important;
   margin-bottom: 40px;
+}
+
+.RunEditToggle {
+  margin-bottom: 40px;
+}
+
+ul.ChecklistRunItems {
+  list-style: none;
+  margin-top: 24px;
+  padding: 0;
+}
+ul.ChecklistRunItems li {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+ul.ChecklistRunItems li input {
+  flex: 1;
+}
+ul.ChecklistRunItems li .Button {
+  width: 50px;
+  margin-right: 20px;
+  display: flex !important;
+  justify-content: center;
+}
+ul.ChecklistRunItems li label {
+  display: flex;
+  align-items: center;
+}
+ul.ChecklistRunItems li label .Checkbox {
+  margin-right: 20px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -259,7 +291,6 @@
 }
 
 .ButtonContainer {
-  margin-top: 40px;
   display: flex;
 }
 .ButtonContainer > div {
@@ -433,9 +464,21 @@
 .Form {
   width: 100%;
 }
+.Form input {
+  border: none;
+}
+.Form .Button:disabled {
+  cursor: default;
+}
+.Form .Button:disabled .Icon {
+  color: transparent;
+}
 .Form .InputGroup {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   position: relative;
+}
+.Form .InputGroup .HeroTitle {
+  margin-bottom: 0;
 }
 .Form .InputGroup label.FloatingLabel {
   color: transparent;
@@ -519,14 +562,12 @@
 .Form .FieldArrayInputGroup .Button {
   margin-right: 20px;
 }
-.Form .FieldArrayInputGroup .Button:disabled {
-  cursor: default;
-}
-.Form .FieldArrayInputGroup .Button:disabled .Icon {
-  color: transparent;
-}
 .Form p.Error {
   color: #e64545;
+}
+
+label {
+  display: block;
 }
 
 .Onboarding {
@@ -600,12 +641,16 @@
   font-size: 50px !important;
   font-family: "Cooper Lt BT", "IM Fell English";
   font-weight: normal;
+  line-height: 56px;
+  height: 56px;
 }
 
 .HeroSubTitle {
   font-size: 28px !important;
   font-family: "Lato Light";
   font-weight: normal;
+  line-height: 34px;
+  height: 34px;
 }
 
 .Title {
@@ -619,11 +664,16 @@ p {
   font-size: 22px !important;
   font-family: "Lato Light";
   font-weight: normal;
+  margin-bottom: 0;
 }
 
 .TitleFont {
   font-family: "Cooper Lt BT", "IM Fell English";
   font-weight: normal;
+}
+
+.dropdown i.Icon {
+  margin-right: 10px !important;
 }
 
 html, body {
