@@ -1,6 +1,6 @@
 @font-face {
   font-family: "titlefont";
-  src: url("https://s3.eu-west-3.amazonaws.com/app.checkma.it/titlefont.ttf") format("truetype");
+  src: url("https://checkma.it/static/fonts/titlefont.ttf") format("truetype");
 }
 html, body {
   margin: 0;
@@ -31,7 +31,7 @@ section {
   padding: 100px 40px;
 }
 section#HeroSection {
-  background-color: #F1D332;
+  background-color: #ffd5c5;
   padding-bottom: 100px;
 }
 section#HeroSection .HeroTitle {
