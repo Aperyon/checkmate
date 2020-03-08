@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "titlefont";
+  src: url("https://s3.eu-west-3.amazonaws.com/app.checkma.it/titlefont.ttf") format("truetype");
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -46,7 +50,7 @@ section.DarkBG {
 }
 
 .HeroTitle {
-  font-family: "IM Fell English";
+  font-family: "titlefont";
   font-size: 50px;
 }
 
@@ -55,7 +59,7 @@ section.DarkBG {
 }
 
 .Title {
-  font-family: "IM Fell English";
+  font-family: "titlefont";
   font-size: 24px;
   margin-bottom: 20px;
 }
