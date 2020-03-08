@@ -22,9 +22,9 @@ export default function ForgotPassword() {
   return (
     <div className="View AuthView">
       <form className="AuthForm LoginForm" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="AuthFormTitle">Forgot password</h1>
+        <h1 className="AuthFormTitle HeroTitle">Forgot password</h1>
         <div className="InputGroup">
-          <label>Email</label>
+          <label className="Title">Email</label>
           <input name="email" type="email" ref={register()} />
           {errors.email && <p className="FieldError">{_.capitalize(errors.email.message[0])}</p>}
         </div>

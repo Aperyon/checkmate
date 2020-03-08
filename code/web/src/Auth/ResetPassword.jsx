@@ -34,13 +34,14 @@ export default function ResetPassword() {
   return (
     <div className="View AuthView">
       <form className="Form AuthForm LoginForm" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="AuthFormTitle">Reset password</h1>
+        <h1 className="AuthFormTitle HeroTitle">Reset password</h1>
         <InputGroup
           label="New password"
           type="password"
           name="password"
           register={register}
-          error={errors.password ?.message}
+          error={errors.password?.message}
+          labelClass="Title"
         />
         {errors.non_field_error && <p className="Error">{errors.non_field_error.message}</p>}
         <ActionButton type="submit" className="FullWidth">

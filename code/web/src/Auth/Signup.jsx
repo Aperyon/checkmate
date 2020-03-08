@@ -36,14 +36,14 @@ export default function Signup() {
   return (
     <div className="View AuthView">
       <form className="AuthForm SignupForm" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="AuthFormTitle">Signup</h1>
+        <h1 className="AuthFormTitle HeroTitle">Signup</h1>
         <div className="InputGroup">
-          <label>Email</label>
+          <label className="Title">Email</label>
           <input name="email" type="email" ref={register()} />
           {errors.email && <p className="FieldError">{_.capitalize(errors.email.message[0])}</p>}
         </div>
         <div className="InputGroup">
-          <label>Password</label>
+          <label className="Title">Password</label>
           <input name="password" type="password" ref={register()} />
           {errors.password && <p className="FieldError">{_.capitalize(errors.password.message[0])}</p>}
         </div>

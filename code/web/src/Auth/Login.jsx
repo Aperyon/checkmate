@@ -24,7 +24,7 @@ export default function Login() {
   async function onSubmit(values) {
     const response = await loginUser(values);
     if (response.hasError) {
-      if (response.data ?.detail) {
+      if (response.data?.detail) {
         setError('nonFieldError', null, response.data.detail)
       }
     } else {
@@ -39,13 +39,13 @@ export default function Login() {
   return (
     <div className="View AuthView">
       <form className="AuthForm LoginForm" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="AuthFormTitle">Login</h1>
+        <h1 className="AuthFormTitle HeroTitle">Login</h1>
         <div className="InputGroup">
-          <label>Email</label>
+          <label className="Title">Email</label>
           <input type="email" name="email" ref={register()} />
         </div>
         <div className="InputGroup">
-          <label>Password</label>
+          <label className="Title">Password</label>
           <input type="password" name="password" ref={register()} />
         </div>
         {errors.nonFieldError && <p className="FormError">{errors.nonFieldError.message}</p>}

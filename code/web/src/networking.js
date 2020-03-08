@@ -6,7 +6,7 @@ import * as storage from './utils/storage';
 let baseURL = 'https://api.checkma.it'
 
 if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:8000'
+  baseURL = 'http://192.168.1.66:8000'
 }
 
 const instance = axios.create({
@@ -19,7 +19,7 @@ instance.interceptors.response.use(function (response) {
   // Do something with response data
   return response;
 }, async function (error) {
-  if (error ?.response ?.status === 401) {
+  if (error?.response?.status === 401) {
     const refresh = localStorage.getItem('refreshToken')
     if (!refresh) {
       return Promise.reject(error);

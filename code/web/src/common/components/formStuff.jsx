@@ -46,12 +46,12 @@ function renderField(name, register, placeholder, onChange, className, type, err
 }
 
 
-export function InputGroup({ label, name, register, placeholder, onChange, error, className, type, inline, withButton, buttonText, onClick, autoFocus }) {
+export function InputGroup({ label, name, register, placeholder, onChange, error, className, type, inline, withButton, buttonText, onClick, autoFocus, labelClass }) {
   return (
     <div className="InputGroup">
       <div className={`${inline ? 'Inline' : ''}`}>
         {renderField(name, register, placeholder, onChange, className, type, error, withButton, buttonText, onClick, autoFocus)}
-        {label && <label className={`FloatingLabel ${error ? 'Error' : ''}`}>{label}</label>}
+        {label && <label className={`FloatingLabel ${error ? 'Error' : ''} ${labelClass ? labelClass : ""}`}>{label}</label>}
       </div>
       {error && <p className="Error">{error}</p>}
     </div>

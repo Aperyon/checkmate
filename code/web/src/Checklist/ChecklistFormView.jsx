@@ -34,7 +34,7 @@ export default function ChecklistFormView() {
         <div>
           <ChecklistForm />
         </div>
-        <ChecklistTips />
+        {/* <ChecklistTips /> */}
       </div >
     )
   }
@@ -145,7 +145,7 @@ function ChecklistForm({ checklist }) {
       ))
       }
 
-      <ButtonContainer style={{ justifyContent: 'flex-start' }}>
+      <ButtonContainer>
         <ActionButton type="submit">
           <Icon icon="check" /> Save
         </ActionButton>

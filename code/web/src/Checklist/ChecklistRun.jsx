@@ -260,7 +260,7 @@ function ChecklistRunEditForm(props) {
           />
         ))}
       </ul>
-      <ButtonContainer style={{ justifyContent: "space-between" }}>
+      <ButtonContainer>
         <ActionButton type="submit"><Icon icon="check" /> Save</ActionButton>
         <Button onClick={() => props.setEditMode(false)}>Cancel</Button>
       </ButtonContainer>

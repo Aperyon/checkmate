@@ -78,10 +78,10 @@
     margin-bottom: 10px;
   }
   .ChecklistListItem .Actions {
-    justify-content: space-between !important;
+    justify-content: flex-end !important;
   }
   .ChecklistListItem .Actions .Button {
-    margin: 0 !important;
+    margin-left: 20px !important;
   }
 }
 .ChecklistFormView {
@@ -235,12 +235,6 @@ ul.ChecklistRunItems li label .Checkbox {
   .ChecklistItemView .ChecklistTips {
     display: none;
   }
-  .ChecklistItemView .ChecklistTitle {
-    font-size: 32px !important;
-  }
-  .ChecklistItemView .ChecklistDescription {
-    font-size: 20px !important;
-  }
   .ChecklistItemView .ChecklistRunList {
     display: none;
   }
@@ -292,6 +286,7 @@ ul.ChecklistRunItems li label .Checkbox {
 
 .ButtonContainer {
   display: flex;
+  justify-content: space-between;
 }
 .ButtonContainer > div {
   display: flex;
@@ -306,17 +301,11 @@ ul.ChecklistRunItems li label .Checkbox {
 
 @media only screen and (max-width: 600px) {
   .ButtonContainer {
-    flex-direction: column;
-  }
-  .ButtonContainer > div:first-child {
-    margin-bottom: 20px;
-  }
-  .ButtonContainer > div:last-child {
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-direction: row-reverse;
   }
-  .ButtonContainer > div:last-child .Button {
-    margin: 0;
+  .ButtonContainer .Button {
+    margin-left: 20px !important;
   }
 
   .AddChecklistButton {
@@ -385,6 +374,7 @@ ul.ChecklistRunItems li label .Checkbox {
 }
 
 .View {
+  max-width: 100%;
   width: 720px;
   margin: auto;
   position: relative;
@@ -640,10 +630,10 @@ label {
 }
 .HeroTitle {
   font-size: 50px !important;
-  font-family: "Cooper Lt BT", "IM Fell English";
+  font-family: "titlefont", "IM Fell English", "Arial";
   font-weight: normal;
   line-height: 56px;
-  height: 56px;
+  min-height: 56px;
 }
 
 .HeroSubTitle {
@@ -651,12 +641,12 @@ label {
   font-family: "Lato Light";
   font-weight: normal;
   line-height: 34px;
-  height: 34px;
+  min-height: 34px;
 }
 
 .Title {
   font-size: 26px !important;
-  font-family: "Cooper Lt BT", "IM Fell English";
+  font-family: "titlefont", "IM Fell English", "Arial";
   font-weight: normal;
   margin-top: 0 !important;
 }
@@ -669,7 +659,7 @@ p {
 }
 
 .TitleFont {
-  font-family: "Cooper Lt BT", "IM Fell English";
+  font-family: "titlefont", "IM Fell English", "Arial";
   font-weight: normal;
 }
 
@@ -677,6 +667,10 @@ p {
   margin-right: 10px !important;
 }
 
+@font-face {
+  font-family: "titlefont";
+  src: url("static/fonts/titlefont.ttf");
+}
 html, body {
   margin: 0;
   padding: 0;
