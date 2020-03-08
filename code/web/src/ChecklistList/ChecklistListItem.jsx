@@ -5,8 +5,9 @@ import { Context as ChecklistsContext } from '../contexts/ChecklistsContext';
 
 import ChecklistDescription from "../Checklist/ChecklistDescription";
 import ChecklistTitle from "../Checklist/ChecklistTitle";
-import { ViewButton, RunButton, MiscButton } from '../common/components/Buttons';
+import { RunButton, Button } from '../common/components/Buttons';
 import ChecklistItemMiscDropdown from './ChecklistItemMiscDropdown'
+import Icon from '../common/components/Icon';
 
 
 export default function ChecklistListItem(props) {
@@ -25,6 +26,9 @@ export default function ChecklistListItem(props) {
         <ChecklistDescription small={true}>{checklist.description}</ChecklistDescription>
       </div>
       <div className="Actions">
+        {/* <Button className="NoText">
+          <Icon icon="pencil" />
+        </Button> */}
         <RunButton
           onClick={() => props.onRunClick(checklist)}
           shouldStartNewRun={props.shouldStartNewRun}

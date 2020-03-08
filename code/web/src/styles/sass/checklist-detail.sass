@@ -21,17 +21,35 @@
         margin-bottom: $padding
 
 .ChecklistItemView
-  padding: 0 20%
   padding-top: 10vh
   padding-bottom: 10vh
   display: flex
 
   &>div
     flex: 2
-    padding: $padding
+    padding-right: $padding
 
   .ChecklistRunList
     flex: 1
+    padding-left: $padding
+    position: absolute
+    left: 720px
+    font-weight: normal
+    width: 300px
+
+    .Title
+      font-size: $title-font-size !important
+
+    ul
+      list-style: none
+      padding: 0
+
+      li
+        font-size: $font-size
+        margin-bottom: $padding
+
+        &.Active
+          font-weight: bold
 
   ul.ChecklistList, ul.ChecklistItems
     list-style: none
@@ -46,6 +64,7 @@
 
     .ChecklistItem
       font-size: $large-font-size
+      display: flex
 
       input[type="checkbox"]
         margin-right: $padding
@@ -61,18 +80,15 @@
   align-items: center
 
 .ChecklistTitle
-  font-size: $title-font-size
   font-weight: normal
   margin: 0
-  margin-bottom: 10px
 
   &.Small
     font-size: $subtitle-font-size
 
 .ChecklistDescription
-  font-size: $subtitle-font-size
+  font-size: $subtitle-font-size !important
   margin: 0
-  margin-bottom: 60px
   font-weight: normal
   width: 100%
 
@@ -89,6 +105,38 @@
     border: none !important
     margin-bottom: $large-padding
 
+
+.RunEditToggle
+  margin-bottom: $large-padding
+
+
+ul.ChecklistRunItems
+  list-style: none
+  margin-top: 24px
+  padding: 0
+
+  li
+    display: flex
+    align-items: center
+    height: 60px
+
+    input
+      flex: 1
+
+    .Button
+      width: 50px
+      margin-right: $padding
+      display: flex !important
+      justify-content: center
+
+    label
+      display: flex
+      align-items: center
+
+      .Checkbox
+        margin-right: $padding
+
+
 @media only screen and (max-width: 600px)
   .ChecklistItemView
     padding: 0 $padding
@@ -97,11 +145,11 @@
     .ChecklistTips
       display: none
 
-    .ChecklistTitle
-      font-size: $large-font-size !important
+    // .ChecklistTitle
+    //   font-size: $large-font-size !important
 
-    .ChecklistDescription
-      font-size: $font-size !important
+    // .ChecklistDescription
+    //   font-size: $font-size !important
 
     .ChecklistRunList
       display: none

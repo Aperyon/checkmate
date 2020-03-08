@@ -26,9 +26,9 @@ const reducer = (state = initialData, action) => {
 }
 
 
-const createChecklistRun = dispatch => async (checklist) => {
+const createChecklistRun = dispatch => async (checklistUrl) => {
   try {
-    const response = await axios.post(checklistRunListURL, { checklist: checklist.url })
+    const response = await axios.post(checklistRunListURL, { checklist: checklistUrl })
     // dispatch({ type: SET_CURRENT_RUN, payload: response.data })
     return response
   } catch (err) {
@@ -77,6 +77,15 @@ const updateChecklistRunItem = dispatch => async (item, isChecked) => {
   }
 }
 
+const deleteChecklistRun = dispatch => async (checklistRun) => {
+  try {
+    const response = await axios.delete(checklistRun.url)
+    return response
+  } catch (err) {
+    return { ...err.response, error: true }
+  }
+}
+
 const unsetCurrentChecklistRun = dispatch => async () => {
   dispatch({ type: SET_CURRENT_RUN, payload: null })
 }
@@ -90,6 +99,7 @@ export const { Provider, Context } = createDataContext(
     unsetCurrentChecklistRun,
     updateChecklistRun,
     fetchChecklistRuns,
+    deleteChecklistRun,
   },
   initialData,
 )

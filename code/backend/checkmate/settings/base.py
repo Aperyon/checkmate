@@ -25,7 +25,7 @@ SECRET_KEY = 'gz*sc=oe3v4^$)7rob9^%419k+8p9bq%14x$$%#+fmr0pbr8$#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'django_filters',
 
     'checklists',
     'users',
@@ -137,7 +138,10 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -8,20 +8,7 @@ import Icon from '../common/components/Icon';
 import { Context as ChecklistContext } from '../contexts/ChecklistsContext';
 import { ActionButton, BackButton, Button, ButtonContainer } from '../common/components/Buttons';
 import { InputGroup, FieldArrayInputGroup } from "../common/components/formStuff";
-
-
-function handleItemsChange(values, append) {
-  if (shouldAddExtraItem(values)) {
-    append()
-  }
-}
-
-
-function shouldAddExtraItem(values) {
-  const itemFieldKeys = Object.keys(values).filter(fieldName => fieldName.indexOf('items[') === 0)
-  const itemFieldValues = itemFieldKeys.map(key => values[key])
-  return _.every(itemFieldValues.map(val => val.trim() !== ""))
-}
+import * as u from './utils';
 
 
 export default function ChecklistFormView() {
@@ -47,23 +34,21 @@ export default function ChecklistFormView() {
         <div>
           <ChecklistForm />
         </div>
-        <ChecklistTips />
+        {/* <ChecklistTips /> */}
       </div >
     )
   }
 
   if (currentChecklist === null) {
     return <h1>Loading</h1>
-  } else if (shouldAddExtraItem(currentChecklist.items)) {
+  } else if (u.shouldAddExtraItem(currentChecklist.items)) {
     currentChecklist.items.push({ text: "" })
   }
 
   return (
     <div className="View ChecklistItemView ChecklistFormView">
-      <div>
-        <ChecklistForm checklist={currentChecklist} />
-      </div>
-      <ChecklistTips />
+      <ChecklistForm checklist={currentChecklist} />
+      {/* <ChecklistTips /> */}
     </div >
   )
 }
@@ -78,7 +63,6 @@ function ChecklistForm({ checklist }) {
   } = React.useContext(ChecklistContext)
   let defaultValues = {
     items: [
-      { text: "" },
       { text: "" },
     ]
   }
@@ -136,15 +120,15 @@ function ChecklistForm({ checklist }) {
         name="title"
         placeholder="Title"
         register={register}
-        error={errors.title ?.message}
-        className="ChecklistTitle"
+        error={errors.title?.message}
+        className="ChecklistTitle HeroTitle"
       />
       <InputGroup
         name="description"
         placeholder="Description"
         register={register}
-        error={errors.description ?.message}
-        className="ChecklistDescription"
+        error={errors.description?.message}
+        className="ChecklistDescription HeroSubTitle"
       />
 
       {fields.map((item, index) => (
@@ -153,27 +137,21 @@ function ChecklistForm({ checklist }) {
             name={`items[${index}].text`}
             register={register}
             placeholder="item"
-            onChange={_.debounce(() => { handleItemsChange(getValues(), append) }, 1)}
+            onChange={_.debounce(() => { u.handleItemsChange(getValues(), append) }, 1)}
             remove={() => remove(index)}
+            isRemoveButtonDisabled={!item.text}
           />
         </div >
       ))
       }
 
-      <ButtonContainer style={{ justifyContent: 'space-between' }}>
-        <div>
-          <Button type="button" onClick={() => append({ name: "item" })}>
-            <Icon icon="plus" />Add new item
-        </Button>
-        </div>
-        <div>
-          <Link to="/checklists/">
-            <Button>Back</Button>
-          </Link>
-          <ActionButton type="submit">
-            <Icon icon="check" /> I'm done!
+      <ButtonContainer>
+        <ActionButton type="submit">
+          <Icon icon="check" /> Save
         </ActionButton>
-        </div>
+        <Link to="/checklists/">
+          <Button>{checklistID ? "Cancel" : "Disacrd"}</Button>
+        </Link>
       </ButtonContainer>
     </form >
   )
@@ -183,11 +161,17 @@ function ChecklistForm({ checklist }) {
 function ChecklistTips() {
   return (
     <div className="ChecklistTips">
-      <h3 className="TipsTitle">Tips for making a good checklist</h3>
+      <h3 className="Title">Tips for making a good checklist</h3>
       <ul>
-        <li>Each item is actionable</li>
-        <li>Add Pause Points as needed</li>
-        <li>Start each item with a verb (simple present tense)</li>
+        <li><p>
+          Each item is actionable
+        </p></li>
+        <li><p>
+          Add Pause Points as needed
+        </p></li>
+        <li><p>
+          Start each item with a verb (simple present tense)
+        </p></li>
       </ul>
     </div>
   )

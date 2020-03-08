@@ -13,7 +13,10 @@ export function ViewButton() {
 
 export function RunButton({ onClick, shouldStartNewRun }) {
   return (
-    <Button onClick={onClick} icon="play" className="NoText" />
+    <Button onClick={onClick}>
+      <Icon icon="play" />
+      Runs
+      </Button>
   )
 }
 
@@ -49,11 +52,38 @@ export function Button(props) {
 }
 
 
+export function InputButton(props) {
+  return <Button {...props} />
+}
+
+
 export function BackButton(props) {
-  return <Link to={props.to} className="BackButton">{props.children}</Link>
+  return <Link to={props.to} className="BackButton">Go back</Link>
 }
 
 
 export function ButtonContainer(props) {
   return <div className="ButtonContainer" style={{ ...props.style }}>{props.children}</div>
+}
+
+
+export function NewChecklistButton(props) {
+  return (
+    <Link to="/checklists/new/">
+      <ActionButton className="AddChecklistButton">
+        <Icon icon="plus" />
+        <span>Checklist</span>
+      </ActionButton>
+    </Link>
+  )
+}
+
+
+export function ChecklistCloseButton(props) {
+  return (
+    <ActionButton onClick={props.onCloseClick}>
+      <Icon icon="check" />
+      Complete
+    </ActionButton>
+  )
 }

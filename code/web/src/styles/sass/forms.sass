@@ -1,17 +1,64 @@
 .Form
+  width: 100%
+
+  input
+    border: none
+
+  .Button:disabled
+    cursor: default
+
+    .Icon
+      color: transparent
+
   .InputGroup
-    margin-bottom: $padding
+    margin-bottom: 14px
+    position: relative
+
+    .HeroTitle
+      margin-bottom: 0
+
+    label.FloatingLabel
+      color: transparent
+      border-right: 1px solid rgba($blue, .5)
+      border-right-color: transparent
+      position: absolute
+      right: 100%
+      margin-right: $small-padding
+      font-size: 14px
+      padding-right: $padding
+      height: 50px
+      top: 0
+      display: block
+      padding-top: 10px
+      transition: all .15s ease-in
+
+    input:focus
+
+      &+label.FloatingLabel
+        color: $blue
+        border-right-color: rgba($blue, .5)
+
+    .Inline
+      display: flex
+
+      label
+        white-space: nowrap
+        margin-right: $padding
 
     label
+      font-size: $font-size
+
       &.Error
         color: $red
 
     input
-      border: 1px solid $black
+      border: none
       box-shadow: none
+      padding: 0 !important
 
     input, textarea
       width: 100%
+      font-size: $font-size
 
       &.Error
         border-color: $red
@@ -25,7 +72,24 @@
 
       li
 
+    .InputWithButton
+      display: flex
+
+      input
+        border-right: 0
+
+      .Button
+        background: $red
+        border: 1px solid $red
+        border-left: 0
+        color: $white
+
   .FieldArrayInputGroup
+
+    &.InputGroup
+      margin-bottom: 0
+
+
     .InputBlock
       display: flex
       justify-content: space-between
@@ -33,16 +97,20 @@
     input, textarea
       flex: 1
       font-size: $large-font-size
-      border: none
+      border: none !important
+      padding: 0
 
-      &:active
-        border: none !important
+      &:active,&:focus
+        border-color: transparent !important
 
     .Button
       margin-right: $padding
 
   p.Error
       color: $red
+
+label
+  display: block
 
 @media only screen and (max-width: 600px)
   .Form

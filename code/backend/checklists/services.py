@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from . import models as m
 
 
@@ -37,7 +39,6 @@ def toggle_checklist_run_item(run_item, new_value, other_items, save=False):
     checklist = run_item.checklist_run.checklist
     run_item.is_checked = new_value
     if new_value:
-
         if all([i.is_checked for i in other_items]):
             checklist_run.is_closed = True
             checklist.is_latest_run_complete = True
@@ -67,3 +68,10 @@ def toggle_checklist_run_is_closed(checklist_run, is_closed_value, save=False):
     if save:
         checklist_run.save()
         checklist.save()
+
+
+def setup_checklist_run_items(checklist_run, items):
+    checklist_run.items.all().delete()
+    m.CheckListRunItem.objects.bulk_create(
+        [m.CheckListRunItem(checklist_run=checklist_run, **item) for item in items]
+    )

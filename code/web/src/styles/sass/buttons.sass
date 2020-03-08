@@ -44,32 +44,28 @@
 
 .ButtonContainer
   display: flex
+  justify-content: space-between
 
   &>div
     display: flex
 
+  .Button, a
+    margin-left: $large-padding
+    height: 41px
+
+
     &:first-child
-      justify-content: flex-start
-      .Button
-        margin-right: $small-padding
-
-    &:last-child
-      justify-content: flex-end
-      .Button
-        margin-left: $small-padding
-
+      margin-left: 0
 
 @media only screen and (max-width: 600px)
   .ButtonContainer
-    flex-direction: column
-    &>div:first-child
-      margin-bottom: $padding
+    justify-content: flex-start
+    flex-direction: row-reverse
 
-    &>div:last-child
-      justify-content: space-between
-      flex-direction: row-reverse
+    .Button
+      margin-left: $padding !important
 
-      .Button
-        margin: 0
+  .AddChecklistButton
+    min-width: auto !important
 
 
