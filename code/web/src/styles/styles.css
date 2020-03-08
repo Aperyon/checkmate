@@ -630,7 +630,7 @@ label {
 }
 .HeroTitle {
   font-size: 50px !important;
-  font-family: "titlefont", "IM Fell English", "Arial";
+  font-family: "titlefont";
   font-weight: normal;
   line-height: 56px;
   min-height: 56px;
@@ -646,7 +646,7 @@ label {
 
 .Title {
   font-size: 26px !important;
-  font-family: "titlefont", "IM Fell English", "Arial";
+  font-family: "titlefont";
   font-weight: normal;
   margin-top: 0 !important;
 }
@@ -659,7 +659,7 @@ p {
 }
 
 .TitleFont {
-  font-family: "titlefont", "IM Fell English", "Arial";
+  font-family: "titlefont";
   font-weight: normal;
 }
 
@@ -669,7 +669,7 @@ p {
 
 @font-face {
   font-family: "titlefont";
-  src: url("static/fonts/titlefont.ttf");
+  src: url("https://s3.eu-west-3.amazonaws.com/app.checkma.it/titlefont.ttf") format("truetype");
 }
 html, body {
   margin: 0;
