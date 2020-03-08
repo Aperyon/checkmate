@@ -6,6 +6,8 @@ import ArchiveRunsToggle from './ArchiveRunsToggle';
 
 
 export default function ChecklistRunList({ checklistRuns, activeChecklistRunId, ...props }) {
+  return null;
+
   if (checklistRuns === null) {
     return (
       <div className="ChecklistRunList">
