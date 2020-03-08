@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Button } from '../components/Buttons';
+import { Button, InputButton } from '../components/Buttons';
 import Icon from '../components/Icon'
 import { ReactComponent as CheckedCheckboxSVG } from '../../assets/Checked-Checkbox-Frame-Transparent.svg';
 import { ReactComponent as UncheckedCheckboxSVG } from '../../assets/Unchecked-Checkbox-Frame-Transparent.svg';
 
-function renderField(name, register, placeholder, onChange, className, type, error) {
+function renderField(name, register, placeholder, onChange, className, type, error, withButton, buttonText, onClick, autoFocus) {
   if (type === 'textarea') {
     return (
       <textarea
@@ -16,9 +16,25 @@ function renderField(name, register, placeholder, onChange, className, type, err
         className={`${error ? 'Error' : ''} ${className ? className : ''}`}
       />
     )
+  } else if (withButton) {
+    return (
+      <div className="InputWithButton">
+        <input
+          autoFocus={autoFocus}
+          placeholder={placeholder}
+          name={name}
+          ref={register()}
+          onChange={onChange}
+          type={type || 'input'}
+          className={`${error ? 'Error' : ''} ${className ? className : ''}`}
+        />
+        <InputButton onClick={onClick}>{buttonText}</InputButton>
+      </div>
+    )
   }
   return (
     <input
+      autoFocus={autoFocus}
       placeholder={placeholder}
       name={name}
       ref={register()}
@@ -30,11 +46,13 @@ function renderField(name, register, placeholder, onChange, className, type, err
 }
 
 
-export function InputGroup({ label, name, register, placeholder, onChange, error, className, type }) {
+export function InputGroup({ label, name, register, placeholder, onChange, error, className, type, inline, withButton, buttonText, onClick, autoFocus }) {
   return (
     <div className="InputGroup">
-      {label && <label className={`${error ? 'Error' : ''}`}>{label}</label>}
-      {renderField(name, register, placeholder, onChange, className, type, error)}
+      <div className={`${inline ? 'Inline' : ''}`}>
+        {renderField(name, register, placeholder, onChange, className, type, error, withButton, buttonText, onClick, autoFocus)}
+        {label && <label className={`FloatingLabel ${error ? 'Error' : ''}`}>{label}</label>}
+      </div>
       {error && <p className="Error">{error}</p>}
     </div>
   )

@@ -1,17 +1,16 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
-.ChecklistListView {
-  padding: 0 20%;
-  padding-top: 10vh;
-}
-.ChecklistListView .TitleContainer {
+.TitleContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2em;
 }
-.ChecklistListView .TitleContainer .Title {
+.TitleContainer .Title, .TitleContainer .HeroTitle {
   margin: 0;
+}
+
+.ChecklistListView {
+  padding-top: 10vh;
 }
 .ChecklistListView .ChecklistList {
   list-style: none;
@@ -40,7 +39,7 @@
   font-size: 18px;
 }
 .ChecklistListView .ChecklistList .ChecklistListItem .ChecklistDetails {
-  flex: 1;
+  flex: 2;
 }
 .ChecklistListView .ChecklistList .ChecklistListItem .Actions {
   flex: 1;
@@ -108,7 +107,6 @@
 }
 
 .ChecklistItemView {
-  padding: 0 20%;
   padding-top: 10vh;
   padding-bottom: 10vh;
   display: flex;
@@ -119,6 +117,14 @@
 }
 .ChecklistItemView .ChecklistRunList {
   flex: 1;
+  padding-left: 20px;
+  position: absolute;
+  left: 720px;
+  font-weight: normal;
+  width: 300px;
+}
+.ChecklistItemView .ChecklistRunList .Title {
+  font-size: 50px !important;
 }
 .ChecklistItemView .ChecklistRunList ul {
   list-style: none;
@@ -253,22 +259,18 @@
 }
 
 .ButtonContainer {
+  margin-top: 40px;
   display: flex;
 }
 .ButtonContainer > div {
   display: flex;
 }
-.ButtonContainer > div:first-child {
-  justify-content: flex-start;
+.ButtonContainer .Button, .ButtonContainer a {
+  margin-left: 40px;
+  height: 41px;
 }
-.ButtonContainer > div:first-child .Button {
-  margin-right: 10px;
-}
-.ButtonContainer > div:last-child {
-  justify-content: flex-end;
-}
-.ButtonContainer > div:last-child .Button {
-  margin-left: 10px;
+.ButtonContainer .Button:first-child, .ButtonContainer a:first-child {
+  margin-left: 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -284,6 +286,10 @@
   }
   .ButtonContainer > div:last-child .Button {
     margin: 0;
+  }
+
+  .AddChecklistButton {
+    min-width: auto !important;
   }
 }
 .AuthForm {
@@ -308,7 +314,7 @@
   border: 1px solid #333;
 }
 .AuthForm .ActionButton {
-  font-size: 64px !important;
+  font-size: 50px !important;
 }
 .AuthForm .FormError {
   color: #e64545;
@@ -345,6 +351,12 @@
   display: flex;
   justify-content: center;
   padding-top: 15vh;
+}
+
+.View {
+  width: 720px;
+  margin: auto;
+  position: relative;
 }
 
 @media only screen and (max-width: 600px) {
@@ -418,19 +430,48 @@
     padding: 0 20px;
   }
 }
+.Form {
+  width: 100%;
+}
 .Form .InputGroup {
   margin-bottom: 20px;
+  position: relative;
+}
+.Form .InputGroup label.FloatingLabel {
+  color: transparent;
+  border-right: 1px solid rgba(40, 138, 138, 0.5);
+  border-right-color: transparent;
+  position: absolute;
+  right: 100%;
+  margin-right: 10px;
+  font-size: 14px;
+  padding-right: 20px;
+  height: 50px;
+  top: 0;
+  display: block;
+  padding-top: 10px;
+  transition: all 0.15s ease-in;
+}
+.Form .InputGroup input:focus + label.FloatingLabel {
+  color: #288A8A;
+  border-right-color: rgba(40, 138, 138, 0.5);
+}
+.Form .InputGroup .Inline {
+  display: flex;
+}
+.Form .InputGroup .Inline label {
+  white-space: nowrap;
+  margin-right: 20px;
 }
 .Form .InputGroup label {
-  font-size: 32px;
+  font-size: 20px;
 }
 .Form .InputGroup label.Error {
   color: #e64545;
 }
 .Form .InputGroup input {
-  border: 1px solid #333;
+  border: none;
   box-shadow: none;
-  outline: none;
   padding: 0 !important;
 }
 .Form .InputGroup input, .Form .InputGroup textarea {
@@ -447,6 +488,18 @@
 .Form .InputGroup ul {
   list-style: none;
 }
+.Form .InputGroup .InputWithButton {
+  display: flex;
+}
+.Form .InputGroup .InputWithButton input {
+  border-right: 0;
+}
+.Form .InputGroup .InputWithButton .Button {
+  background: #e64545;
+  border: 1px solid #e64545;
+  border-left: 0;
+  color: white;
+}
 .Form .FieldArrayInputGroup.InputGroup {
   margin-bottom: 0;
 }
@@ -457,7 +510,7 @@
 .Form .FieldArrayInputGroup input, .Form .FieldArrayInputGroup textarea {
   flex: 1;
   font-size: 32px;
-  border: none;
+  border: none !important;
   padding: 0;
 }
 .Form .FieldArrayInputGroup input:active, .Form .FieldArrayInputGroup input:focus, .Form .FieldArrayInputGroup textarea:active, .Form .FieldArrayInputGroup textarea:focus {
@@ -545,30 +598,31 @@
 }
 .HeroTitle {
   font-size: 50px !important;
-  font-family: "IM Fell English";
+  font-family: "Cooper Lt BT", "IM Fell English";
   font-weight: normal;
 }
 
 .HeroSubTitle {
-  font-size: 20px !important;
-  font-family: "Nunito";
+  font-size: 28px !important;
+  font-family: "Lato Light";
   font-weight: normal;
 }
 
 .Title {
   font-size: 26px !important;
-  font-family: "IM Fell English";
+  font-family: "Cooper Lt BT", "IM Fell English";
   font-weight: normal;
+  margin-top: 0 !important;
 }
 
 p {
-  font-size: 18px !important;
-  font-family: "Nunito";
+  font-size: 22px !important;
+  font-family: "Lato Light";
   font-weight: normal;
 }
 
 .TitleFont {
-  font-family: "IM Fell English";
+  font-family: "Cooper Lt BT", "IM Fell English";
   font-weight: normal;
 }
 
@@ -584,6 +638,10 @@ html, body {
 
 a:hover {
   color: #333 !important;
+}
+
+input, textarea, button {
+  outline: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

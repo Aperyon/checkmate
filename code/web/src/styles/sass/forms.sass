@@ -1,16 +1,47 @@
 .Form
+  width: 100%
+
   .InputGroup
     margin-bottom: $padding
+    position: relative
+
+    label.FloatingLabel
+      color: transparent
+      border-right: 1px solid rgba($blue, .5)
+      border-right-color: transparent
+      position: absolute
+      right: 100%
+      margin-right: $small-padding
+      font-size: 14px
+      padding-right: $padding
+      height: 50px
+      top: 0
+      display: block
+      padding-top: 10px
+      transition: all .15s ease-in
+
+    input:focus
+
+      &+label.FloatingLabel
+        color: $blue
+        border-right-color: rgba($blue, .5)
+
+    .Inline
+      display: flex
+
+      label
+        white-space: nowrap
+        margin-right: $padding
 
     label
-      font-size: $large-font-size
+      font-size: $font-size
+
       &.Error
         color: $red
 
     input
-      border: 1px solid $black
+      border: none
       box-shadow: none
-      outline: none
       padding: 0 !important
 
     input, textarea
@@ -29,10 +60,23 @@
 
       li
 
+    .InputWithButton
+      display: flex
+
+      input
+        border-right: 0
+
+      .Button
+        background: $red
+        border: 1px solid $red
+        border-left: 0
+        color: $white
+
   .FieldArrayInputGroup
 
     &.InputGroup
       margin-bottom: 0
+
 
     .InputBlock
       display: flex
@@ -41,7 +85,7 @@
     input, textarea
       flex: 1
       font-size: $large-font-size
-      border: none
+      border: none !important
       padding: 0
 
       &:active,&:focus

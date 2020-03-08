@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Checkbox } from '../common/components/formStuff';
+import { Title } from '../common/components/Title';
 
 
 export default function ChecklistItem(props) {
@@ -18,7 +19,11 @@ export default function ChecklistItem(props) {
               style={{ display: 'none' }}
             />
             <Checkbox isChecked={props.isChecked} />
-            {item.text}
+            <input
+              name={`items[${props.index}].text`}
+              type="text"
+              ref={props.register()}
+            />
           </label>
         )}
       </li>

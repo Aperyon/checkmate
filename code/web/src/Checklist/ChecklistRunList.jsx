@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function ChecklistRunList({ checklistRuns, activeChecklistRunId }) {
+  return null
   // return <div className="ChecklistRunList" />;
 
   if (checklistRuns === null) {
@@ -32,7 +33,7 @@ export default function ChecklistRunList({ checklistRuns, activeChecklistRunId }
 function ChecklistRunItem({ checklistRun, isActive }) {
   let content = checklistRun.title;
   if (checklistRun.name) {
-    content = `${checklistRun.title} - ${checklistRun.name}`
+    content = checklistRun.name
   }
   return (
     <Link to={`/checklist-runs/${checklistRun.pk}`}>

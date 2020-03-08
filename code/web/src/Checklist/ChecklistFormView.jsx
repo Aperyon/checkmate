@@ -60,10 +60,8 @@ export default function ChecklistFormView() {
 
   return (
     <div className="View ChecklistItemView ChecklistFormView">
-      <div>
-        <ChecklistForm checklist={currentChecklist} />
-      </div>
-      <ChecklistTips />
+      <ChecklistForm checklist={currentChecklist} />
+      {/* <ChecklistTips /> */}
     </div >
   )
 }
@@ -160,16 +158,13 @@ function ChecklistForm({ checklist }) {
       ))
       }
 
-      <ButtonContainer style={{ justifyContent: 'space-between' }}>
-        <div />
-        <div>
-          <Link to="/checklists/">
-            <Button>Back</Button>
-          </Link>
-          <ActionButton type="submit">
-            <Icon icon="check" /> I'm done!
+      <ButtonContainer style={{ justifyContent: 'flex-start' }}>
+        <ActionButton type="submit">
+          <Icon icon="check" /> Save
         </ActionButton>
-        </div>
+        <Link to="/checklists/">
+          <Button>{checklistID ? "Cancel" : "Disacrd"}</Button>
+        </Link>
       </ButtonContainer>
     </form >
   )
