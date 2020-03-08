@@ -409,6 +409,7 @@ ul.ChecklistRunItems li label .Checkbox {
   background: white;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 .Nav .LogoSVG {
   max-height: 1em;
