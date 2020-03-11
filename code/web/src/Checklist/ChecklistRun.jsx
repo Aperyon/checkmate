@@ -65,19 +65,6 @@ export default function ChecklistRunView() {
     await fetchChecklistRun(checklistRunId)
   }
 
-  // async function onCloseClick() {
-  //   const confirmation = window.confirm('Are you sure you want to to mark this Run as completed?')
-  //   if (!confirmation) {
-  //     return;
-  //   }
-
-  //   const response = await updateChecklistRun(checklistRun, { is_closed: true })
-  //   if (!response.error) {
-  //     alert('This run is closed!\nClick Play to start a new run.')
-  //     history.push('/checklists/')
-  //   }
-  // }
-
   async function fetchFilteredChecklistRuns(checklist_pk) {
     const filters = { checklist: checklist_pk }
     if (!showArchiveds) {
@@ -88,7 +75,6 @@ export default function ChecklistRunView() {
 
   React.useEffect(() => {
     (async () => {
-      console.log('Fetching runs')
       const response = await fetchChecklistRun(checklistRunId);
       if (!response.error) {
         fetchFilteredChecklistRuns(response.data.checklist_pk)
@@ -177,8 +163,6 @@ function ChecklistRunDetails(props) {
   const [editMode, setEditMode] = React.useState(false);
   return (
     <div className="ChecklistRunDetails">
-      <RunEditToggle editMode={editMode} setEditMode={setEditMode} />
-
       {editMode ? (
         <ChecklistRunEditForm
           checklistRun={props.checklistRun}
@@ -320,6 +304,11 @@ function ChecklistRunForm(props) {
           >
             <Dropdown.Menu>
               <Dropdown.Item
+                onClick={() => props.setEditMode(true)}
+              >
+                <Icon icon="pencil" /> Edit (E)
+              </Dropdown.Item>
+              <Dropdown.Item
                 onClick={props.onNewRunClick}
               >
                 <Icon icon="plus" /> New Run
@@ -327,12 +316,12 @@ function ChecklistRunForm(props) {
               <Dropdown.Item
                 onClick={() => props.onArchiveClick(props.checklistRun)}
               >
-                <Icon icon="archive" /> Archive
+                <Icon icon="archive" /> Archive (A)
               </Dropdown.Item>
               <Dropdown.Item
                 onClick={() => props.onDeleteRunClick(props.checklistRun)}
               >
-                <Icon icon="trash" /> Delete
+                <Icon icon="trash" /> Delete (X)
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

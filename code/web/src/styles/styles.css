@@ -208,7 +208,7 @@ ul.ChecklistRunItems {
 ul.ChecklistRunItems li {
   display: flex;
   align-items: center;
-  height: 60px;
+  height: 35px;
 }
 ul.ChecklistRunItems li input {
   flex: 1;
@@ -231,6 +231,9 @@ ul.ChecklistRunItems li label .Checkbox {
   .ChecklistItemView {
     padding: 0 20px;
     padding-top: 10vh;
+  }
+  .ChecklistItemView .ChecklistRunDetails {
+    padding: 0;
   }
   .ChecklistItemView .ChecklistTips {
     display: none;
@@ -630,7 +633,7 @@ label {
 }
 .HeroTitle {
   font-size: 50px !important;
-  font-family: "titlefont";
+  font-family: "titlefont", "Cooper Lt BT", "sans-serif";
   font-weight: normal;
   line-height: 56px;
   min-height: 56px;
@@ -646,7 +649,7 @@ label {
 
 .Title {
   font-size: 26px !important;
-  font-family: "titlefont";
+  font-family: "titlefont", "Cooper Lt BT", "sans-serif";
   font-weight: normal;
   margin-top: 0 !important;
 }
@@ -659,7 +662,7 @@ p {
 }
 
 .TitleFont {
-  font-family: "titlefont";
+  font-family: "titlefont", "Cooper Lt BT", "sans-serif";
   font-weight: normal;
 }
 
@@ -669,7 +672,7 @@ p {
 
 @font-face {
   font-family: "titlefont";
-  src: url("https://app.checkma.it/fonts/titlefont.ttf") format("truetype");
+  src: url("https://app.loff.io/fonts/titlefont.ttf") format("truetype");
 }
 html, body {
   margin: 0;

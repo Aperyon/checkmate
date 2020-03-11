@@ -7,6 +7,6 @@ export default function Logo() {
   //   <Icon icon="check" />
   // )
   return (
-    <LogoSVG className="LogoSVG" />
+    <h1>Loff</h1>
   )
 }
