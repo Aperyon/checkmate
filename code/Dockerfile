@@ -13,8 +13,8 @@ RUN apt-get update && \
     # apt install -y python-certbot-nginx && \
     apt-get install -y nginx
 
-# COPY ./certs/letsencrypt/live/api.loff.io/cert.pem /etc/ssl/certs/cert.pem
-# COPY ./certs/letsencrypt/live/api.loff.io/privkey.pem /etc/ssl/certs/privkey.pem
+COPY ./certs/letsencrypt/live/api.checkmate.best/cert.pem /etc/ssl/certs/cert.pem
+COPY ./certs/letsencrypt/live/api.checkmate.best/privkey.pem /etc/ssl/certs/privkey.pem
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./nginx/sites.conf /etc/nginx/sites.conf
 

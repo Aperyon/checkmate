@@ -3,47 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkma.it</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,700&display=swap" rel="stylesheet">
+    <title>Checkmate</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/styles.css">
     <link rel="icon" href="favicon.png" />
 </head>
 <body>
     <nav class="Nav">
-        <img src="static/images/Logo-Text.png" class="Logo" />
+        <img src="static/images/Logo.png" class="Logo" />
     </nav>
-    <section class="HeroSection" id="HeroSection">
+    <section class='Section' id="HeroSection">
         <h1 class="HeroTitle">You know how to do it</h1>
-        <p class="HeroSubtitle">We help you to don't need to remember it</p>
-        <div class="ButtonWrapper">
-            <a href="https://app.checkma.it/signup/" target="_blank" class="Button CTA">Sign up</a>
+        <p class="HeroSubtitle">You don't have to remember it</p>
+        <div class="ButtonContainer">
+            <a href="https://app.checkmate.best/signup/" class="Button CTA">Sign up</a>
         </div>
     </section>
-    <section>
-        <h2 class="Title">Checklists</h2>
-        <p>A checklist is a <strong>template</strong>. Put together a list of items or tasks that are always required for a particular process.</p>
-        <h2 class="Title">Runs</h2>
-        <p>Start a new run of your checklist <strong>each time, multiple times</strong>.</p>
+    <section class="Section" id="Checklists">
+        <h3 class="SectionTitle">Checklists</h3>
+        <ul class="Checklist">
+            <li class="ChecklistItem">
+                <img src="static/images/checked-checkbox.png" /> Put man on the Moon
+            </li>
+            <li class="ChecklistItem">
+                <img src="static/images/checked-checkbox.png" /> Save lives
+            </li>
+            <li class="ChecklistItem">
+                <img src="static/images/checked-checkbox.png" /> Make 18 tons of iron fly
+            </li>
+            <li class="ChecklistItem">
+                <img src="static/images/unchecked-checkbox.png" /> Make your life easier
+            </li>
+        </ul>
     </section>
-    <section class="DarkBG">
-        <h2 class="Title TextCenter">Checklists vs Todo lists</h2>
-        <p class="TextCenter">A Todo list is full of tasks that only need to be completed <strong>once</strong>.</p>
-        <br>
-        <p class="TextCenter">A checklist describes a process that needs to be repeated <strong>over and over</strong> again.</p>
+    <section class="Section" id="Quote">
+        <h4 class="HeroTitle">Our brain is fantastic at<br/>generating ideas,<br/>but pretty bad at<br/>storing them.</h4>
+        <p id="Origin"><i>Forgot who said it</i> 😌</p>
     </section>
-    <section id="Examples">
-        <h2 class="Title">Who use checklists?</h2>
-        <h3 class="SubTitle">Astronauts</h3>
-        <p>Man never was going to set foot on the Moon without checklists. Each step of a launch of a rocket is carefully crafted.</p>
-        <h3 class="SubTitle">Doctors</h3>
-        <p>Surgeons must wash their hands before they start an operation. Today this is common sense, but it wasn’t always this way.</p>
-        <h3 class="SubTitle">Engineers</h3>
-        <p>As magnificent a sky-scraper may look, there is no magic in it. It comes down to the most mundain things, which are put into a process.</p>
-        <h3 class="SubTitle">...and You, of course</h3>
-        <p>Checklists help you achieve collossial goals. But this doesn’t mean you can’t use it for simple things.</p>
-        <p>Staff to pack before a <strong>trip</strong> (ocasional), paying <strong>bills</strong> (monthly), <strong>shopping</strong> lists (weekly) or even things you don’t want to forget before leaving your home, like your <strong>wallet, keys and phone</strong> (daily).</p>
-        <div class="ButtonWrapper">
-            <a href="https://app.checkma.it/signup/" target="_blank" class="Button CTA">Sign up</a>
+    <section class="Section" id="Comparison">
+        <h3 class="SectionTitle">Checklists vs To Do lists</h3>
+        <p>Checklists describes processes and steps that need to be taken each time.</p>
+        <p>To Do lists are for one time tasks.</p>
+        <div class="ButtonContainer">
+            <a href="https://app.checkmate.best" class="Button CTA Inverse">Sign up</a>
         </div>
     </section>
 

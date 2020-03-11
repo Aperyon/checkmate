@@ -1,15 +1,19 @@
-$yellow: #F1D332
-$red: #E64545
-$white: white
-
-$hero-section-bg-color: #ffd5c5
-
-$title-font: "titlefont"
-
-
 @font-face
   font-family: "titlefont"
-  src: url("https://loff.io/static/fonts/titlefont.ttf") format("truetype")
+  src: url("https://checkmate.best/static/fonts/titlefont.ttf") format("truetype")
+
+$title-font: "titlefont", "Cooper Lt Bt", "sans-serif"
+$regular-font: "Montserrat", "Arial", "sans-serif"
+
+$extra-large-font-size: 48px
+$large-font-size: 28px
+$regular-font-size: 20px
+$small-font-size: 16px
+
+$yellow: #F9E63A
+$gray: #444447
+$red: #f93a60
+$CTA-color: $red
 
 
 html, body
@@ -17,83 +21,100 @@ html, body
   padding: 0
 
 *
-  font-family: "Lato"
   box-sizing: border-box
-  margin: 0
+  font-family: $regular-font
 
 nav.Nav
-  position: absolute
-  top: 0
-  left: 0
   display: flex
   justify-content: center
-  align-items: center
   padding: 20px
+  position: absolute
   width: 100%
 
-  img.Logo
-    max-height: 30px
+  .Logo
+    max-height: 40px
 
-section
-  padding: 100px 40px
+section.Section
+  padding: 75px 20px
 
   &#HeroSection
-    background-color: $hero-section-bg-color
-    padding-bottom: 100px
+    background-color: $yellow
+    padding: 200px 20px 100px 20px
+  &#Quote
+    background-color: $gray
+    color: white
 
-    .HeroTitle
-      margin-top: 100px
+section#Quote
+  .HeroTitle
+    text-align: center
+    font-size: $large-font-size
 
-    p.HeroSubtitle
-      margin-top: 40px
+  #Origin
+    font-size: $small-font-size
+    text-align: right
+    margin-top: $small-font-size
+    padding-right: 40px
 
-  &#Examples
-    h3
-      margin-bottom: 20px
-      margin-top: 50px
+section#Comparison
+  p
+    margin-top: 40px
+    font-size: $regular-font-size
 
-  &.DarkBG
-    background-color: #333
-    color: $white
 
-.HeroTitle
+h1, h2, h3, h4, h5, h6, p
+  margin: 0
+  font-size: $regular-font-size
+  font-weight: normal
+
+.HeroTitle, .SectionTitle
   font-family: $title-font
-  font-size: 50px
 
 .HeroSubtitle
-  font-size: 22px
+  margin-top: 30px
 
-.Title
-  font-family: $title-font
-  font-size: 24px
-  margin-bottom: 20px
+.HeroTitle
+  font-size: $extra-large-font-size
 
-  &:not(:first-child)
-    margin-top: 40px
-
-.SubTitle
-  font-size: 20px
-
-p
-  font-size: 18px
-
-.TextCenter
-  text-align: center
-
-.ButtonWrapper
-  display: flex
-  justify-content: center
-  margin-top: 100px
+.SectionTitle
+  font-size: $large-font-size
 
 a
   text-decoration: none
+  color: inherit
 
-  &.Button
-    display: inline-block
-    padding: 20px 50px
-    font-size: 22px
-    font-weight: bold
+ul.Checklist
+  li.ChecklistItem
+    display: flex
+    align-items: center
+
+    img
+      margin-right: 20px
+      max-height: 40px
+
+.ButtonContainer
+  display: flex
+  justify-content: center
+
+.Button
+  padding: 20px 60px
+  border-width: 1px
+  border-style: solid
+  font-family: $regular-font
+  font-weight: bold
+  display: inline-block
+  margin-top: 100px
+  cursor: pointer
 
   &.CTA
-    color: $white
-    background-color: $red
+    color: white
+    border-color: $CTA-color
+    background-color: $CTA-color
+
+    &.Inverse
+      background-color: transparent
+      color: $CTA-color
+
+
+
+
+

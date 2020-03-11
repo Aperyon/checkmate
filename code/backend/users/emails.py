@@ -7,8 +7,8 @@ Use this link to reset your password: {url}
 It doesn't live forever, so don't waste time!
 """
     send_mail(
-        'Checkma.it forgot password',
+        'Checkmate - forgot password',
         body,
-        'no-reply@checkma.it',
+        'no-reply@checkmate.best',
         [email],
     )

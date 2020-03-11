@@ -1,6 +1,6 @@
 @font-face {
   font-family: "titlefont";
-  src: url("https://loff.io/static/fonts/titlefont.ttf") format("truetype");
+  src: url("https://checkmate.best/static/fonts/titlefont.ttf") format("truetype");
 }
 html, body {
   margin: 0;
@@ -8,95 +8,108 @@ html, body {
 }
 
 * {
-  font-family: "Lato";
   box-sizing: border-box;
-  margin: 0;
+  font-family: "Montserrat", "Arial", "sans-serif";
 }
 
 nav.Nav {
-  position: absolute;
-  top: 0;
-  left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 20px;
+  position: absolute;
   width: 100%;
 }
-nav.Nav img.Logo {
-  max-height: 30px;
+nav.Nav .Logo {
+  max-height: 40px;
 }
 
-section {
-  padding: 100px 40px;
+section.Section {
+  padding: 75px 20px;
 }
-section#HeroSection {
-  background-color: #ffd5c5;
-  padding-bottom: 100px;
+section.Section#HeroSection {
+  background-color: #F9E63A;
+  padding: 200px 20px 100px 20px;
 }
-section#HeroSection .HeroTitle {
-  margin-top: 100px;
-}
-section#HeroSection p.HeroSubtitle {
-  margin-top: 40px;
-}
-section#Examples h3 {
-  margin-bottom: 20px;
-  margin-top: 50px;
-}
-section.DarkBG {
-  background-color: #333;
+section.Section#Quote {
+  background-color: #444447;
   color: white;
 }
 
-.HeroTitle {
-  font-family: "titlefont";
-  font-size: 50px;
+section#Quote .HeroTitle {
+  text-align: center;
+  font-size: 28px;
+}
+section#Quote #Origin {
+  font-size: 16px;
+  text-align: right;
+  margin-top: 16px;
+  padding-right: 40px;
 }
 
-.HeroSubtitle {
-  font-size: 22px;
-}
-
-.Title {
-  font-family: "titlefont";
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-.Title:not(:first-child) {
+section#Comparison p {
   margin-top: 40px;
-}
-
-.SubTitle {
   font-size: 20px;
 }
 
-p {
-  font-size: 18px;
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: normal;
 }
 
-.TextCenter {
-  text-align: center;
+.HeroTitle, .SectionTitle {
+  font-family: "titlefont", "Cooper Lt Bt", "sans-serif";
 }
 
-.ButtonWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
+.HeroSubtitle {
+  margin-top: 30px;
+}
+
+.HeroTitle {
+  font-size: 48px;
+}
+
+.SectionTitle {
+  font-size: 28px;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
-a.Button {
-  display: inline-block;
-  padding: 20px 50px;
-  font-size: 22px;
+
+ul.Checklist li.ChecklistItem {
+  display: flex;
+  align-items: center;
+}
+ul.Checklist li.ChecklistItem img {
+  margin-right: 20px;
+  max-height: 40px;
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.Button {
+  padding: 20px 60px;
+  border-width: 1px;
+  border-style: solid;
+  font-family: "Montserrat", "Arial", "sans-serif";
   font-weight: bold;
+  display: inline-block;
+  margin-top: 100px;
+  cursor: pointer;
 }
-a.CTA {
+.Button.CTA {
   color: white;
-  background-color: #E64545;
+  border-color: #f93a60;
+  background-color: #f93a60;
+}
+.Button.CTA.Inverse {
+  background-color: transparent;
+  color: #f93a60;
 }
 
 /*# sourceMappingURL=styles.css.map */
