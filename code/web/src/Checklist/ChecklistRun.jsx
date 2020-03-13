@@ -251,7 +251,7 @@ function ChecklistRunEditForm(props) {
         ))}
       </ul>
       <ButtonContainer>
-        <ActionButton type="submit"><Icon icon="check" /> Save</ActionButton>
+        <ActionButton type="submit"><Icon icon="check" /> Save Run</ActionButton>
         <Button onClick={() => props.setEditMode(false)}>Cancel</Button>
       </ButtonContainer>
     </form>
