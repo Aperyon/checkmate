@@ -79,6 +79,7 @@ function ChecklistForm({ checklist }) {
     values.items = values.items.filter(item => item.text.trim() !== '')
 
     if (checklistID) {
+      console.log(checklist)
       const response = await updateChecklist(checklistID, values)
       if (response.error) {
         if (!response.data) {
@@ -89,6 +90,9 @@ function ChecklistForm({ checklist }) {
           })
         }
       } else {
+        if (checklist.latest_run) {
+          alert('These changes will not affect existing Runs.\nOnly new Runs will use the fresh version.')
+        }
         setShouldGoBack(true);
         unsetCurrentChecklist();
       }
