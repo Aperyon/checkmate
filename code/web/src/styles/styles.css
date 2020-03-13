@@ -9,6 +9,9 @@
 .TitleContainer .Title, .TitleContainer .HeroTitle {
   margin: 0;
 }
+.TitleContainer .ButtonContainer {
+  margin-top: 0;
+}
 
 .ChecklistListView {
   padding-top: 10vh;
@@ -290,6 +293,7 @@ ul.ChecklistRunItems li label .Checkbox {
 .ButtonContainer {
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
 }
 .ButtonContainer > div {
   display: flex;
