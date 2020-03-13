@@ -10,8 +10,8 @@ import { InputGroup } from '../common/components/formStuff';
 import { HeroTitle, HeroSubTitle } from '../common/components/Title';
 import { Dropdown } from 'semantic-ui-react';
 import Icon from '../common/components/Icon';
+import { Tag } from '../common/components/Tag';
 import * as u from './utils';
-import RunEditToggle from './RunEditToggle';
 
 import { Context as ChecklistRunContext } from '../contexts/ChecklistRunContext';
 import ChecklistRunList from "./ChecklistRunList";
@@ -327,7 +327,10 @@ function ChecklistRunForm(props) {
           </Dropdown>
         </ButtonContainer>
       </TitleContainer>
-      <HeroSubTitle>{props.checklistRun.description}</HeroSubTitle>
+      <div className="SubTitleContainer">
+        <HeroSubTitle>{props.checklistRun.description}</HeroSubTitle>
+        {props.checklistRun.is_archived && <Tag><Icon icon="archive" /> Archived</Tag>}
+      </div>
 
       <ul className="ChecklistRunItems">
         {fields.map((item, index) => (

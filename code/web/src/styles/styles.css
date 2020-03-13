@@ -674,6 +674,22 @@ p {
   margin-right: 10px !important;
 }
 
+.Tag {
+  background: #444447;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: inline-block;
+}
+.Tag i.Icon {
+  margin-right: 5px;
+}
+
+.SubTitleContainer .Tag {
+  margin-top: 20px;
+}
+
 @font-face {
   font-family: "titlefont";
   src: url("https://app.checkmate.best/fonts/titlefont.ttf") format("truetype");
