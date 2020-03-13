@@ -301,7 +301,6 @@ ul.ChecklistRunItems li label .Checkbox {
 }
 .ButtonContainer .Button, .ButtonContainer a {
   margin-left: 40px;
-  height: 41px;
 }
 .ButtonContainer .Button:first-child, .ButtonContainer a:first-child {
   margin-left: 0;
