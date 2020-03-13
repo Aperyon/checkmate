@@ -79,7 +79,6 @@ function ChecklistForm({ checklist }) {
     values.items = values.items.filter(item => item.text.trim() !== '')
 
     if (checklistID) {
-      console.log(checklist)
       const response = await updateChecklist(checklistID, values)
       if (response.error) {
         if (!response.data) {
