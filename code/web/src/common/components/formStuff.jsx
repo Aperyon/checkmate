@@ -85,16 +85,16 @@ export function Checkbox({ isChecked }) {
     <CheckedCheckboxSVG
       className="Checkbox Checked"
       style={{
-        maxHeight: '51px',
-        maxWidth: '51px'
+        maxHeight: '35px',
+        maxWidth: '35px'
       }}
     />
   ) : (
       <UncheckedCheckboxSVG
         className="Checkbox"
         style={{
-          maxHeight: '51px',
-          maxWidth: '51px'
+          maxHeight: '35px',
+          maxWidth: '35px'
         }}
       />
     )
