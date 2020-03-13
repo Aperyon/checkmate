@@ -306,7 +306,7 @@ function ChecklistRunForm(props) {
               <Dropdown.Item
                 onClick={() => props.setEditMode(true)}
               >
-                <Icon icon="pencil" /> Edit (E)
+                <Icon icon="pencil" /> Edit Run (E)
               </Dropdown.Item>
               <Dropdown.Item
                 onClick={props.onNewRunClick}
@@ -316,12 +316,12 @@ function ChecklistRunForm(props) {
               <Dropdown.Item
                 onClick={() => props.onArchiveClick(props.checklistRun)}
               >
-                <Icon icon="archive" /> Archive (A)
+                <Icon icon="archive" /> Archive Run (A)
               </Dropdown.Item>
               <Dropdown.Item
                 onClick={() => props.onDeleteRunClick(props.checklistRun)}
               >
-                <Icon icon="trash" /> Delete (X)
+                <Icon icon="trash" /> Delete Run (X)
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
