@@ -150,7 +150,7 @@ function ChecklistForm({ checklist }) {
           <Icon icon="check" /> Save
         </ActionButton>
         <Link to="/checklists/">
-          <Button>{checklistID ? "Cancel" : "Disacrd"}</Button>
+          <Button>{checklistID ? "Cancel" : "Discard"}</Button>
         </Link>
       </ButtonContainer>
     </form >
