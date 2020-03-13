@@ -110,6 +110,7 @@ export default function ChecklistRunView() {
   async function onArchiveClick(checklistRun) {
     const confirmation = window.confirm('Are you sure you want to archive this Run?')
     if (confirmation) {
+      alertRunIsArchived()
       await updateChecklistRun(checklistRun, { is_archived: true })
       await fetchFilteredChecklistRuns(checklistRun.checklist_pk)
     }
