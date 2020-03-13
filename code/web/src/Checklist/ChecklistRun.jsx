@@ -22,6 +22,11 @@ function alertRunIsArchived() {
 }
 
 
+function alertRunIsComplete() {
+  alert("Good job!\nYou've completed this Run so we Archived it for you.\nNext time you click Runs a new one will be started.")
+}
+
+
 function isAllChecked(values) {
   return _.every(values, (value) => value)
 }
@@ -57,7 +62,7 @@ export default function ChecklistRunView() {
       setTimeout(async () => {
         await updateChecklistRun(checklistRun, { is_archived: true })
         await fetchFilteredChecklistRuns(checklistRun.checklist_pk)
-        alertRunIsArchived()
+        alertRunIsComplete()
       })
     }
 
