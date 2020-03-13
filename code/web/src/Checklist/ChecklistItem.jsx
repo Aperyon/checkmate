@@ -39,6 +39,7 @@ export function ChecklistItemEditMode({ item, ...props }) {
         name={`items[${props.index}].is_checked`}
         type="hidden"
         ref={props.register()}
+        defaultValue={item.is_checked || false}
       />
     </li>
   )

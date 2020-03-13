@@ -195,7 +195,7 @@ function ChecklistRunDetails(props) {
 function ChecklistRunEditForm(props) {
   const { register, control, getValues, handleSubmit, errors } = useForm({
     defaultValues: {
-      items: [...props.checklistRun.items, { text: '' }],
+      items: [...props.checklistRun.items, { text: '', is_checked: false }],
       name: props.checklistRun.name,
       title: props.checklistRun.title,
       description: props.checklistRun.description,
