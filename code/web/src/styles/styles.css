@@ -217,8 +217,8 @@ ul.ChecklistRunItems li input {
   flex: 1;
 }
 ul.ChecklistRunItems li .Button {
-  width: 50px;
-  margin-right: 20px;
+  width: 35px;
+  margin-right: 19px;
   display: flex !important;
   justify-content: center;
 }
