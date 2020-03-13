@@ -86,6 +86,19 @@ ul.Checklist li.ChecklistItem img {
   margin-right: 20px;
   max-height: 40px;
 }
+ul.Checklist li.ChecklistItem label {
+  display: flex;
+  align-items: center;
+}
+ul.Checklist li.ChecklistItem input[type=checkbox] {
+  display: none;
+}
+ul.Checklist li.ChecklistItem input:not(:checked) ~ img.CheckedCheckbox {
+  display: none;
+}
+ul.Checklist li.ChecklistItem input:checked ~ img.UncheckedCheckbox {
+  display: none;
+}
 
 .ButtonContainer {
   display: flex;
