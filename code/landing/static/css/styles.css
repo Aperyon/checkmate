@@ -18,6 +18,8 @@ nav.Nav {
   padding: 20px;
   position: absolute;
   width: 100%;
+  z-index: 100;
+  background: white;
 }
 nav.Nav .Logo {
   max-height: 40px;
@@ -25,10 +27,113 @@ nav.Nav .Logo {
 
 section.Section {
   padding: 75px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section.Section .SectionContent {
+  max-width: 1000px;
+  margin: auto;
 }
 section.Section#HeroSection {
-  background-color: #F9E63A;
+  background-image: linear-gradient(135deg, #23242E, #323955, #513A90, #862CA6, #d89871);
+  color: white;
+  text-align: center;
   padding: 200px 20px 100px 20px;
+}
+section.Section#HeroSection * {
+  position: relative;
+  z-index: 10;
+}
+section.Section#HeroSection .Stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+section.Section#HeroSection .Star {
+  position: absolute;
+  width: 20px;
+  z-index: 1;
+}
+section.Section#HeroSection .Star:nth-child(1) {
+  top: 14%;
+  left: 14%;
+  width: 28px;
+}
+section.Section#HeroSection .Star:nth-child(2) {
+  top: 73%;
+  left: 48%;
+  width: 33px;
+}
+section.Section#HeroSection .Star:nth-child(3) {
+  top: 19%;
+  left: 73%;
+  width: 23px;
+}
+section.Section#HeroSection .Star:nth-child(4) {
+  top: 53%;
+  left: 32%;
+  width: 26px;
+}
+section.Section#HeroSection .Star:nth-child(5) {
+  top: 45%;
+  left: 34%;
+  width: 33px;
+}
+section.Section#HeroSection .Star:nth-child(6) {
+  top: 14%;
+  left: 32%;
+  width: 35px;
+}
+section.Section#HeroSection .Star:nth-child(7) {
+  top: 29%;
+  left: 47%;
+  width: 26px;
+}
+section.Section#HeroSection .Star:nth-child(8) {
+  top: 74%;
+  left: 72%;
+  width: 37px;
+}
+section.Section#HeroSection .Star:nth-child(9) {
+  top: 31%;
+  left: 26%;
+  width: 30px;
+}
+section.Section#HeroSection .Star:nth-child(10) {
+  top: 22%;
+  left: 70%;
+  width: 27px;
+}
+section.Section#UsersSection {
+  text-align: center;
+}
+section.Section#UsersSection .Users {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+section.Section#UsersSection .Users .User {
+  flex: 1;
+  padding: 20px;
+}
+section.Section#UsersSection .Users img {
+  height: 150px;
+}
+section.Section#UsersSection .Users p {
+  margin-top: 20px;
+}
+section.Section#UsersSection .Users .SmallSectionTitle {
+  font-family: "titlefont", "Cooper Lt Bt", "sans-serif";
+  margin-top: 20px;
+}
+section.Section#Checklists {
+  text-align: center;
+  background-color: #F9E63A;
 }
 section.Section#Quote {
   background-color: #444447;
@@ -43,7 +148,6 @@ section#Quote #Origin {
   font-size: 16px;
   text-align: right;
   margin-top: 16px;
-  padding-right: 40px;
 }
 
 section#Comparison p {
@@ -78,6 +182,9 @@ a {
   color: inherit;
 }
 
+ul.Checklist {
+  padding: 0;
+}
 ul.Checklist li.ChecklistItem {
   display: flex;
   align-items: center;
@@ -123,6 +230,18 @@ ul.Checklist li.ChecklistItem input:checked ~ img.UncheckedCheckbox {
 .Button.CTA.Inverse {
   background-color: transparent;
   color: #f93a60;
+}
+
+@media only screen and (max-width: 600px) {
+  .Users {
+    flex-direction: column;
+  }
+  .Users .User {
+    margin-bottom: 40px;
+  }
+  .Users .User:last-child {
+    margin-bottom: 0;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
