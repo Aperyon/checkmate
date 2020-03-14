@@ -9,6 +9,6 @@ It doesn't live forever, so don't waste time!
     send_mail(
         'Checkmate - forgot password',
         body,
-        'no-reply@checkmate.best',
+        'CheckMate <no-reply@checkmate.best>',
         [email],
     )
