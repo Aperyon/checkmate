@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { TitleContainer } from '../common/components/View';
 import { Title } from '../common/components/Title';
 import ArchiveRunsToggle from './ArchiveRunsToggle';
+import { Text } from '../common/components/Texts'
+import { ButtonContainer, Button } from '../common/components/Buttons'
+import Icon from '../common/components/Icon';
 
 
 export default function ChecklistRunList({ checklistRuns, activeChecklistRunId, ...props }) {
-  return null;
-
   if (checklistRuns === null) {
     return (
       <div className="ChecklistRunList">
@@ -39,13 +40,22 @@ export default function ChecklistRunList({ checklistRuns, activeChecklistRunId, 
 
 
 function ChecklistRunItem({ checklistRun, isActive }) {
-  let content = checklistRun.title;
-  if (checklistRun.name) {
-    content = checklistRun.name
-  }
+  const checkedItemCount = checklistRun.items.filter(item => item.is_checked).length
+  const itemCount = checklistRun.items.length;
+
   return (
     <Link to={`/checklist-runs/${checklistRun.pk}`}>
-      <li className={`${isActive ? 'Active' : ''}`}>{content}</li>
+      <li className={`${isActive ? 'Active' : ''}`}>
+        <Text>{checklistRun.title} <span>{`(${checkedItemCount}/${itemCount})`}</span></Text>
+        <ButtonContainer>
+          <Button className={`NoText ${checklistRun.is_archived ? "Active" : ""}`}>
+            <Icon icon="archive" />
+          </Button>
+          {/* <Button className="NoText">
+            <Icon icon="trash" />
+          </Button> */}
+        </ButtonContainer>
+      </li>
     </Link>
   )
 }

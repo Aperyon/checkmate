@@ -144,7 +144,7 @@ export default function ChecklistRunView() {
 
 function BaseChecklistRunView(props) {
   return (
-    <View className="ChecklistItemView">
+    <View className="ChecklistItemView FullWidth">
       <ChecklistRunDetails
         checklistRun={props.checklistRun}
         onCheckboxChange={props.onCheckboxChange}

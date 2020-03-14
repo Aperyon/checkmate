@@ -1,0 +1,43 @@
+.ChecklistRunList
+  color: white
+  width: 350px
+  padding: 0 $large-padding !important
+
+  ul
+    list-style: none
+    padding: 0
+
+    li
+      font-size: 20px
+      font-family: $title-font
+      padding: 10px 0
+      display: flex
+      justify-content: space-between
+
+      &.Active p.HeroSubtitle, p.HeroSubtitle span
+        color: $black
+
+      p.HeroSubtitle, p.HeroSubtitle span
+        color: #999
+        font-family: $title-font
+
+      .ButtonContainer
+        margin-top: 0
+        justify-content: flex-end
+
+        .Button
+          border: 0
+          padding: 0
+          margin-left: $padding
+
+          &:hover .Icon
+            color: #666
+
+            &.fa-trash
+              color: $red
+
+          &.Active .Icon
+            color: #666
+
+          .Icon
+            color: #ccc
