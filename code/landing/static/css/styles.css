@@ -37,7 +37,7 @@ section.Section .SectionContent {
   margin: auto;
 }
 section.Section#HeroSection {
-  background-image: linear-gradient(135deg, #23242E, #323955, #513A90, #862CA6, #d89871);
+  background-image: linear-gradient(45deg, #4a3cff 0%, #b945dd 40.13%, #e3772e 90%);
   color: white;
   text-align: center;
   padding: 200px 20px 100px 20px;
@@ -60,54 +60,54 @@ section.Section#HeroSection .Star {
   z-index: 1;
 }
 section.Section#HeroSection .Star:nth-child(1) {
-  top: 14%;
-  left: 14%;
-  width: 28px;
+  top: 33%;
+  left: 44%;
+  width: 29px;
 }
 section.Section#HeroSection .Star:nth-child(2) {
-  top: 73%;
-  left: 48%;
-  width: 33px;
+  top: 17%;
+  left: 54%;
+  width: 28px;
 }
 section.Section#HeroSection .Star:nth-child(3) {
-  top: 19%;
-  left: 73%;
-  width: 23px;
+  top: 64%;
+  left: 75%;
+  width: 36px;
 }
 section.Section#HeroSection .Star:nth-child(4) {
-  top: 53%;
-  left: 32%;
-  width: 26px;
+  top: 27%;
+  left: 26%;
+  width: 34px;
 }
 section.Section#HeroSection .Star:nth-child(5) {
-  top: 45%;
-  left: 34%;
-  width: 33px;
+  top: 44%;
+  left: 63%;
+  width: 32px;
 }
 section.Section#HeroSection .Star:nth-child(6) {
-  top: 14%;
-  left: 32%;
-  width: 35px;
+  top: 23%;
+  left: 58%;
+  width: 40px;
 }
 section.Section#HeroSection .Star:nth-child(7) {
-  top: 29%;
-  left: 47%;
-  width: 26px;
+  top: 52%;
+  left: 58%;
+  width: 40px;
 }
 section.Section#HeroSection .Star:nth-child(8) {
-  top: 74%;
-  left: 72%;
-  width: 37px;
+  top: 77%;
+  left: 21%;
+  width: 31px;
 }
 section.Section#HeroSection .Star:nth-child(9) {
-  top: 31%;
-  left: 26%;
+  top: 71%;
+  left: 52%;
   width: 30px;
 }
 section.Section#HeroSection .Star:nth-child(10) {
-  top: 22%;
-  left: 70%;
-  width: 27px;
+  top: 25%;
+  left: 32%;
+  width: 31px;
 }
 section.Section#UsersSection {
   text-align: center;
