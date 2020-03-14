@@ -38,7 +38,6 @@ def test_prepare_run(user, monkeypatch):
     assert run.title == 'Title'
     assert run.description == 'Description'
     assert len(run_items) == 3
-    assert run.name == '2020-01-01'
 
     assert run_items[0].text == 'item1'
     assert run_items[0].is_checked is False
@@ -187,14 +186,3 @@ class TestChecklistRunUpdate:
         assert run.items.all()[1].order == 2
         assert run.items.all()[2].order == 3
         assert run.items.all()[2].text == 'new Item'
-
-    def test_update_is_closed(self, api_user_client, checklist_run):
-        assert checklist_run.is_closed is False
-
-        rv = api_user_client.patch(
-            reverse('checklistrun-detail', kwargs={'pk': checklist_run.pk}),
-            {'is_closed': True}
-        )
-        assert rv.status_code == status.HTTP_200_OK
-        checklist_run.refresh_from_db()
-        assert checklist_run.is_closed is True

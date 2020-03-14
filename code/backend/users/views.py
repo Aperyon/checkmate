@@ -49,7 +49,6 @@ class UserViewSet(drf_mix.CreateModelMixin,
         except (m.User.DoesNotExist, m.User.MultipleObjectsReturned):
             return Response()
 
-        print(user.pk)
         uid = urlsafe_base64_encode(str(user.pk).encode())
         token = default_token_generator.make_token(user)
         url = f'{request.META["HTTP_ORIGIN"]}/reset-password/{uid}/{token}/'

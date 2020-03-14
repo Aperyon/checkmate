@@ -1,3 +1,4 @@
+from django.utils import timezone
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as SimpleJWTTokenObtainPairSerializer
 
@@ -27,3 +28,11 @@ class TokenObtainSerializer(SimpleJWTTokenObtainPairSerializer):
     default_error_messages = {
         'no_active_account': 'Invalid credentials'
     }
+
+    def validate(self, attrs):
+        print('Validate runs')
+        rv = super().validate(attrs)
+        print('User', self.user.__dict__)
+        self.user.last_login = timezone.now()
+        self.user.save()
+        return rv

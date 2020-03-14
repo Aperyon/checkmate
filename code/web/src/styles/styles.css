@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Sen&display=swap");
 .TitleContainer {
   display: flex;
   align-items: center;
@@ -644,7 +644,7 @@ label {
 
 .HeroSubTitle {
   font-size: 28px !important;
-  font-family: "Lato Light";
+  font-family: "Sen";
   font-weight: normal;
   line-height: 34px;
   min-height: 34px;
@@ -659,7 +659,7 @@ label {
 
 p {
   font-size: 22px !important;
-  font-family: "Lato Light";
+  font-family: "Sen";
   font-weight: normal;
   margin-bottom: 0;
 }
