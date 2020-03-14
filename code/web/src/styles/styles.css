@@ -445,6 +445,7 @@ ul.ChecklistRunItems li label {
   font-size: 32px;
   text-align: center;
   padding: 40px 0;
+  font-family: "titlefont", "Cooper Lt BT", "sans-serif";
 }
 
 @media only screen and (max-width: 600px) {

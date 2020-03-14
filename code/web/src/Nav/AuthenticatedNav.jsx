@@ -16,6 +16,7 @@ export default function Nav() {
         <span className="SmallMenu" onClick={() => setIsOpen(true)}><i className="fa fa-bars"></i></span>
         <NavModal open={isOpen} onClose={() => setIsOpen(false)}>
           <ul>
+            <a href="https://forms.gle/a59Y8Ddac4khjZPg8" target="_blank" onClick={() => setIsOpen(false)}><li>Feedback</li></a>
             <Link to="/logout/" onClick={() => setIsOpen(false)}><li>Logout</li></Link>
           </ul>
         </NavModal>

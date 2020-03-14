@@ -18,7 +18,7 @@ import ChecklistRunList from "./ChecklistRunList";
 
 
 function alertRunIsArchived() {
-  alert('This run is archived.\nThe next time you click Run it will start a new one.')
+  alert('This run is archived.')
 }
 
 
@@ -160,6 +160,7 @@ function BaseChecklistRunView(props) {
         activeChecklistRunId={props.checklistRunId}
         showArchiveds={props.showArchiveds}
         setShowArchiveds={props.setShowArchiveds}
+        onArchiveClick={props.onArchiveClick}
       />
     </View>
   )

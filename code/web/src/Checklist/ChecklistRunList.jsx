@@ -31,6 +31,7 @@ export default function ChecklistRunList({ checklistRuns, activeChecklistRunId, 
             key={checklistRun.url}
             checklistRun={checklistRun}
             isActive={parseInt(activeChecklistRunId, 10) === checklistRun.pk}
+            onArchiveClick={props.onArchiveClick}
           />
         ))}
       </ul>
@@ -39,7 +40,7 @@ export default function ChecklistRunList({ checklistRuns, activeChecklistRunId, 
 }
 
 
-function ChecklistRunItem({ checklistRun, isActive }) {
+function ChecklistRunItem({ checklistRun, isActive, onArchiveClick }) {
   const checkedItemCount = checklistRun.items.filter(item => item.is_checked).length
   const itemCount = checklistRun.items.length;
 
@@ -48,12 +49,12 @@ function ChecklistRunItem({ checklistRun, isActive }) {
       <li className={`${isActive ? 'Active' : ''}`}>
         <Text>{checklistRun.title} <span>{`(${checkedItemCount}/${itemCount})`}</span></Text>
         <ButtonContainer>
-          <Button className={`NoText ${checklistRun.is_archived ? "Active" : ""}`}>
+          <Button
+            className={`NoText ${checklistRun.is_archived ? "Active" : ""}`}
+            onClick={() => onArchiveClick(checklistRun)}
+          >
             <Icon icon="archive" />
           </Button>
-          {/* <Button className="NoText">
-            <Icon icon="trash" />
-          </Button> */}
         </ButtonContainer>
       </li>
     </Link>
