@@ -1,8 +1,13 @@
+import os
+import datetime as dt
+
+import boto3
 from fabric.api import task, lcd, local, run, env, put, execute
 
 
 env.use_ssh_config = True
 env.hosts = ['checkmate-server']
+
 
 @task
 def build_and_deploy(version, build_backend=True, build_frontend=True):
@@ -38,7 +43,6 @@ def deploy(version, upload_collectstatic=False):
     image = f'649995796048.dkr.ecr.eu-west-3.amazonaws.com/checkmate-backend:{version}'
     run('$(aws ecr get-login --no-include-email --region eu-west-3)')
     run(f'docker pull {image}')
-    # run(f'docker')
     try:
         run(f'docker rm checkmate -f')
     except:
@@ -55,4 +59,26 @@ def deploy(version, upload_collectstatic=False):
         local('rm -rf temp_django_static')
 
     run('docker rmi $(docker images -aq)')
-
+    client = boto3.client('cloudfront')
+    items_to_invalidate = [
+        '/',
+        '/static/css/styles.sass',
+        '/index.html',
+        '/favicon.ico',
+        '/manifest.json',
+        '/app-icon.png',
+        '/static/images/checked-checkbox.png',
+        '/static/images/unchecked-checkbox.png',
+        '/static/fonts/titlefont.ttf',
+    ]
+    for distribution_id in os.environ.get('AWS_CLOUDFRONT_DISTRIBUTION_IDS', '').split(','):
+        client.create_invalidation(
+            DistributionId=distribution_id.strip(),
+            InvalidationBatch={
+                'Paths': {
+                    'Quantity': len(items_to_invalidate),
+                    'Items': items_to_invalidate
+                },
+                'CallerReference': dt.datetime.now().strftime('%Y%m%d%H%M%S')
+            }
+    )

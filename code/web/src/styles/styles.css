@@ -395,7 +395,7 @@ ul.ChecklistRunItems li label {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 60px;
+  height: 70px;
   border-bottom: 1px solid #333;
   font-size: 30px;
   position: fixed;
