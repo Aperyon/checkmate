@@ -19,10 +19,11 @@ nav.Nav {
   position: absolute;
   width: 100%;
   z-index: 100;
-  background: white;
+  background: #333;
 }
 nav.Nav .Logo {
-  max-height: 40px;
+  max-height: 50px;
+  height: 50px;
 }
 
 section.Section {
@@ -60,53 +61,53 @@ section.Section#HeroSection .Star {
   z-index: 1;
 }
 section.Section#HeroSection .Star:nth-child(1) {
-  top: 33%;
-  left: 44%;
-  width: 29px;
-}
-section.Section#HeroSection .Star:nth-child(2) {
-  top: 17%;
-  left: 54%;
+  top: 59%;
+  left: 12%;
   width: 28px;
 }
+section.Section#HeroSection .Star:nth-child(2) {
+  top: 42%;
+  left: 25%;
+  width: 23px;
+}
 section.Section#HeroSection .Star:nth-child(3) {
-  top: 64%;
-  left: 75%;
-  width: 36px;
+  top: 28%;
+  left: 28%;
+  width: 40px;
 }
 section.Section#HeroSection .Star:nth-child(4) {
-  top: 27%;
-  left: 26%;
-  width: 34px;
-}
-section.Section#HeroSection .Star:nth-child(5) {
-  top: 44%;
-  left: 63%;
-  width: 32px;
-}
-section.Section#HeroSection .Star:nth-child(6) {
-  top: 23%;
-  left: 58%;
-  width: 40px;
-}
-section.Section#HeroSection .Star:nth-child(7) {
-  top: 52%;
-  left: 58%;
-  width: 40px;
-}
-section.Section#HeroSection .Star:nth-child(8) {
-  top: 77%;
-  left: 21%;
+  top: 62%;
+  left: 68%;
   width: 31px;
 }
-section.Section#HeroSection .Star:nth-child(9) {
-  top: 71%;
-  left: 52%;
+section.Section#HeroSection .Star:nth-child(5) {
+  top: 39%;
+  left: 39%;
+  width: 36px;
+}
+section.Section#HeroSection .Star:nth-child(6) {
+  top: 42%;
+  left: 29%;
   width: 30px;
 }
+section.Section#HeroSection .Star:nth-child(7) {
+  top: 62%;
+  left: 26%;
+  width: 24px;
+}
+section.Section#HeroSection .Star:nth-child(8) {
+  top: 23%;
+  left: 30%;
+  width: 32px;
+}
+section.Section#HeroSection .Star:nth-child(9) {
+  top: 13%;
+  left: 22%;
+  width: 21px;
+}
 section.Section#HeroSection .Star:nth-child(10) {
-  top: 25%;
-  left: 32%;
+  top: 77%;
+  left: 22%;
   width: 31px;
 }
 section.Section#UsersSection {

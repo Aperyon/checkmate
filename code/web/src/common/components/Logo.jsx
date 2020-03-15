@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ReactComponent as LogoSVG } from '../../assets/Logo-Text.svg';
+import LogoSVG from '../../assets/Logo-Horizontal-OnLight.svg';
 
 export default function Logo() {
-  return <LogoSVG className="LogoSVG" />
+  return <img src={LogoSVG} className="LogoSVG" alt="Jake" />
 }
